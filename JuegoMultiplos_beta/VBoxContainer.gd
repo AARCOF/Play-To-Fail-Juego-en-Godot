@@ -28,8 +28,7 @@ func _ready():
 	#Imprime el número base y los numeros de los botones
 	$numeroBase.text = cadena 
 	$Button.text = cadenaBttn
-	$Button2.text = cadenaBttn2
-	$Button3.text = cadenaBttn3
+	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
