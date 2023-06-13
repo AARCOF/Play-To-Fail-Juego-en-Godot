@@ -9,7 +9,7 @@ El archivo bd_juego.sql es el que se debe subir al servidor de pruebas.
 
 
 
-Los JS deberán ir declarados y ejecutados en un archivo a parte.
+Los Scripts deberán ir declarados y ejecutados en un archivo a parte.
 Las variables se declararán de la siguiente forma para ayudar a acelerar el proceso del diseño, en vez de la palabra example deberá ir el lugar en donde se encuentra el div (head, body, footer):
   En caso de los div que funcionen como título o subtítulos --> name="TittleExample" / name="tittleExample"
   Snake Case sólo se usará para las funciones; ejemplo --> function_example();
