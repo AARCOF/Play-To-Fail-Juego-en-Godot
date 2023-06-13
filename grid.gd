@@ -38,8 +38,25 @@ func spawn_pieces():
 			var rand = floor(rand_range(0, possible_pieces.size()))
 			#Instancia a la pieza del array
 			var piece = possible_pieces[rand].instance()
+			var loops = 0
+
+			while (match_at(i, j, piece.color) && loops < 100):
+				rand = floor(rand_range(0, possible_pieces.size()))
+				loops += 1 
+				piece = possible_pieces[rand].instance()
 			add_child(piece)
 			piece.position = grid_to_pixel(i, j)
+			all_pieces[i][j] = piece
+
+func match_at(i, j, color):
+	if i > 1:
+		if all_pieces[i - 1][j] != null && all_pieces[i - 2][j] != null:
+			if all_pieces[i - 1][j].color == color && all_pieces[i - 2][j].color == color:
+				return true
+	if j > 1:
+		if all_pieces[i][j - 1] != null && all_pieces[i][j - 2] != null:
+			if all_pieces[i][j - 1].color == color && all_pieces[i][j - 2].color == color:
+				return true
 
 func grid_to_pixel(column, row):
 		var new_x = x_start + offset * column
