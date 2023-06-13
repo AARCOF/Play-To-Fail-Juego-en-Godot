@@ -13,7 +13,7 @@ Los Scripts deberán ir declarados y ejecutados en un archivo a parte.
 Las variables se declararán de la siguiente forma para ayudar a acelerar el proceso del diseño, en vez de la palabra example deberá ir el lugar en donde se encuentra el div (head, body, footer):
   En caso de los div que funcionen como título o subtítulos --> name="TittleExample" / name="tittleExample"
   Snake Case sólo se usará para las funciones; ejemplo --> function_example();
-  La declaración de variables tiene que ser en español, no se modificará el nombre de ninguna variable según ya se haya creado. 
+  La declaración de variables tiene que ser en inglés, no se modificará el nombre de ninguna variable según ya se haya creado. 
   Las ramas deberán tener nombres específicos de lo que se está trabajando y se creará una nueva rama según haya variaciones, por ejemplo si la rama Bienvenida necesita trabajar la interfaz y animacion con css, se       crearán dos ramas con los nombres de BienvenidaInterfaz y BienvenidaAnimaCSS.
 # CUANDO SE HAGA UN COMMIT
   Cada commit deberá ser nombrado según la acción que se está haciendo, se deja una lista para que se identifique en posteriores modificaciones.
