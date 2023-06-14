@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "GuiTransition",
 "language": "GDScript",
 "path": "res://addons/simple-gui-transitions/transition.gd"
+}, {
+"base": "Reference",
+"class": "SQLiteWrapper",
+"language": "GDScript",
+"path": "res://addons/godot-sqlite/godot-sqlite-wrapper.gd"
 } ]
 _global_script_class_icons={
-"GuiTransition": "res://addons/simple-gui-transitions/icon.png"
+"GuiTransition": "res://addons/simple-gui-transitions/icon.png",
+"SQLiteWrapper": ""
 }
 
 [application]
