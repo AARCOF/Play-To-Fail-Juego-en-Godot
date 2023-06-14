@@ -24,7 +24,7 @@ margin_right = 566.0
 margin_bottom = 398.0
 texture = ExtResource( 2 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="bottom_UI" type="TextureRect" parent="."]
 margin_left = 30.0
 margin_top = 671.0
 margin_right = 581.0
