@@ -1,7 +1,6 @@
 extends Node2D
 
-export (String) 
-var color
+export (String) var color
 var move_tween
 var matched = false
 # Called when the node enters the scene tree for the first time.
