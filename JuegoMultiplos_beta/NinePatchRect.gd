@@ -1,4 +1,4 @@
-extends Button
+extends NinePatchRect
 
 
 # Declare member variables here. Examples:
