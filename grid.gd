@@ -8,20 +8,21 @@ export (int) var y_start
 export (int) var offset
 
 var possible_pieces = [
-	preload("res://Scenes/piece_two.tscn"),
+#	preload("res://Scenes/piece_two.tscn"),
 	preload("res://Scenes/piece_three.tscn"),
 	preload("res://Scenes/piece_four.tscn"),
 	preload("res://Scenes/piece_six.tscn"),
 	preload("res://Scenes/piece_eigth.tscn"),
 	preload("res://Scenes/piece_ten.tscn")
 ]
-
 var all_pieces = []
+
 
 func _ready():
 	randomize()
 	all_pieces = make_2d_array()
 	spawn_pieces()
+	
 
 func make_2d_array():
 	var array = []
