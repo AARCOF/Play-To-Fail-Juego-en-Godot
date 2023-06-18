@@ -3,7 +3,7 @@ create database dbMultiple;
 -- LEVES
 --=======
 CREATE TABLE guide (
-    idGuide CHAR(3) PRIMARY KEY,
+    idGuide CHAR(3) PRIMARY KEY NOT NULL,
     title TEXT NOT NULL,
     description TEXT NOT NULL,
     content TEXT NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE objective (
 );
 
 CREATE TABLE level (
-    idLevel CHAR(3) PRIMARY KEY,
+    idLevel CHAR(3) PRIMARY KEY NOT NULL,
     name TEXT UNIQUE NOT NULL,
     description TEXT,
     difficulty TEXT NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE level (
 );
 
 CREATE TABLE sublevel (
-    idSublevel CHAR(3) PRIMARY KEY,
+    idSublevel CHAR(3) PRIMARY KEY NOT NULL,
     name TEXT NOT NULL,
     description TEXT NOT NULL,
     difficulty TEXT NOT NULL,
@@ -41,8 +41,8 @@ CREATE TABLE sublevel (
 );
 
 CREATE TABLE level_objective (
-    idLevel CHAR(3),
-    idObjetive CHAR(3),
+    idLevel CHAR(3) NOT NULL,
+    idObjetive CHAR(3) NOT NULL,
     FOREIGN KEY (idLevel) REFERENCES level(idLevel),
     FOREIGN KEY (idObjetive) REFERENCES objective(idObjetive)
 );
@@ -51,7 +51,7 @@ CREATE TABLE level_objective (
 -- USER
 --======
 create table user (
-	idUser char(3) primary key,
+	idUser char(3) primary key not null,
 	firstName text not null,
 	surName text not null,
 	alias text not null unique,
@@ -63,7 +63,7 @@ create table user (
 );
 
 create table inventory (
-	idInventory char(3) primary key,
+	idInventory char(3) primary key not null,
 	dateObtained datetime not null,
     points int not null,
     coin real not null,
@@ -74,7 +74,7 @@ create table inventory (
 );
 
 create table store (
-    idItems char(5) primary key,
+    idItems char(5) primary key not null,
     name text not null unique,
     description text,
     amount int not null,
@@ -82,6 +82,14 @@ create table store (
     atributo text not null,
     image blob
 );
+
+-- Triggers
+--=========
+CREATE TRIGGER delete_user_inventory
+BEFORE DELETE ON user
+BEGIN
+    DELETE FROM inventory WHERE idUser = OLD.idUser;
+END;
 
 
 -- Insertar datos en la tabla "guide"

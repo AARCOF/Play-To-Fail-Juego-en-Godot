@@ -1,22 +1,23 @@
 extends Node
 
 
-var instancia: qleves
+var quser
+var connection
 
 func _ready():
-	instancia = qleves.new()  # Crear una instancia de la clase 'qleves'
+	quser = null
+	connection = null
+	#pruebaDatos()
 
-	# Llamar al método 'getDataById()' pasando el ID de la tabla como argumento
-	var result = instancia.getDataById("123")
+#func pruebaDatos():
+	#connection = DBConnection.new()
+	#connection.openConnection()
+	#quser = Quser.new()
+	#quser.saveUser("Henry","Leon","Chatapsu","lokitos2023","L01")
+	#quser.saveInventory("1000","500.50","item1,item2","U01")
 
-	if result["success"]:
-		var data = result["data"]
-		print("ID Level:", data["idLevel"])
-		print("Name:", data["name"])
-		print("Description:", data["description"])
-		print("Difficulty:", data["difficulty"])
-		print("Score:", data["score"])
-		print("ID Guide:", data["idGuide"])
-	else:
-		print(result["message"])
+	#quser.updateUser("U02","Lukas","Gozu","GalloTronic","lokito" )
+	#quser.updateInventory("I04","100","200.5","item1,item2,item3,item4")
 
+	#quser.deleteUser('U01')
+	#connection.closeConnection()

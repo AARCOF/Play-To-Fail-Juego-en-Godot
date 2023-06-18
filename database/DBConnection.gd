@@ -1,31 +1,23 @@
 extends Node
-
 const SQLite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
+
 
 class_name DBConnection
 
-var db = null
-var database_path = "res://database/dbMultiple"
+var db_path = "res://database/dbMultiple.db3"
 
-# Constructor de la clase
-func _init():
-	db = null
 
-# Método para abrir la conexión a la base de datos
-func open_connection():
-	db = SQLite.new()
-	db.path = database_path
+func openConnection():
+	globalVar.DB = SQLite.new()
+	globalVar.DB.path = db_path
+	globalVar.DB.open_db()
 
-	if db.open_db() == true:
-		print("Conexión establecida")
-		return db
-	else:
-		print("Error al abrir la conexión")
+	print("Conexión establecida")
+
+
 
 # Método para cerrar la conexión a la base de datos
-func close_connection():
-	if db:
-		db.close_db()
-		print("Conexión cerrada")
-	else:
-		print("No hay conexión abierta")
+func closeConnection():
+	globalVar.DB.close_db()
+	print("Conexión cerrada")
+
