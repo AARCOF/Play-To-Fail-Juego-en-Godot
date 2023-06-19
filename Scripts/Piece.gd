@@ -11,7 +11,7 @@ func _ready():
 
 func move(target):
 	#función de la animación de piezas. Aquí también se puede añadir sonido depende al movimiento que se realice.
-	move_tween.interpolate_property(self, "position", position, target, 0.3, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
+	move_tween.interpolate_property(self, "position", position, target, 0.3, Tween.TRANS_BACK, Tween.EASE_OUT)
 	move_tween.start()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
