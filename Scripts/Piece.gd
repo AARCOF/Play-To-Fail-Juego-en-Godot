@@ -10,9 +10,9 @@ func _ready():
 	move_tween = get_node("move_tween")
 
 func move(target):
-	
-	move_tween.interpolate_property(self, "position", position, target, 0.3, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
-	
+	#función de la animación de piezas. Aquí también se puede añadir sonido depende al movimiento que se realice.
+	move_tween.interpolate_property(self, "position", position, target, 0.3, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
+	move_tween.start()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
