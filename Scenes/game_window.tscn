@@ -38,3 +38,8 @@ height = 8
 x_start = 60
 y_start = 300
 offset = 70
+
+[node name="destroy_timer" type="Timer" parent="."]
+wait_time = 0.484
+
+[connection signal="timeout" from="destroy_timer" to="grid" method="_on_destroy_timer_timeout"]
