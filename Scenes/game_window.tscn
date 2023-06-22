@@ -42,4 +42,9 @@ offset = 70
 [node name="destroy_timer" type="Timer" parent="."]
 wait_time = 0.484
 
+[node name="collapse_timer" type="Timer" parent="."]
+wait_time = 0.348
+one_shot = true
+
 [connection signal="timeout" from="destroy_timer" to="grid" method="_on_destroy_timer_timeout"]
+[connection signal="timeout" from="collapse_timer" to="grid" method="_on_collapse_timer_timeout"]
