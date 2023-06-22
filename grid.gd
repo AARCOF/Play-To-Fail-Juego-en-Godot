@@ -154,12 +154,14 @@ func find_matches():
 							all_pieces[i][j + 1].matched = true
 							all_pieces[i][j + 1].dim()
 	get_parent().get_node("destroy_timer").start()
+	
 func destroy_matched():
 	for i in range(width):
 		for j in range(height):
 			if all_pieces[i][j] != null:
 				if all_pieces[i][j].matched:
 					all_pieces[i][j].queue_free()
-
+					all_pieces[i][j] = null
+					
 func _on_destroy_timer_timeout():
 	destroy_matched()
