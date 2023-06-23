@@ -173,8 +173,7 @@ func collapse_columns():
 						all_pieces[i][k].move(grid_to_pixel(i, j))
 						all_pieces[i][j] = all_pieces[i][k]
 						all_pieces[i][k] = null
-						#print("ok")
-						break
+					break
 
 func _on_destroy_timer_timeout():
 	destroy_matched()
