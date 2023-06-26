@@ -38,13 +38,19 @@ height = 8
 x_start = 60
 y_start = 300
 offset = 70
+y_offset = 5
 
 [node name="destroy_timer" type="Timer" parent="."]
-wait_time = 0.484
+wait_time = 0.15
 
 [node name="collapse_timer" type="Timer" parent="."]
-wait_time = 0.348
+wait_time = 0.05
+one_shot = true
+
+[node name="refill_timer" type="Timer" parent="."]
+wait_time = 1.15
 one_shot = true
 
 [connection signal="timeout" from="destroy_timer" to="grid" method="_on_destroy_timer_timeout"]
 [connection signal="timeout" from="collapse_timer" to="grid" method="_on_collapse_timer_timeout"]
+[connection signal="timeout" from="refill_timer" to="grid" method="_on_refill_timer_timeout"]

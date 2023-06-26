@@ -1,11 +1,16 @@
 extends Node2D
 
+#State Machine
+#enum{wait, move}
+#var state
+
 # Grid Variables
 export (int) var width
 export (int) var height
 export (int) var x_start
 export (int) var y_start
 export (int) var offset
+export (int) var y_offset
 
 # Array de piezas
 var possible_pieces = [
@@ -20,12 +25,19 @@ var possible_pieces = [
 # Piezas en la escena
 var all_pieces = []
 
+# Variables para el Swap Back
+var piece_one = null
+var piece_two = null
+var last_place = Vector2(0, 0)
+var last_direction = Vector2(0, 0)
+
 # Interacción de las piezas
 var first_touch = Vector2(0, 0)
 var final_touch = Vector2(0, 0)
 var controlling = false
 
 func _ready():
+	#state = move
 	randomize()
 	all_pieces = make_2d_array()
 	spawn_pieces()
@@ -65,11 +77,9 @@ func match_at(column, row, color):
 				is_match = true
 	if row > 1:
 		if all_pieces[column][row - 1] != null && all_pieces[column][row - 2] != null:
-			if all_pieces[column][row - 1].color == color && all_pieces[column][row - 2].color == color:
+			#if all_pieces[column][row - 1].color == color && all_pieces[column][row - 2].color == color:
 				is_match = true
-
 	return is_match
-
 
 func grid_to_pixel(column, row):
 	var new_x = x_start + offset * column
@@ -102,15 +112,22 @@ func touch_input():
 func swap_pieces(column, row, direction):
 	var first_piece = all_pieces[column][row]
 	var other_piece = all_pieces[column + direction.x][row + direction.y]
-	all_pieces[column][row] = other_piece
-	all_pieces[column + direction.x][row + direction.y] = first_piece
-	first_piece.move(grid_to_pixel(column + direction.x, row + direction.y))
-	other_piece.move(grid_to_pixel(column, row))
-	first_piece.column = column + direction.x
-	first_piece.row = row + direction.y
-	other_piece.column = column
-	other_piece.row = row
+	if first_piece != null && other_piece != null:
+#		state = wait
+		all_pieces[column][row] = other_piece
+		all_pieces[column + direction.x][row + direction.y] = first_piece
+		first_piece.move(grid_to_pixel(column + direction.x, row + direction.y))
+		other_piece.move(grid_to_pixel(column, row))
+		first_piece.column = column + direction.x
+		first_piece.row = row + direction.y
+		other_piece.column = column
+		other_piece.row = row
 	find_matches()
+
+#func swap_back():
+#	state = move
+#	print("Ok, no match")
+
 
 func touch_difference(grid_1, grid_2):
 	var difference = grid_2 - grid_1
@@ -126,7 +143,8 @@ func touch_difference(grid_1, grid_2):
 			swap_pieces(grid_1.x, grid_1.y, Vector2(0, -1))
 
 func _process(delta):
-	touch_input()
+#	if state == move:
+		touch_input()
 
 func find_matches():
 	for i in range(width):
@@ -153,30 +171,74 @@ func find_matches():
 							all_pieces[i][j].dim()
 							all_pieces[i][j + 1].matched = true
 							all_pieces[i][j + 1].dim()
+	
 	get_parent().get_node("destroy_timer").start()
+	get_parent().get_node("refill_timer").start()
 	
 func destroy_matched():
+#	var was_matched = false
 	for i in range(width):
 		for j in range(height):
 			if all_pieces[i][j] != null:
 				if all_pieces[i][j].matched:
+#					was_matched = true
 					all_pieces[i][j].queue_free()
 					all_pieces[i][j] = null
+#					return was_matched
+#	if was_matched == true:
 	get_parent().get_node("collapse_timer").start()
+	
+#	else:
+#		swap_back()
 					
 func collapse_columns():
 	for i in range(width):
 		for j in range(height):
 			if all_pieces[i][j] == null:
-				for k in range(j - 0.5, height):
+				for k in range(j - 0.99, height):
 					if all_pieces[i][k] != null:
 						all_pieces[i][k].move(grid_to_pixel(i, j))
 						all_pieces[i][j] = all_pieces[i][k]
 						all_pieces[i][k] = null
 					break
+	
+func refill_colums():
+	for i in range(width):
+		for j in range(height):
+			if all_pieces[i][j] == null:
+				var rand = floor(rand_range(0, possible_pieces.size()))
+				var piece = possible_pieces[rand].instance()
+				var loops = 0
+
+				while (match_at(i, j, piece.color) && loops < 100):
+					rand = rand_range(0, possible_pieces.size())
+					loops += 1
+					piece = possible_pieces[rand].instance()
+
+				add_child(piece)
+				piece.position = grid_to_pixel(i, j - y_offset)
+				piece.move(grid_to_pixel(i, j))
+				piece.column = i
+				piece.row = j
+				all_pieces[i][j] = piece
+	after_refill()
+	
+
+func after_refill():
+	for i in range(width):
+		for j in range(height):
+			if all_pieces[i][j] != null:
+				if match_at(i, j, all_pieces[i][j]):
+					find_matches()
+					get_parent().get_node("destroy_timer").start()
+					return
+#	state = move
 
 func _on_destroy_timer_timeout():
 	destroy_matched()
 
 func _on_collapse_timer_timeout():
 	collapse_columns()
+
+func _on_refill_timer_timeout():
+	refill_colums()
