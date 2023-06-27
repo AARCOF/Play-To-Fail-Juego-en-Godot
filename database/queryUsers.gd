@@ -3,7 +3,9 @@ extends Node
 class_name Quser
 
 var db = globalVar.DB
+var aes = AESContext.new() # Declaracion para la encriptacion de datos
 
+# ====================================
 # CRUD PARA EL USUARIO Y SU INVENTARIO
 #=====================================
 
@@ -27,7 +29,7 @@ func saveUser( firstname:String, surname:String, alias:String, password:String, 
 		"firstName": firstname,
 		"surName": surname,
 		"alias": alias,
-		"password": password,
+		"password": encryptData(password),
 		"registerDate": dateTime(),
 		"idLevel": idLevel
 	}
@@ -82,6 +84,7 @@ func deleteUser( id:String )-> void:
 
 #=========================================================
 # Busca la ultima insercion y genera ID para la tabla user
+# ========================================================
 func idUsers() -> String:
 	db.query( "SELECT MAX(idUser) FROM user" )
 	var resultQ = db.query_result[0]
@@ -120,6 +123,17 @@ func idInventory() -> String :
 	else :
 		return "I01"
 
+
+# Obtener id de usuario mediante alias
+func getUpdateID(alias:String) :
+	db.query( str("SELECT idUser FROM user where  alias = '" + alias + "'") )
+	var resultQ = db.query_result
+	if (resultQ.empty()):
+		globalVar.idUSER = idUsers()
+	else :
+		globalVar.idUSER = resultQ[0]['idUser']
+	
+
 # Obtiene la fecha actual
 func dateTime()-> String :
 	var date = OS.get_datetime()
@@ -134,7 +148,54 @@ func dateTime()-> String :
 	return formattedDate
 
 
-#func hashPassword(password: String) -> String:
+
+# =====================
+# ENCRIPTACION DE DATOS
+# =====================
+
+# Encriptacion de datos
+func encryptData(password: String) -> PoolByteArray:
+	var key = globalVar.idUSER
+	var clave = completeBytes(key) # La clave debe ser de 16 o 32 bytes. (1 byte = 1 char) normalmdlkd
+	var datos = completeBytes(password) # La clave debe ser de 16 o 32 bytes. (1 byte = 1 char) normalmdlkd
+	
+	# Encriptar ECB
+	aes.start(AESContext.MODE_ECB_ENCRYPT, clave.to_utf8())
+	var encriptado = aes.update(datos.to_utf8())
+	aes.finish()
+	
+	return encriptado
+	
+	
+	# Desencriptacion de datos
+func dencrytData(encriptado: Array, password:String):
+	var key = globalVar.idUSER
+	var flag = false
+	var clave = completeBytes(key) # La clave debe ser de 16 o 32 bytes. (1 byte = 1 char) normalmdlkd
+	var datos = completeBytes(password) # La clave debe ser de 16 o 32 bytes. (1 byte = 1 char) normalmdlkd
+
+	# Desencriptar ECB
+	aes.start(AESContext.MODE_ECB_DECRYPT, clave.to_utf8())
+	var desencriptado = aes.update(encriptado)
+	aes.finish()
+
+	# Comprobar ECB
+	if (desencriptado == datos.to_utf8()):
+		flag = true
+	return flag
 
 
-#func checkPassword(password: String, hashedPassword: String) -> bool:
+# Conpleta los datos para la encryptacion en 16bytes
+func completeBytes(data: String) -> String:
+	var targetLength = 16
+	if data.length() < targetLength:
+		var padding = targetLength - data.length()
+		var paddingString = ''
+		while padding > 0:
+			paddingString += 'g'
+			padding -= 1
+		return data + paddingString
+	elif data.length() > targetLength:
+		return data.substr(0, targetLength)
+	else:
+		return data

@@ -20,4 +20,3 @@ func openConnection():
 func closeConnection():
 	globalVar.DB.close_db()
 	print("Conexión cerrada")
-
