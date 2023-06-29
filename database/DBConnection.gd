@@ -12,11 +12,11 @@ func openConnection():
 	globalVar.DB.path = db_path
 	globalVar.DB.open_db()
 
-	print("Conexión establecida")
+	print("Conexion establecida")
 
 
 
 # Método para cerrar la conexión a la base de datos
 func closeConnection():
 	globalVar.DB.close_db()
-	print("Conexión cerrada")
+	print("Conexion cerrada")

@@ -75,7 +75,6 @@ func updateInventory(id:String, points:String, coin:String ,idItems:String, idUs
 
 # Elimina un usuario con la ID
 func deleteUser( id:String )-> void:
-
 	#Boolean success = delete_rows( String table_name, String query_conditions )
 	var condition = str("idUser = '" , id , "'")
 	db.delete_rows('user', condition)
@@ -125,7 +124,7 @@ func idInventory() -> String :
 
 
 # Obtener id de usuario mediante alias
-func getUpdateID(alias:String) :
+func updateID(alias:String) -> void:
 	db.query( str("SELECT idUser FROM user where  alias = '" + alias + "'") )
 	var resultQ = db.query_result
 	if (resultQ.empty()):
@@ -133,6 +132,26 @@ func getUpdateID(alias:String) :
 	else :
 		globalVar.idUSER = resultQ[0]['idUser']
 	
+
+# Buscar alias
+func searchAlias(alias:String) -> bool:
+	db.query( str("SELECT alias FROM user where  alias = '" + alias + "'") )
+	var resultQ = db.query_result
+	if (resultQ.empty()):
+		return false
+	else :
+		return true
+
+
+# Obtener pasword
+func getPassword(alias:String) -> String:
+	db.query( str("SELECT password FROM user where  alias = '" + alias + "'") )
+	var resultQ = db.query_result[0]
+	if (resultQ.empty()):
+		return ""
+	else :
+		return resultQ['password']
+
 
 # Obtiene la fecha actual
 func dateTime()-> String :
