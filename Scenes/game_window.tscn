@@ -8,37 +8,37 @@
 [node name="game_window" type="Node2D"]
 
 [node name="Background" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
 
 [node name="Background" type="Sprite" parent="Background"]
 modulate = Color( 0.490196, 0.411765, 0.411765, 1 )
-position = Vector2( 242, 537 )
-scale = Vector2( 0.233704, 0.312807 )
+position = Vector2( 326.5, 519 )
+scale = Vector2( 0.273763, 0.311035 )
 texture = ExtResource( 1 )
 
-[node name="top_UI" type="TextureRect" parent="."]
-margin_left = 20.0
-margin_top = -59.0
-margin_right = 566.0
-margin_bottom = 398.0
+[node name="top_ui" type="TextureRect" parent="."]
+margin_left = 51.0
+margin_top = -55.0
+margin_right = 597.0
+margin_bottom = 373.0
 texture = ExtResource( 2 )
+expand = true
 
 [node name="bottom_UI" type="TextureRect" parent="."]
-margin_left = 30.0
-margin_top = 671.0
-margin_right = 581.0
-margin_bottom = 1128.0
+margin_left = 50.0
+margin_top = 712.0
+margin_right = 596.0
+margin_bottom = 1169.0
 texture = ExtResource( 3 )
 
 [node name="grid" type="Node2D" parent="."]
 script = ExtResource( 4 )
 width = 8
-height = 8
-x_start = 60
-y_start = 300
-offset = 70
+height = 10
+x_start = 87
+y_start = 837
+offset = 64
 y_offset = 5
+empty_spaces = PoolVector2Array( 0, 0, 7, 0, 0, 9, 7, 9, 3, 4, 4, 4, 3, 5, 4, 5 )
 
 [node name="destroy_timer" type="Timer" parent="."]
 wait_time = 0.15
