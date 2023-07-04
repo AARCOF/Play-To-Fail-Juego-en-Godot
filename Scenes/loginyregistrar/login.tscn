@@ -1,104 +1,49 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://loginyregistrar/LoginScreen.gd" type="Script" id=1]
-[ext_resource path="res://addons/simple-gui-transitions/example/theme.tres" type="Theme" id=2]
-[ext_resource path="res://addons/simple-gui-transitions/materials/transform.tres" type="Material" id=3]
-[ext_resource path="res://art/registro/Imagen8.jpg" type="Texture" id=4]
+[ext_resource path="res://art/registro/Imagen10.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/loginyregistrar/LoginScreen.gd" type="Script" id=2]
+[ext_resource path="res://art/registro/Imagen8.jpg" type="Texture" id=3]
+[ext_resource path="res://art/inicio_sesion/imagen1.png" type="Texture" id=4]
 [ext_resource path="res://ui utility/edificios-en-ciudad-de-noche-con-iluminacion-neon-azul_1920x1080_xtrafondos.com.jpg" type="Texture" id=5]
-[ext_resource path="res://art/inicio_sesion/imagen1.png" type="Texture" id=6]
-[ext_resource path="res://art/inicio_sesion/Imagen2.png" type="Texture" id=7]
-[ext_resource path="res://art/registro/Imagen10.png" type="Texture" id=8]
-[ext_resource path="res://art/inicio_sesion/Imagen3.png" type="Texture" id=9]
-[ext_resource path="res://art/inicio_sesion/Imagen7.png" type="Texture" id=10]
-[ext_resource path="res://art/registro/Imagen5.png" type="Texture" id=11]
-[ext_resource path="res://art/inicio_sesion/Imagen4.png" type="Texture" id=12]
-[ext_resource path="res://art/registro/Imagen3.png" type="Texture" id=13]
+[ext_resource path="res://art/inicio_sesion/Imagen2.png" type="Texture" id=6]
+[ext_resource path="res://addons/simple-gui-transitions/materials/transform.tres" type="Material" id=7]
+[ext_resource path="res://addons/simple-gui-transitions/example/theme.tres" type="Theme" id=8]
+[ext_resource path="res://art/registro/Imagen3.png" type="Texture" id=9]
+[ext_resource path="res://art/inicio_sesion/Imagen4.png" type="Texture" id=10]
+[ext_resource path="res://art/inicio_sesion/Imagen7.png" type="Texture" id=11]
+[ext_resource path="res://art/registro/Imagen5.png" type="Texture" id=12]
+[ext_resource path="res://art/inicio_sesion/Imagen3.png" type="Texture" id=13]
 [ext_resource path="res://art/inicio_sesion/Imagen6.png" type="Texture" id=14]
 
 [sub_resource type="Theme" id=1]
 
-[sub_resource type="Animation" id=2]
-length = 0.001
-
-[sub_resource type="Animation" id=3]
-resource_name = "animacion"
-length = 2.0
-
-[sub_resource type="Animation" id=4]
-resource_name = "run"
-loop = true
-
 [node name="LoginScreen" type="Control"]
-material = ExtResource( 3 )
+material = ExtResource( 7 )
 anchor_right = 2.055
 anchor_bottom = 0.599
 margin_right = -1300.82
 margin_bottom = 245.813
-theme = ExtResource( 2 )
-script = ExtResource( 1 )
+theme = ExtResource( 8 )
+script = ExtResource( 2 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-anchor_left = 0.00292969
-anchor_right = 1.00293
-anchor_bottom = 0.993333
-margin_left = -7.42329
-margin_right = -7.42383
-margin_bottom = 4.08685
-texture = ExtResource( 9 )
-
-[node name="TextureRect2" type="TextureRect" parent="NinePatchRect"]
-margin_left = -176.189
-margin_top = 12.0
-margin_right = 547.811
-margin_bottom = 562.0
-texture = ExtResource( 12 )
-expand = true
-
-[node name="TextureRect5" type="TextureRect" parent="NinePatchRect"]
-margin_left = 540.811
-margin_top = 15.0
-margin_right = 1236.81
-margin_bottom = 603.0
-texture = ExtResource( 12 )
-expand = true
-
-[node name="TextureRect3" type="TextureRect" parent="NinePatchRect"]
-margin_left = 90.0
-margin_top = 18.0
-margin_right = 507.0
-margin_bottom = 459.0
-texture = ExtResource( 6 )
-expand = true
-
-[node name="TextureRect4" type="TextureRect" parent="NinePatchRect"]
-margin_left = 714.811
-margin_top = -38.0
-margin_right = 1336.81
-margin_bottom = 532.0
-texture = ExtResource( 7 )
-expand = true
+margin_right = 40.0
+margin_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
-margin_left = 234.0
+margin_left = 230.189
 margin_top = 188.0
-margin_right = 1029.0
+margin_right = 1025.19
 margin_bottom = 920.0
 texture = ExtResource( 14 )
 expand = true
 
-[node name="TextureRect6" type="TextureRect" parent="NinePatchRect"]
-margin_left = 396.811
-margin_top = 201.0
-margin_right = 854.811
-margin_bottom = 319.0
-texture = ExtResource( 10 )
-
 [node name="LoginContainer" type="VBoxContainer" parent="NinePatchRect"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -199.689
+margin_left = 392.998
 margin_top = 341.0
-margin_right = 226.311
+margin_right = 818.998
 margin_bottom = 688.0
 
 [node name="Titulo" type="Label" parent="NinePatchRect/LoginContainer"]
@@ -153,6 +98,47 @@ margin_top = 178.0
 margin_right = 426.0
 margin_bottom = 212.0
 text = "Register"
+
+[node name="TextureRect6" type="TextureRect" parent="NinePatchRect"]
+margin_left = 393.0
+margin_top = 201.0
+margin_right = 851.0
+margin_bottom = 319.0
+texture = ExtResource( 11 )
+
+[node name="ParallaxBackground3" type="ParallaxBackground" parent="NinePatchRect"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="NinePatchRect/ParallaxBackground3"]
+
+[node name="TextureRect5" type="TextureRect" parent="NinePatchRect/ParallaxBackground3/ParallaxLayer"]
+margin_right = 1230.0
+margin_bottom = 614.0
+texture = ExtResource( 13 )
+expand = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="NinePatchRect"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="NinePatchRect/ParallaxBackground"]
+motion_mirroring = Vector2( 1200, 0 )
+
+[node name="fondo_numeros" type="Sprite" parent="NinePatchRect/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 620.132, 306.5 )
+scale = Vector2( 2.26422, 1.10926 )
+texture = ExtResource( 10 )
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="NinePatchRect"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="NinePatchRect/ParallaxBackground2"]
+
+[node name="Sprite" type="Sprite" parent="NinePatchRect/ParallaxBackground2/ParallaxLayer"]
+position = Vector2( 284.5, 268.5 )
+scale = Vector2( 0.773551, 0.781967 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="NinePatchRect/ParallaxBackground2/ParallaxLayer"]
+position = Vector2( 967.086, 257.325 )
+scale = Vector2( 1.17234, 1.16873 )
+texture = ExtResource( 6 )
 
 [node name="Node2D" type="Node2D" parent="."]
 visible = false
@@ -209,14 +195,14 @@ rect_pivot_offset = Vector2( 169, 97.002 )
 visible = false
 margin_right = 1233.0
 margin_bottom = 613.0
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="NinePatchRect2"]
 margin_left = 54.0
 margin_top = 48.0
 margin_right = 1179.0
 margin_bottom = 566.0
-texture = ExtResource( 8 )
+texture = ExtResource( 1 )
 expand = true
 
 [node name="RegisterContainer" type="VBoxContainer" parent="NinePatchRect2"]
@@ -288,7 +274,7 @@ margin_left = 453.0
 margin_top = 80.0
 margin_right = 1272.0
 margin_bottom = 933.0
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 expand = true
 
 [node name="TextureRect3" type="TextureRect" parent="NinePatchRect2"]
@@ -296,13 +282,8 @@ margin_left = -15.0
 margin_top = 27.0
 margin_right = 1002.0
 margin_bottom = 216.0
-texture = ExtResource( 13 )
+texture = ExtResource( 9 )
 expand = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 2 )
-anims/animacion = SubResource( 3 )
-anims/run = SubResource( 4 )
 
 [connection signal="toggled" from="NinePatchRect/LoginContainer/LoginBttn" to="." method="_on_LoginBttn_toggled"]
 [connection signal="pressed" from="NinePatchRect/LoginContainer/RegisterRedi" to="." method="_on_RegisterRedi_pressed"]

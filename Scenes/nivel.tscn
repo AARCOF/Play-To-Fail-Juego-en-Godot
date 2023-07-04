@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/nivel.gd" type="Script" id=1]
+[ext_resource path="res://art/niveles/fondo(nivel3).png" type="Texture" id=4]
+[ext_resource path="res://art/niveles/Polygon 1.png" type="Texture" id=5]
+[ext_resource path="res://art/niveles/fondo(nivel1).png" type="Texture" id=6]
+[ext_resource path="res://art/niveles/fondo(nivel2).png" type="Texture" id=7]
+[ext_resource path="res://art/niveles/fondo(nivel4).png" type="Texture" id=8]
+[ext_resource path="res://art/niveles/img_nivel5.png" type="Texture" id=9]
+[ext_resource path="res://art/niveles/Polygon 2flecha.png" type="Texture" id=10]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="anterior" type="Button" parent="."]
+margin_left = 41.0
+margin_top = 442.0
+margin_right = 134.0
+margin_bottom = 566.0
+icon = ExtResource( 10 )
+
+[node name="siguiente" type="Button" parent="."]
+margin_left = 1098.0
+margin_top = 461.0
+margin_right = 1186.0
+margin_bottom = 585.0
+icon = ExtResource( 5 )
+icon_align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 231.0
+margin_top = 42.0
+margin_right = 4211.0
+margin_bottom = 502.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+margin_right = 789.0
+margin_bottom = 460.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+texture = ExtResource( 6 )
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+margin_left = 793.0
+margin_right = 1512.0
+margin_bottom = 460.0
+texture = ExtResource( 7 )
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer"]
+margin_left = 1516.0
+margin_right = 2307.0
+margin_bottom = 460.0
+texture = ExtResource( 4 )
+
+[node name="TextureRect4" type="TextureRect" parent="HBoxContainer"]
+margin_left = 2311.0
+margin_right = 3143.0
+margin_bottom = 460.0
+texture = ExtResource( 8 )
+
+[node name="TextureRect5" type="TextureRect" parent="HBoxContainer"]
+margin_left = 3147.0
+margin_right = 3980.0
+margin_bottom = 460.0
+texture = ExtResource( 9 )
+
+[connection signal="pressed" from="anterior" to="." method="_on_anterior_pressed"]
+[connection signal="pressed" from="siguiente" to="." method="_on_siguiente_pressed"]
