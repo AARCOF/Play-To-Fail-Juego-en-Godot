@@ -17,17 +17,17 @@ texture = ExtResource( 1 )
 
 [node name="top_ui" type="TextureRect" parent="."]
 margin_left = 51.0
-margin_top = -55.0
+margin_top = -45.0
 margin_right = 597.0
 margin_bottom = 373.0
 texture = ExtResource( 2 )
 expand = true
 
 [node name="bottom_UI" type="TextureRect" parent="."]
-margin_left = 50.0
-margin_top = 712.0
-margin_right = 596.0
-margin_bottom = 1169.0
+margin_left = 54.0
+margin_top = 690.0
+margin_right = 600.0
+margin_bottom = 1147.0
 texture = ExtResource( 3 )
 
 [node name="grid" type="Node2D" parent="."]

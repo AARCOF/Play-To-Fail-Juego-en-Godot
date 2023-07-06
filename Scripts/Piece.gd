@@ -1,7 +1,7 @@
 extends Node2D
-#var column: float = 0
-#var row: float = 0
-#var vec = Vector2(column, row)
+var column: float = 0
+var row: float = 0
+var vec = Vector2(column, row)
 
 export (String) var color
 
