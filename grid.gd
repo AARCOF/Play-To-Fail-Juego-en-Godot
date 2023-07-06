@@ -52,7 +52,6 @@ func restricted_movement(place):
 			return true
 	return false
 	
-
 func make_2d_array():
 	var array = []
 	for i in width:
@@ -65,61 +64,57 @@ func spawn_pieces():
 	for i in range(width):
 		for j in range(height):
 			if !restricted_movement(Vector2(i, j)) && all_pieces[i][j] == null:
-				var rand = floor(rand_range(0, possible_pieces.size()));
-				var loops = 0;				
-				var piece = possible_pieces[rand].instance();
+				var rand = floor(rand_range(0, possible_pieces.size()))
+				var loops = 0
+				var piece = possible_pieces[rand].instance()
 
 				while (match_at(i, j, piece.color) && loops < 100):
-					rand = rand_range(0, possible_pieces.size());
-					loops += 1;
-					piece = possible_pieces[rand].instance();
+					rand = rand_range(0, possible_pieces.size())
+					loops += 1
+					piece = possible_pieces[rand].instance()
 
 				add_child(piece);
 				piece.position = grid_to_pixel(i, j)
 				all_pieces[i][j] = piece
 
-
 func match_at(i, j, color):
 	if i > 1:
 		if all_pieces[i-1][j] != null && all_pieces[i-2][j] != null:
 			if all_pieces[i - 1][j].color == color && all_pieces[i - 2][j].color == color:
-				return true;
+				return true
 	
 	if j > 1:
 		if all_pieces[i][j-1] != null && all_pieces[i][j-2] != null:
 			if all_pieces[i][j-1].color == color && all_pieces[i][j-2].color == color:
-				return true;
+				return true
 
 func grid_to_pixel(column, row):
-	var new_x = x_start + offset * column;
-	var new_y = y_start + -offset * row;
+	var new_x = x_start + offset * column
+	var new_y = y_start + -offset * row
 	return Vector2(new_x, new_y);
 
 func pixel_to_grid(pixel_x, pixel_y):
-	var new_x = round((pixel_x - x_start) / offset);
-	var new_y = round((pixel_y - y_start) / -offset);
-	return Vector2(new_x, new_y);
-	pass;
-
+	var new_x = round((pixel_x - x_start) / offset)
+	var new_y = round((pixel_y - y_start) / -offset)
+	return Vector2(new_x, new_y)
 
 func is_in_grid(grid_position):
 	if grid_position.x >= 0 && grid_position.x < width:
 		if grid_position.y >= 0 && grid_position.y < height:
-			return true;
-	return false;
-	
+			return true
+	return false
 	
 func touch_input():
 	if Input.is_action_just_pressed("ui_touch"):
 		if is_in_grid(pixel_to_grid(get_global_mouse_position().x, get_global_mouse_position().y)):
-			first_touch = pixel_to_grid(get_global_mouse_position().x, get_global_mouse_position().y);
+			first_touch = pixel_to_grid(get_global_mouse_position().x, get_global_mouse_position().y)
 			controlling = true
 			
 	if Input.is_action_just_released("ui_touch"):
 		if is_in_grid(pixel_to_grid(get_global_mouse_position().x, get_global_mouse_position().y)) && controlling:
 			controlling = false;
 			final_touch = pixel_to_grid(get_global_mouse_position().x, get_global_mouse_position().y)
-			touch_difference(first_touch, final_touch);
+			touch_difference(first_touch, final_touch)
 
 func swap_pieces(column, row, direction):
 	var first_piece = all_pieces[column][row]
@@ -131,13 +126,9 @@ func swap_pieces(column, row, direction):
 		all_pieces[column + direction.x][row + direction.y] = first_piece
 		first_piece.move(grid_to_pixel(column + direction.x, row + direction.y))
 		other_piece.move(grid_to_pixel(column, row))
-#		first_piece.column = column + direction.x
-#		first_piece.row = row + direction.y
-#		other_piece.column = column
-#		other_piece.row = row
+
 		if !move_checked:
 			find_matches()
-
 
 func store_info(first_piece, other_piece, place, direction):
 	piece_one = first_piece
@@ -146,27 +137,28 @@ func store_info(first_piece, other_piece, place, direction):
 	last_direction = direction
 	pass
 
-
 func swap_back():
 	if piece_one != null && piece_two != null:
 		swap_pieces(last_place.x, last_place.y, last_direction) 
-	state = move
-	move_checked = false
+		state = move
+		move_checked = false
 
+	piece_one = null
+	piece_two = null
+	print("SwapBack")
 
 func touch_difference(grid_1, grid_2):
 	var difference = grid_2 - grid_1;
 	if abs(difference.x) > abs(difference.y):
 		if difference.x > 0:
-			swap_pieces(grid_1.x, grid_1.y, Vector2(1, 0));
+			swap_pieces(grid_1.x, grid_1.y, Vector2(1, 0))
 		elif difference.x < 0:
-			swap_pieces(grid_1.x, grid_1.y, Vector2(-1, 0));
+			swap_pieces(grid_1.x, grid_1.y, Vector2(-1, 0))
 	elif abs(difference.y) > abs(difference.x):
 		if difference.y > 0:
-			swap_pieces(grid_1.x, grid_1.y, Vector2(0, 1));
+			swap_pieces(grid_1.x, grid_1.y, Vector2(0, 1))
 		elif difference.y < 0:
-			swap_pieces(grid_1.x, grid_1.y, Vector2(0, -1));
-
+			swap_pieces(grid_1.x, grid_1.y, Vector2(0, -1))
 
 func _process(delta):
 	if state == move:
@@ -201,39 +193,21 @@ func find_matches():
 							all_pieces[i][j + 1].dim()
 	
 	get_parent().get_node("destroy_timer").start()
-	
-#func destroy_matched():
-#	var was_matched = false
-#	for i in width:
-#		for j in height:
-#			if all_pieces[i][j] != null:
-#				if all_pieces[i][j].matched:
-#					was_matched = true
-#					all_pieces[i][j].queue_free()
-#					all_pieces[i][j] = null
-#	move_checked = true
-#	if was_matched:
-#		get_parent().get_node("collapse_timer").start()	
-#	else:
-#		swap_back()
-
 
 func destroy_matched():
 	var was_matched = false
-	for i in width:
-		for j in height:
+	for i in range(width):
+		for j in range(height):
 			if all_pieces[i][j] != null:
 				if all_pieces[i][j].matched:
 					was_matched = true
 					all_pieces[i][j].queue_free()
 					all_pieces[i][j] = null
 
-	move_checked = true
 	if was_matched:
 		get_parent().get_node("collapse_timer").start()
 	else:
 		swap_back()
-
 
 func collapse_columns():
 	for i in width:
@@ -246,26 +220,24 @@ func collapse_columns():
 						all_pieces[i][k] = null
 						break
 	get_parent().get_node("refill_timer").start()
-	
-	
+
 func refill_colums():
 	for i in width:
 		for j in height:
 			if all_pieces[i][j] == null && !restricted_movement(Vector2(i, j)):
-				var rand = floor(rand_range(0, possible_pieces.size()));
-				var piece = possible_pieces[rand].instance();
-				var loops = 0;
+				var rand = floor(rand_range(0, possible_pieces.size()))
+				var piece = possible_pieces[rand].instance()
+				var loops = 0
 				while(match_at(i, j, piece.color) && loops < 100):
-					rand = floor(rand_range(0, possible_pieces.size()));
-					loops += 1;
-					piece = possible_pieces[rand].instance();
+					rand = floor(rand_range(0, possible_pieces.size()))
+					loops += 1
+					piece = possible_pieces[rand].instance()
 				
 				add_child(piece);
-				piece.position = grid_to_pixel(i, j + y_offset);
+				piece.position = grid_to_pixel(i, j + y_offset)
 				piece.move(grid_to_pixel(i,j))
-				all_pieces[i][j] = piece;
+				all_pieces[i][j] = piece
 	after_refill()
-	
 
 func after_refill():
 	for i in width:
@@ -276,10 +248,14 @@ func after_refill():
 					get_parent().get_node("destroy_timer").start()
 					return
 	state = move		
-	move_checked = false		
+	move_checked = true		
 
 func _on_destroy_timer_timeout():
 	destroy_matched()
+	if !move_checked:
+		swap_back()
+	elif move_checked:
+		move_checked = false
 
 func _on_collapse_timer_timeout():
 	collapse_columns()
