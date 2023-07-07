@@ -34,6 +34,7 @@ var piece_two = null
 var last_place = Vector2(0, 0)
 var last_direction = Vector2(0, 0)
 var move_checked = false
+var variable_destroy = false
 
 # Interacción de las piezas
 var first_touch = Vector2(0, 0)
@@ -169,7 +170,7 @@ func find_matches():
 		for j in height:
 			if all_pieces[i][j] != null:
 				var current_color = all_pieces[i][j].color
-				
+			
 				#encuentra matches en el eje x
 				if i > 0 && i < width - 1:
 					if all_pieces[i - 1][j] != null && all_pieces[i + 1][j] != null:
@@ -191,6 +192,8 @@ func find_matches():
 							all_pieces[i][j].dim()
 							all_pieces[i][j + 1].matched = true
 							all_pieces[i][j + 1].dim()
+				variable_destroy = true
+		
 	get_parent().get_node("destroy_timer").start()
 
 func destroy_matched():
@@ -240,23 +243,32 @@ func after_refill():
 	for i in range(width):
 		for j in range(height):
 			if all_pieces[i][j] != null:
-				if match_at(i, j, all_pieces[i][j].color) or all_pieces[i][j].matched:
+				if match_at(i, j, all_pieces[i][j].color) and all_pieces[i][j].matched:
 					find_matches()
+					variable_destroy = true
 					get_parent().get_node("destroy_timer").start()
-					return
+					
+					
 	state = move
 	move_checked = true
 
 func _on_destroy_timer_timeout():
-	destroy_matched()
-	#No borrar, impide que el swapback se ejecute luego de un match
-	if !move_checked:
-		swap_back()
-	elif move_checked:
-		move_checked = false
+	if variable_destroy:
+		#No borrar, impide que el swapback se ejecute luego de un match
+		if !move_checked:
+			destroy_matched()
+			swap_back()
+			print("SwapBack")
+		else:
+			move_checked = false
+			variable_destroy = false
+			state = move
+	
 
 func _on_collapse_timer_timeout():
 	collapse_columns()
+	print("Collapse")
 
 func _on_refill_timer_timeout():
 	refill_colums()
+	print("refill")
