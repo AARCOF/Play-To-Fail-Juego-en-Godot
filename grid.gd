@@ -170,7 +170,7 @@ func find_matches():
 		for j in height:
 			if all_pieces[i][j] != null:
 				var current_color = all_pieces[i][j].color
-			
+
 				#encuentra matches en el eje x
 				if i > 0 && i < width - 1:
 					if all_pieces[i - 1][j] != null && all_pieces[i + 1][j] != null:
@@ -181,7 +181,7 @@ func find_matches():
 							all_pieces[i][j].dim()
 							all_pieces[i + 1][j].matched = true
 							all_pieces[i + 1][j].dim()
-							
+
 				#encuentra matches en el eje y
 				if j > 0 && j < height - 1:
 					if all_pieces[i][j - 1] != null && all_pieces[i][j + 1] != null:
@@ -193,9 +193,8 @@ func find_matches():
 							all_pieces[i][j + 1].matched = true
 							all_pieces[i][j + 1].dim()
 				variable_destroy = true
-		
 	get_parent().get_node("destroy_timer").start()
-
+		
 func destroy_matched():
 	var was_matched = false
 	for i in range(width):
@@ -246,9 +245,9 @@ func after_refill():
 				if match_at(i, j, all_pieces[i][j].color) and all_pieces[i][j].matched:
 					find_matches()
 					variable_destroy = true
-					get_parent().get_node("destroy_timer").start()
-					
-					
+					if variable_destroy:
+						get_parent().get_node("destroy_timer").start()
+						variable_destroy = false				
 	state = move
 	move_checked = true
 
@@ -262,8 +261,7 @@ func _on_destroy_timer_timeout():
 		else:
 			move_checked = false
 			variable_destroy = false
-			state = move
-	
+			state = move	
 
 func _on_collapse_timer_timeout():
 	collapse_columns()
