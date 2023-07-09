@@ -2,12 +2,24 @@ extends Control
 
 var loginScreenContainer: Node
 var registerScreenContainer: Node
+onready var animationPlayer1: AnimationPlayer = $NinePatchRect/TextureRect/AnimationPlayer
+onready var animationPlayer2: AnimationPlayer = $NinePatchRect/TextureRect2/AnimationPlayer
+onready var animationPlayer3: AnimationPlayer = $NinePatchRect/TextureRect3/AnimationPlayer
+onready var animationPlayer4: AnimationPlayer = $NinePatchRect2/TextureRect5/TextureRect4/AnimationPlayer
+onready var animationPlayer5: AnimationPlayer = $NinePatchRect2/TextureRect5/AnimationPlayer
+onready var animationPlayer6: AnimationPlayer = $TextureRect/AnimationPlayer
+
+
 var connection = null
 var quser = null
 
 
 func _ready():
 	OpenConnectionDatabase() # se realiza la conexion a la base de datos
+	
+	animationPlayer1.play("circular")
+	animationPlayer2.play("niño")
+	animationPlayer3.play("niña")
 	
 	loginScreenContainer = $NinePatchRect/LoginContainer
 	registerScreenContainer = $NinePatchRect2/RegisterContainer
@@ -26,6 +38,8 @@ func _on_LoginRedi_pressed():
 	$NinePatchRect2.visible = false
 	loginScreenContainer.visible = true
 	registerScreenContainer.visible = false
+	$TextureRect.visible=true
+	animationPlayer6.play("transicion_x")
 	$Message._on_Button_pressed()#----------------
 
 
@@ -34,19 +48,26 @@ func _on_RegisterRedi_pressed():
 	$NinePatchRect2.visible = true
 	loginScreenContainer.visible = false
 	registerScreenContainer.visible = true
+	animationPlayer4.play("brazo")
+	animationPlayer5.play("mover_arriba")
+	$TextureRect.visible=true
+	animationPlayer6.play("transicion_x")
 	$Message._on_Button_pressed()#--------------
-	
 
+
+
+#	Algotrithm ADD
+# ====================================================
 func OpenConnectionDatabase():
 	connection = DBConnection.new()
 	connection.openConnection()
-
-func _on_RegisterBttn_pressed() -> void:
+	
+func _on_RegisterBttn_pressed():
 	registerUser()
-
-func _on_LoginBttn_pressed() -> void:
+	
+func _on_LoginBttn_pressed():
 	logIn()
-
+	
 
 # REGISTRAR USUARIO
 func registerUser():
@@ -56,7 +77,7 @@ func registerUser():
 	var password = $NinePatchRect2/RegisterContainer/In_Contrasena.text
 
 	if ( name.empty() or alias.empty() or password.empty() ):
-		$Message.showDialog(0,"Llena los campos completos")#------------------------------
+		$Message.showDialog("Llena los campos completos")#------------------------------
 
 	else :
 		var apart = name.split(" ", false, 2)
@@ -85,15 +106,18 @@ func registerUser():
 				"L01"
 			)
 			
-			$Message.showDialog(0,'Guardado exitoso')#-------------------------
+			if (quser.searchAlias(alias) == true) :
+				$Message.showDialog('Guardado exitoso, ya puedes iniciar sesion')#-------------------------
+				
+				$NinePatchRect2/RegisterContainer/In_Nombres.text = ""
+				$NinePatchRect2/RegisterContainer/In_Usuario.text = ""
+				$NinePatchRect2/RegisterContainer/In_Contrasena.text = ""
+				print(globalVar.idUSER)
+			else :
+				$Message.showDialog('El usuario no se guardó ocurrio un error')#-------------------------
 			
-			$NinePatchRect2/RegisterContainer/In_Nombres.text = ""
-			$NinePatchRect2/RegisterContainer/In_Usuario.text = ""
-			$NinePatchRect2/RegisterContainer/In_Contrasena.text = ""
-			
-			print(globalVar.idUSER)
 		else :
-			$Message.showDialog(0,'El usuario ya existe')#---------------------------
+			$Message.showDialog('El usuario ya existe')#---------------------------
 
 
 # LOG IN
@@ -109,13 +133,17 @@ func logIn() :
 
 		if (quser.dencrytData(data, password) == true) :
 			#Cambio de escena
-			get_tree().change_scene("res://database/pruebaD.tscn")
+			get_tree().change_scene("res://Scenes/game_window.tscn")# INIT GAME
 			$Message._on_Button_pressed()
-
+			
+		elif (password == "") :
+			$Message.showDialog("Digite una contraseña")#---------------------------
 		else :
-			$Message.showDialog(0,"La contraseña es incorrenta")#---------------------------
+			$Message.showDialog("La contraseña es incorrenta")#---------------------------
 
-	elif(user == "" or password == "") :
-		$Message.showDialog(0,"Llena los campos completos")#---------------------------
+	elif (user == "" and password != "") :
+		$Message.showDialog("Digite un usuario")#---------------------------
+	elif (user == "" and password == ""):
+		$Message.showDialog("Llena los campos completos")#---------------------------
 	else : 
-		$Message.showDialog(0,"El usuario no existe")#---------------------------
+		$Message.showDialog("El usuario no existe")#---------------------------

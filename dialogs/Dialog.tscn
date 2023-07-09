@@ -1,0 +1,119 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://dialogs/fund.png" type="Texture" id=1]
+[ext_resource path="res://dialogs/icon.png" type="Texture" id=2]
+[ext_resource path="res://dialogs/Dialog.gd" type="Script" id=3]
+[ext_resource path="res://dialogs/next.png" type="Texture" id=4]
+[ext_resource path="res://dialogs/plus.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://dialogs/fonts/cmuntb.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 27
+use_filter = true
+font_data = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Button:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 500, 60 ), Vector2( 500, 50 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Button:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 506, 60 ) ]
+}
+
+[node name="Dialog" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -275.0
+margin_top = -135.0
+margin_right = 275.0
+margin_bottom = -35.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="background" type="TextureRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+
+[node name="decoration" type="TextureRect" parent="Control"]
+margin_left = 100.0
+margin_top = -11.0
+margin_right = 200.0
+margin_bottom = 14.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+
+[node name="Image" type="TextureRect" parent="Control"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 90.0
+margin_bottom = 90.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+
+[node name="Text" type="RichTextLabel" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 110.0
+margin_top = 5.0
+margin_right = -40.0
+margin_bottom = -10.0
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+
+[node name="Button" type="Button" parent="Control"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -44.0
+margin_top = -40.0
+margin_right = 1.0
+margin_bottom = -5.00032
+icon = ExtResource( 4 )
+flat = true
+expand_icon = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+root_node = NodePath("../Text")
+autoplay = "NEXT"
+anims/NEXT = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[node name="Tween" type="Tween" parent="Control"]
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]

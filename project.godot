@@ -45,7 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="JuegoMultiplos_beta"
-run/main_scene="res://loginRegister/LoginScreen.tscn"
+run/main_scene="res://Scenes/loginyregistrar/LoginScreen.tscn"
 
 [autoload]
 
@@ -56,12 +56,11 @@ QueryLeves="*res://database/queryLeves.gd"
 
 [display]
 
-window/size/width=1233
-window/size/height=613
-window/size/test_width=1233
-window/size/test_height=613
+window/size/width=600
+window/size/height=1024
+window/size/test_width=600
+window/size/test_height=1024
 window/stretch/mode="2d"
-window/stretch/aspect="keep_width"
 
 [editor_plugins]
 

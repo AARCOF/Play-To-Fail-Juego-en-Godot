@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://loginRegister/LoginScreen.gd" type="Script" id=1]
 [ext_resource path="res://art/inicio_sesion/Imagen6.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://addons/simple-gui-transitions/materials/transform.tres" type="Material" id=11]
 [ext_resource path="res://art/inicio_sesion/Imagen7.png" type="Texture" id=12]
 [ext_resource path="res://art/inicio_sesion/Imagen3.png" type="Texture" id=13]
+[ext_resource path="res://dialogs/Dialog.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -93,10 +94,10 @@ texture = ExtResource( 12 )
 [node name="LoginContainer" type="VBoxContainer" parent="NinePatchRect"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -199.689
-margin_top = 341.0
-margin_right = 226.311
-margin_bottom = 688.0
+margin_left = -199.687
+margin_top = 326.0
+margin_right = 226.313
+margin_bottom = 673.0
 
 [node name="Titulo" type="Label" parent="NinePatchRect/LoginContainer"]
 visible = false
@@ -249,6 +250,9 @@ expand = true
 anims/RESET = SubResource( 2 )
 anims/animacion = SubResource( 3 )
 anims/run = SubResource( 4 )
+
+[node name="Message" parent="." instance=ExtResource( 14 )]
+visible = false
 
 [connection signal="pressed" from="NinePatchRect/LoginContainer/LoginBttn" to="." method="_on_LoginBttn_pressed"]
 [connection signal="toggled" from="NinePatchRect/LoginContainer/LoginBttn" to="." method="_on_LoginBttn_toggled"]
