@@ -56,6 +56,7 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[connection signal="damage_block" from="grid" to="block_holder" method="_on_grid_damage_block"]
 [connection signal="make_block" from="grid" to="block_holder" method="_on_grid_make_block"]
 [connection signal="timeout" from="destroy_timer" to="grid" method="_on_destroy_timer_timeout"]
 [connection signal="timeout" from="collapse_timer" to="grid" method="_on_collapse_timer_timeout"]
