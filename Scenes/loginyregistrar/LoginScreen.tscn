@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Scenes/loginyregistrar/LoginScreen.gd" type="Script" id=1]
 [ext_resource path="res://addons/simple-gui-transitions/materials/transform.tres" type="Material" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Scenes/loginyregistrar/stilo.tres" type="Theme" id=15]
 [ext_resource path="res://art/registro/brazo_final.png" type="Texture" id=16]
 [ext_resource path="res://art/inicio_sesion/pngwing.com (1).png" type="Texture" id=17]
+[ext_resource path="res://sounds/KairukuKing.wav" type="AudioStream" id=18]
 
 [sub_resource type="Animation" id=11]
 length = 0.001
@@ -583,6 +584,11 @@ anims/transicion_x = SubResource( 24 )
 
 [node name="Message" parent="." instance=ExtResource( 8 )]
 visible = false
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+volume_db = -10.0
+autoplay = true
 
 [connection signal="pressed" from="NinePatchRect/LoginContainer/LoginBttn" to="." method="_on_LoginBttn_pressed"]
 [connection signal="toggled" from="NinePatchRect/LoginContainer/LoginBttn" to="." method="_on_LoginBttn_toggled"]

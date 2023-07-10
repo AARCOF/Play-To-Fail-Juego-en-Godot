@@ -17,6 +17,8 @@ func showDialog(TEXT: String) -> void:
 		Tween.TRANS_LINEAR,Tween.EASE_IN_OUT
 	)
 	$Control/Tween.start()
+	
+	$Control/AudioStreamPlayer.play(1-tweeDuration)
 
 
 func _on_Button_pressed():

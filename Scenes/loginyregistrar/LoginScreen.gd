@@ -77,9 +77,9 @@ func registerUser():
 	var password = $NinePatchRect2/RegisterContainer/In_Contrasena.text
 
 	if ( name.empty() or alias.empty() or password.empty() ):
-		$Message.showDialog("Llena los campos completos")#------------------------------
-
-	else :
+		$Message.showDialog("Usted tiene que llenar todos los campos completos")#------------------------------
+		
+	elif ( (name != "") and (name != "")  and (name != "") ):
 		var apart = name.split(" ", false, 2)
 		var firstname = apart[0]
 		var surname = name[0]
@@ -94,6 +94,7 @@ func registerUser():
 		print(surname)
 		print(alias)
 		print(password)
+		
 		# ==================================== #
 		if ( quser.searchAlias(alias) == false ) :
 			
@@ -114,10 +115,11 @@ func registerUser():
 				$NinePatchRect2/RegisterContainer/In_Contrasena.text = ""
 				print(globalVar.idUSER)
 			else :
-				$Message.showDialog('El usuario no se guardó ocurrio un error')#-------------------------
-			
+				$Message.showDialog('El usuario no se guardó, ocurrió un error')#-------------------------
 		else :
-			$Message.showDialog('El usuario ya existe')#---------------------------
+			$Message.showDialog('El usuario ya existe, digite otro Alias')#---------------------------
+	else :
+		$Message.showDialog('Upps, Ocurrio algun error')#---------------------------
 
 
 # LOG IN
@@ -139,11 +141,11 @@ func logIn() :
 		elif (password == "") :
 			$Message.showDialog("Digite una contraseña")#---------------------------
 		else :
-			$Message.showDialog("La contraseña es incorrenta")#---------------------------
+			$Message.showDialog("La contraseña es incorrecta")#---------------------------
 
 	elif (user == "" and password != "") :
-		$Message.showDialog("Digite un usuario")#---------------------------
+		$Message.showDialog("Digite el nombre de usuario correcto")#---------------------------
 	elif (user == "" and password == ""):
-		$Message.showDialog("Llena los campos completos")#---------------------------
+		$Message.showDialog("Usted no digitó ningun dato, llena todos los campos completos")#---------------------------
 	else : 
-		$Message.showDialog("El usuario no existe")#---------------------------
+		$Message.showDialog("El usuario no existe, registrese como un nuevo usuario")#---------------------------
