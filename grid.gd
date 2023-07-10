@@ -54,11 +54,16 @@ func _ready():
 	spawn_block()
 
 func restricted_movement(place):
-	for i in empty_spaces.size():
-		if empty_spaces[i] == place:
+	if is_in_array(empty_spaces, place):
+		return true
+	return false
+
+func is_in_array(array, item):
+	for i in range(array.size()):
+		if array[i] == item:
 			return true
 	return false
-	
+
 func make_2d_array():
 	var array = []
 	for i in width:
@@ -183,28 +188,31 @@ func find_matches():
 
 				#encuentra matches en el eje x
 				if i > 0 && i < width - 1:
-					if all_pieces[i - 1][j] != null && all_pieces[i + 1][j] != null:
+					if !is_piece_null(i - 1, j) && all_pieces[i + 1][j] != null:
 						if all_pieces[i - 1][j].color == current_color && all_pieces[i + 1][j].color == current_color:
-							all_pieces[i - 1][j].matched = true
-							all_pieces[i - 1][j].dim()
-							all_pieces[i][j].matched = true
-							all_pieces[i][j].dim()
-							all_pieces[i + 1][j].matched = true
-							all_pieces[i + 1][j].dim()
+							match_and_dim(all_pieces[i + 1][j])
+							match_and_dim(all_pieces[i][j])
+							match_and_dim(all_pieces[i - 1][j])
 
 				#encuentra matches en el eje y
 				if j > 0 && j < height - 1:
-					if all_pieces[i][j - 1] != null && all_pieces[i][j + 1] != null:
+					if !is_piece_null(i, j - 1) && all_pieces[i][j + 1] != null:
 						if all_pieces[i][j - 1].color == current_color && all_pieces[i][j + 1].color == current_color:
-							all_pieces[i][j - 1].matched = true
-							all_pieces[i][j - 1].dim()
-							all_pieces[i][j].matched = true
-							all_pieces[i][j].dim()
-							all_pieces[i][j + 1].matched = true
-							all_pieces[i][j + 1].dim()
+							match_and_dim(all_pieces[i][j + 1])
+							match_and_dim(all_pieces[i][j])
+							match_and_dim(all_pieces[i][j - 1])
 				variable_destroy = true
 	get_parent().get_node("destroy_timer").start()
-		
+
+func is_piece_null(column, row):
+	if all_pieces[column][row] == null:
+		return true
+	return false
+
+func match_and_dim(item):
+	item.matched = true
+	item.dim()
+
 func destroy_matched():
 	var was_matched = false
 	for i in range(width):
