@@ -25,9 +25,8 @@ func _on_grid_make_block(board_position):
 	block_pieces[board_position.x][board_position.y] = current
 
 func _on_grid_damage_block(board_position):
-	var block_piece = block_pieces[board_position.x][board_position.y]
-	if block_piece != null:
-		block_piece.take_damage(1)
-		if block_piece.health <= 0:
-			block_piece.queue_free()
-			block_piece = null
+	if block_pieces[board_position.x][board_position.y] != null:
+		block_pieces[board_position.x][board_position.y].take_damage(1)
+		if block_pieces[board_position.x][board_position.y].health <= 0:
+			block_pieces[board_position.x][board_position.y].queue_free()
+			block_pieces[board_position.x][board_position.y] = null

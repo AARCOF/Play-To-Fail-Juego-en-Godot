@@ -15,10 +15,13 @@ export (int) var y_offset
 # Obstaculos
 export (PoolVector2Array) var empty_spaces
 export (PoolVector2Array) var block_spaces
+export (PoolVector2Array) var lock_spaces
 
 # Seniales de obstaculos
 signal make_block
 signal damage_block
+signal make_lock
+signal damage_lock
 
 # Array de piezas
 var possible_pieces = [
@@ -52,6 +55,7 @@ func _ready():
 	all_pieces = make_2d_array()
 	spawn_pieces()
 	spawn_block()
+	spawn_locks()
 
 func restricted_movement(place):
 	if is_in_array(empty_spaces, place):
@@ -92,6 +96,10 @@ func spawn_pieces():
 func spawn_block():
 	for i in range(block_spaces.size()):
 		emit_signal("make_block", block_spaces[i])
+
+func spawn_locks():
+	for i in range(lock_spaces.size()):
+		emit_signal("make_lock", lock_spaces[i])
 
 func match_at(i, j, color):
 	if i > 1:
@@ -219,7 +227,7 @@ func destroy_matched():
 		for j in range(height):
 			if all_pieces[i][j] != null:
 				if all_pieces[i][j].matched:
-					emit_signal("damage_block", Vector2(i, j))
+					destroy_obstacles(i, j)
 					was_matched = true
 					all_pieces[i][j].queue_free()
 					all_pieces[i][j] = null
@@ -227,6 +235,10 @@ func destroy_matched():
 	if was_matched:
 		get_parent().get_node("collapse_timer").start()
 
+func destroy_obstacles(column, row):
+	emit_signal("damage_block", Vector2(column, row))
+	emit_signal("damage_lock", Vector2(column, row))
+	
 func collapse_columns():
 	for i in width:
 		for j in height:
