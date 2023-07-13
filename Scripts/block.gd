@@ -7,4 +7,3 @@ func _ready():
 
 func take_damage(damage):
 	health -= damage
-	

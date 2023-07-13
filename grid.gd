@@ -16,12 +16,15 @@ export (int) var y_offset
 export (PoolVector2Array) var empty_spaces
 export (PoolVector2Array) var block_spaces
 export (PoolVector2Array) var lock_spaces
+export (PoolVector2Array) var concrete_spaces
 
 # Seniales de obstaculos
 signal make_block
 signal damage_block
 signal make_lock
 signal damage_lock
+signal make_concrete
+signal damage_concrete
 
 # Array de piezas
 var possible_pieces = [
@@ -56,9 +59,20 @@ func _ready():
 	spawn_pieces()
 	spawn_block()
 	spawn_locks()
+	spawn_concrete()
 
 func restricted_movement(place):
 	if is_in_array(empty_spaces, place):
+		return true
+	if is_in_array(concrete_spaces, place):
+		return true
+	return false
+
+func restricted_move(place):
+	#Restringe el movimiento de las piezas 'licorice' y 'block'
+	if is_in_array(lock_spaces, place):
+		return true
+	if is_in_array(block_spaces, place):
 		return true
 	return false
 
@@ -67,6 +81,12 @@ func is_in_array(array, item):
 		if array[i] == item:
 			return true
 	return false
+
+func remove_from_array(array, item):
+	for i in range(array.size() - 1, -1, -1):
+		if array[i] == item:
+			array.remove(i)
+	return array
 
 func make_2d_array():
 	var array = []
@@ -100,6 +120,10 @@ func spawn_block():
 func spawn_locks():
 	for i in range(lock_spaces.size()):
 		emit_signal("make_lock", lock_spaces[i])
+
+func spawn_concrete():
+	for i in range(concrete_spaces.size()):
+		emit_signal("make_concrete", concrete_spaces[i])
 
 func match_at(i, j, color):
 	if i > 1:
@@ -144,12 +168,13 @@ func swap_pieces(column, row, direction):
 	var first_piece = all_pieces[column][row]
 	var other_piece = all_pieces[column + direction.x][row + direction.y]
 	if first_piece != null && other_piece != null:
-		restore_info(first_piece, other_piece, Vector2(column, row), direction)
-		state = wait
-		all_pieces[column][row] = other_piece
-		all_pieces[column + direction.x][row + direction.y] = first_piece
-		first_piece.move(grid_to_pixel(column + direction.x, row + direction.y))
-		other_piece.move(grid_to_pixel(column, row))
+		if !restricted_move(Vector2(column, row)) and !restricted_move(Vector2(column, row) + direction):
+			restore_info(first_piece, other_piece, Vector2(column, row), direction)
+			state = wait
+			all_pieces[column][row] = other_piece
+			all_pieces[column + direction.x][row + direction.y] = first_piece
+			first_piece.move(grid_to_pixel(column + direction.x, row + direction.y))
+			other_piece.move(grid_to_pixel(column, row))
 
 		if !move_checked:
 			find_matches()
@@ -159,7 +184,6 @@ func restore_info(first_piece, other_piece, place, direction):
 	piece_two = other_piece
 	last_place = place
 	last_direction = direction
-	pass
 
 func swap_back():
 	if piece_one != null && piece_two != null:
@@ -201,7 +225,7 @@ func find_matches():
 							match_and_dim(all_pieces[i + 1][j])
 							match_and_dim(all_pieces[i][j])
 							match_and_dim(all_pieces[i - 1][j])
-
+							
 				#encuentra matches en el eje y
 				if j > 0 && j < height - 1:
 					if !is_piece_null(i, j - 1) && all_pieces[i][j + 1] != null:
@@ -235,9 +259,26 @@ func destroy_matched():
 	if was_matched:
 		get_parent().get_node("collapse_timer").start()
 
+func damage_array(array, column, row):
+	if column < width - 1:
+		emit_signal(array, Vector2(column + 1, row))
+	if column > 0:
+		emit_signal(array, Vector2(column - 1, row))
+	if row < height - 1:
+		emit_signal(array, Vector2(column, row + 1))
+	if row > 0:
+		emit_signal(array, Vector2(column, row - 1))
+
+func check_concrete(column, row):
+	damage_array("damage_concrete", column, row)
+
+func check_lock(column, row):
+	damage_array("damage_lock", column, row)
+
 func destroy_obstacles(column, row):
 	emit_signal("damage_block", Vector2(column, row))
-	emit_signal("damage_lock", Vector2(column, row))
+	check_lock(column, row)
+	check_concrete(column, row)
 	
 func collapse_columns():
 	for i in width:
@@ -301,3 +342,12 @@ func _on_collapse_timer_timeout():
 func _on_refill_timer_timeout():
 	refill_colums()
 	print("refill")
+	
+func _on_lock_holder_remove_lock(place):
+	lock_spaces = remove_from_array(lock_spaces, place)
+
+func _on_block_holder_remove_block(place):
+	block_spaces = remove_from_array(block_spaces, place)
+
+func _on_concrete_holder_remove_concrete(place):
+	concrete_spaces = remove_from_array(concrete_spaces, place)

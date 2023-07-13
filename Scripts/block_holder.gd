@@ -1,5 +1,9 @@
 extends Node2D
 
+#señal de eliminacion
+signal remove_block
+
+#valores de pantalla
 var block_pieces = []
 var width = 8
 var height = 10
@@ -30,3 +34,4 @@ func _on_grid_damage_block(board_position):
 		if block_pieces[board_position.x][board_position.y].health <= 0:
 			block_pieces[board_position.x][board_position.y].queue_free()
 			block_pieces[board_position.x][board_position.y] = null
+			emit_signal("remove_block", board_position)
