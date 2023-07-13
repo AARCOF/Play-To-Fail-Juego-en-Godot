@@ -17,6 +17,8 @@ export (PoolVector2Array) var empty_spaces
 export (PoolVector2Array) var block_spaces
 export (PoolVector2Array) var lock_spaces
 export (PoolVector2Array) var concrete_spaces
+export (PoolVector2Array) var slime_pieces
+var damaged_slime = false
 
 # Seniales de obstaculos
 signal make_block
@@ -25,6 +27,8 @@ signal make_lock
 signal damage_lock
 signal make_concrete
 signal damage_concrete
+signal make_slime
+signal damage_slime
 
 # Array de piezas
 var possible_pieces = [
@@ -60,11 +64,14 @@ func _ready():
 	spawn_block()
 	spawn_locks()
 	spawn_concrete()
+	spawn_slime()
 
 func restricted_movement(place):
 	if is_in_array(empty_spaces, place):
 		return true
 	if is_in_array(concrete_spaces, place):
+		return true
+	if is_in_array(slime_pieces, place):
 		return true
 	return false
 
@@ -124,6 +131,10 @@ func spawn_locks():
 func spawn_concrete():
 	for i in range(concrete_spaces.size()):
 		emit_signal("make_concrete", concrete_spaces[i])
+
+func spawn_slime():
+	for i in range(slime_pieces.size()):
+		emit_signal("make_slime", slime_pieces[i])
 
 func match_at(i, j, color):
 	if i > 1:
@@ -269,6 +280,9 @@ func damage_array(array, column, row):
 	if row > 0:
 		emit_signal(array, Vector2(column, row - 1))
 
+func check_slime(column, row):
+	damage_array("damage_slime", column, row)
+
 func check_concrete(column, row):
 	damage_array("damage_concrete", column, row)
 
@@ -279,6 +293,7 @@ func destroy_obstacles(column, row):
 	emit_signal("damage_block", Vector2(column, row))
 	check_lock(column, row)
 	check_concrete(column, row)
+	check_slime(column, row)
 	
 func collapse_columns():
 	for i in width:
@@ -319,9 +334,51 @@ func after_refill():
 					variable_destroy = true
 					if variable_destroy:
 						get_parent().get_node("destroy_timer").start()
-						variable_destroy = false				
+						variable_destroy = false
+	if !damaged_slime:
+		generate_slime()
+		
 	state = move
-	move_checked = true
+	move_checked = false
+	damaged_slime = false
+
+func generate_slime():
+	if slime_pieces.size() > 0:
+		var slime_made = false
+		var  tracker = 0
+		while !slime_made and tracker < 100:
+			var random_num = floor(rand_range(0, slime_pieces.size()))
+			var curr_x = slime_pieces[random_num].x
+			var curr_y = slime_pieces[random_num].y
+			var neighbor = find_normal_neighbor(curr_x, curr_y)
+			if neighbor != null:
+				all_pieces[neighbor.x][neighbor.y].queue_free()
+				all_pieces[neighbor.x][neighbor.y] = null
+
+				slime_pieces.append(Vector2(neighbor.x, neighbor.y))
+				emit_signal("make_slime", Vector2(neighbor.x, neighbor.y))
+				slime_made = true
+
+		tracker += 1
+
+func find_normal_neighbor(column, row):
+	if is_in_grid(Vector2(column + 1, row)):
+		if all_pieces[column + 1][row] != null:
+			return Vector2(column + 1, row)
+			
+	if is_in_grid(Vector2(column - 1, row)):
+		if all_pieces[column - 1][row] != null:
+			return Vector2(column - 1, row)
+
+	if is_in_grid(Vector2(column, row + 1)):
+		if all_pieces[column][row + 1] != null:
+			return Vector2(column, row + 1)
+					
+	if is_in_grid(Vector2(column, row - 1)):
+		if all_pieces[column][row - 1] != null:
+			return Vector2(column, row - 1)
+	
+	return null
 
 func _on_destroy_timer_timeout():
 	if variable_destroy:
@@ -330,9 +387,10 @@ func _on_destroy_timer_timeout():
 			destroy_matched()
 			swap_back()
 			print("SwapBack")
+			variable_destroy = false
 		else:
 			move_checked = false
-			variable_destroy = false
+			variable_destroy = true
 			state = move	
 
 func _on_collapse_timer_timeout():
@@ -351,3 +409,7 @@ func _on_block_holder_remove_block(place):
 
 func _on_concrete_holder_remove_concrete(place):
 	concrete_spaces = remove_from_array(concrete_spaces, place)
+
+func _on_slime_holder_remove_slime(place):
+	damaged_slime = true
+	slime_pieces = remove_from_array(slime_pieces, place)
