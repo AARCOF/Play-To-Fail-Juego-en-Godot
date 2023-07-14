@@ -500,7 +500,7 @@ margin_bottom = 375.894
 margin_right = 386.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 0, 30 )
-text = "   Nombre Completo:"
+text = "   Nombre y Apellidos:"
 
 [node name="In_Nombres" type="LineEdit" parent="NinePatchRect2/RegisterContainer"]
 margin_top = 34.0

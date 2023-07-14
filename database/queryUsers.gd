@@ -5,6 +5,7 @@ class_name Quser
 var db = globalVar.DB
 var aes = AESContext.new() # Declaracion para la encriptacion de datos
 
+
 # ====================================
 # CRUD PARA EL USUARIO Y SU INVENTARIO
 #=====================================
@@ -48,14 +49,14 @@ func saveInventory( points:String, coin:String ,idItems:String, idUser:String) -
 	db.insert_row('inventory', data)
 
 # Actualiza los datos en la tabla "user"
-func updateUser(id:String, firstname:String, surname:String, alias:String, password:String)-> void:
+func updateUser(id:String, firstname:String, surname:String, alias:String, password:String, idLevel:String)-> void:
 	var data = {
 		"firstName": firstname,
 		"surName": surname,
 		"alias": alias,
-		"password": password,
+		"password": encryptData(password),
 		#"registerDate": dateTime(),
-		#"idLevel": idLevel,
+		"idLevel": idLevel,
 	}
 	var condition = str("idUser = '" , id , "'")
 	#Boolean success = update_rows( String table_name, String query_conditions, Dictionary updated_row_dictionary )
@@ -171,8 +172,6 @@ func dateTime()-> String :
 # =====================
 # ENCRIPTACION DE DATOS
 # =====================
-
-# Encriptacion de datos
 func encryptData(password: String) -> PoolByteArray:
 	var key = globalVar.idUSER
 	var clave = completeBytes(key) # La clave debe ser de 16 o 32 bytes. (1 byte = 1 char) normalmdlkd

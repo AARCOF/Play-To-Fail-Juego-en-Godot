@@ -7,18 +7,18 @@ var connection
 func _ready():
 	quser = null
 	connection = null
-	#pruebaDatos()
+	pruebaDatos()
 
-#func pruebaDatos():
+func pruebaDatos():
 	#connection = DBConnection.new()
 	#connection.openConnection()
 	#quser = Quser.new()
-#
+
 	#quser.getUpdateID('RAY')
 	#quser.saveUser("Henry","Leon","RAY","lokitos2023","L01")
 	#quser.saveInventory("1000","500.50","item1,item2","U01")
-
-	#quser.updateUser("U02","Lukas","Gozu","GalloTronic","lokito" )
+	#globalVar.idUSER= "U05"
+	#quser.updateUser("U05","Lukas","CE","cambiazo","1001","L04" )
 	#quser.updateInventory("I04","100","200.5","item1,item2,item3,item4")
 
 	#quser.deleteUser('U01')
@@ -29,7 +29,7 @@ func _ready():
 	#var com = quser.dencrytData(s,"misdatos","key")
 	#print(com)
 
-	#print(globalVar.idUSER)
+	print(globalVar.idUSER)
 #
 	#var tupla = quser.user(globalVar.idUSER)
 	#var clave = tupla['password']

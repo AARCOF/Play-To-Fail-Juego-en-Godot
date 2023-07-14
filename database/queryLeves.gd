@@ -4,6 +4,9 @@ class_name Qleves
 
 var db = globalVar.DB
 
+# =========================================
+# GET PARA LEVEL, SUBLEVEL, GUIDE, OBJETIVE
+#==========================================
 
 # Obtiene un vector de diccionarios de cualquier tabla
 func table(nametable: String) -> Dictionary :

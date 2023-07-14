@@ -55,9 +55,9 @@ func _on_RegisterRedi_pressed():
 	$Message._on_Button_pressed()#--------------
 
 
-
+# =================
 #	Algotrithm ADD
-# ====================================================
+# =================
 func OpenConnectionDatabase():
 	connection = DBConnection.new()
 	connection.openConnection()
@@ -67,9 +67,21 @@ func _on_RegisterBttn_pressed():
 	
 func _on_LoginBttn_pressed():
 	logIn()
-	
 
+# Validacion de nombres
+func validarNombreCompleto(nombreCompleto: String) -> bool:
+	# Expresión regular para validar el nombre completo
+	var patron = "^[A-Za-z]+(?:\\s+[A-Za-z]+)*\\s+[A-Za-z]+$"
+	
+	var regexp = RegEx.new()
+	regexp.compile(patron)
+	
+	return regexp.search(nombreCompleto) != null
+
+
+# ==================
 # REGISTRAR USUARIO
+# ==================
 func registerUser():
 	quser = Quser.new() 
 	var name = $NinePatchRect2/RegisterContainer/In_Nombres.text
@@ -79,7 +91,7 @@ func registerUser():
 	if ( name.empty() or alias.empty() or password.empty() ):
 		$Message.showDialog("Usted tiene que llenar todos los campos completos")#------------------------------
 		
-	elif ( (name != "") and (name != "")  and (name != "") ):
+	elif ( (validarNombreCompleto(name) == true) and (alias != "")  and (password != "")):
 		var apart = name.split(" ", false, 2)
 		var firstname = apart[0]
 		var surname = name[0]
@@ -90,10 +102,10 @@ func registerUser():
 		if apart.size() > 2:
 			surname = apart[1] + " " + apart[2]
 
-		print(firstname)
-		print(surname)
-		print(alias)
-		print(password)
+		print(firstname)#clear
+		print(surname)#clear
+		print(alias)#clear
+		print(password)#clear
 		
 		# ==================================== #
 		if ( quser.searchAlias(alias) == false ) :
@@ -118,11 +130,14 @@ func registerUser():
 				$Message.showDialog('El usuario no se guardó, ocurrió un error')#-------------------------
 		else :
 			$Message.showDialog('El usuario ya existe, digite otro Alias')#---------------------------
+	elif ( validarNombreCompleto(name) == false):
+		$Message.showDialog("Usted tiene que digitar su nombre y apellido completo")#------------------------------
 	else :
 		$Message.showDialog('Upps, Ocurrio algun error')#---------------------------
 
-
+# ======
 # LOG IN
+# ======
 func logIn() :
 	quser = Quser.new() 
 	var user = $NinePatchRect/LoginContainer/In_Usuario.text
@@ -136,6 +151,7 @@ func logIn() :
 		if (quser.dencrytData(data, password) == true) :
 			#Cambio de escena
 			get_tree().change_scene("res://Scenes/game_window.tscn")# INIT GAME
+			
 			$Message._on_Button_pressed()
 			
 		elif (password == "") :

@@ -1,7 +1,7 @@
 create database dbMultiple;
-
+-- =====
 -- LEVES
---=======
+-- =====
 CREATE TABLE guide (
     idGuide CHAR(3) PRIMARY KEY NOT NULL,
     title TEXT NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE level_objective (
     FOREIGN KEY (idObjetive) REFERENCES objective(idObjetive)
 );
 
-
+-- =====
 -- USER
 --======
 create table user (
@@ -83,6 +83,7 @@ create table store (
     image blob
 );
 
+-- ========
 -- Triggers
 --=========
 CREATE TRIGGER delete_user_inventory
@@ -91,7 +92,9 @@ BEGIN
     DELETE FROM inventory WHERE idUser = OLD.idUser;
 END;
 
-
+-- ========
+-- Insert
+--=========
 -- Insertar datos en la tabla "guide"
 INSERT INTO guide (idGuide, title, description, content, bonus)
 VALUES
