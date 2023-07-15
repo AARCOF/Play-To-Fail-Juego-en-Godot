@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Piece.tscn" type="PackedScene" id=1]
+[ext_resource path="res://art/pieces/seven.png" type="Texture" id=2]
+[ext_resource path="res://art/pieces/twenty_one.png" type="Texture" id=3]
+[ext_resource path="res://art/pieces/thirty_five.png" type="Texture" id=4]
+
+[node name="piece" instance=ExtResource( 1 )]
+color = "sky"
+row_texture = ExtResource( 4 )
+adjacent_texture = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )

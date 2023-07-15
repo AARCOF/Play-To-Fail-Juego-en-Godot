@@ -37,11 +37,13 @@ var possible_pieces = [
 	preload("res://Scenes/piece_four.tscn"),
 	preload("res://Scenes/piece_six.tscn"),
 	preload("res://Scenes/piece_eigth.tscn"),
-	preload("res://Scenes/piece_ten.tscn")
+	preload("res://Scenes/piece_five.tscn"),
+	preload("res://Scenes/piece_seven.tscn")
 ]
 
 # Piezas en la escena
 var all_pieces = []
+var current_matches = []
 
 # Variables para el Swap Back
 var piece_one = null
@@ -236,6 +238,9 @@ func find_matches():
 							match_and_dim(all_pieces[i + 1][j])
 							match_and_dim(all_pieces[i][j])
 							match_and_dim(all_pieces[i - 1][j])
+							add_to_array(Vector2(i, j))
+							add_to_array(Vector2(i + 1, j))
+							add_to_array(Vector2(i - 1, j))
 							
 				#encuentra matches en el eje y
 				if j > 0 && j < height - 1:
@@ -244,8 +249,27 @@ func find_matches():
 							match_and_dim(all_pieces[i][j + 1])
 							match_and_dim(all_pieces[i][j])
 							match_and_dim(all_pieces[i][j - 1])
+							add_to_array(Vector2(i, j))
+							add_to_array(Vector2(i, j + 1))
+							add_to_array(Vector2(i, j - 1))
+
 				variable_destroy = true
+	get_bombed_pieces()
 	get_parent().get_node("destroy_timer").start()
+
+func get_bombed_pieces():
+	for i in range(width):
+		for j in range(height):
+			if all_pieces[i][j] != null:
+				if all_pieces[i][j].matched:
+					if all_pieces[i][j].is_column_bomb:
+						match_all_in_column(i)
+					elif all_pieces[i][j].is_row_bomb:
+						match_all_in_row(j)
+
+func add_to_array(value, array_to_add = current_matches):
+	if !array_to_add.has(value):
+		array_to_add.append(value)
 
 func is_piece_null(column, row):
 	if all_pieces[column][row] == null:
@@ -256,8 +280,56 @@ func match_and_dim(item):
 	item.matched = true
 	item.dim()
 
+func find_bombs():
+	for i in range(current_matches.size()):
+		var current_column = current_matches[i].x
+		var current_row = current_matches[i].y
+		var current_color = all_pieces[current_column][current_row].color
+		var col_matched = 0
+		var row_matched = 0
+
+		for j in range(current_matches.size()):
+			var this_column = current_matches[j].x
+			var this_row = current_matches[j].y
+			var this_color = all_pieces[current_column][current_row].color
+			if this_column == current_column and current_color == this_color:
+				col_matched += 1
+			if this_row == current_row and this_color == current_color:
+				row_matched += 1
+
+			if col_matched == 4:
+				make_bomb(1, current_color)
+			if row_matched == 4:
+				make_bomb(2, current_color)
+			if col_matched == 3 or row_matched == 3:
+				make_bomb(0, current_color)
+			if col_matched >= 5 or row_matched >= 5:
+				print("Boom Cool")
+				return
+
+func make_bomb(bomb_type, color):
+	for i in range(current_matches.size()):
+		var current_column = current_matches[i].x
+		var current_row = current_matches[i].y
+		
+		if all_pieces[current_column][current_row] == piece_one and piece_one.color == color:
+			piece_one.matched = false
+			change_bomb(bomb_type, piece_one)
+		if all_pieces[current_column][current_row] == piece_two and piece_two.color == color:
+			piece_two.matched = false
+			change_bomb(bomb_type, piece_two)
+		
+func change_bomb(bomb_type, piece):
+	if bomb_type == 0:
+		piece.make_adjacent_bomb()
+	elif bomb_type == 1:
+		piece.make_row_bomb()
+	elif bomb_type == 2:
+		piece.make_column_bomb()
+
 func destroy_matched():
 	var was_matched = false
+	find_bombs()
 	for i in range(width):
 		for j in range(height):
 			if all_pieces[i][j] != null:
@@ -269,6 +341,8 @@ func destroy_matched():
 		
 	if was_matched:
 		get_parent().get_node("collapse_timer").start()
+	
+	current_matches.clear()
 
 func damage_array(array, column, row):
 	if column < width - 1:
@@ -380,6 +454,17 @@ func find_normal_neighbor(column, row):
 	
 	return null
 
+func match_all_in_column(column):
+	for i in range(height):
+		if all_pieces[column][i] != null:
+			all_pieces[column][i].matched = true
+
+func match_all_in_row(row):
+	for i in range(width):
+		if all_pieces[i][row] != null:
+			all_pieces[i][row].matched = true
+
+
 func _on_destroy_timer_timeout():
 	if variable_destroy:
 		#No borrar, impide que el swapback se ejecute luego de un match
@@ -391,7 +476,7 @@ func _on_destroy_timer_timeout():
 		else:
 			move_checked = false
 			variable_destroy = true
-			state = move	
+			state = move
 
 func _on_collapse_timer_timeout():
 	collapse_columns()
