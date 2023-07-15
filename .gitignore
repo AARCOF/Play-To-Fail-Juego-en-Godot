@@ -1,0 +1,113 @@
+# Carpeta y archivos generados por el sistema
+.import/
+.export/
+saves/
+*.import/
+*.bak/
+
+# Caché y archivos de compilación
+*.import.xml
+*.import.resources
+*.import.cfg
+*.import.scn
+*.imported
+*.imported.scn
+*.imported.cfg
+*.imported.resources
+*.tscn.export.xml
+*.tres
+*.tscn.migrated
+*.imported.scn.migrated
+*.imported.cfg.migrated
+*.scn.migrated
+*.res.migrated
+*.gen.*
+*_import_tmp.*
+*.err
+*.pck
+*.import.err
+*.import.bak
+*.import.res
+*.import.txt
+*.export.xml
+*.opt
+*.log
+*.debug
+*.prof
+*.exe.debug
+*.import_resources
+*.imported_resources
+*.export_resources
+
+# Archivos temporales de Godot
+*.import.resources.xml
+*.import.xml.resources
+*.tmp.resources
+*.backup.resources
+*.res.backup
+*.res.tmp
+*.import.tmp
+*.import.bak
+
+# Archivos de proyecto locales
+*.godot.workspace
+*.import.cfg
+*.import.resources.xml
+*.imported_resources.xml
+*.import.resources.import.xml
+*.project@*
+
+
+# Godot 4+ specific ignores
+.godot/
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_presets.cfg
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# Carpeta y archivos generados por el sistema
+.project
+.DS_Store
+
+# Dependencias y módulos generados
+node_modules/
+bower_components/
+
+# Archivos de compilación
+dist/
+build/
+out/
+
+# Logs y archivos temporales
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.swp
+*.bak
+
+# Archivos de configuración locales
+.env
