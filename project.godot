@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="JuegoMultiplos_beta"
-run/main_scene="res://Scenes/loginyregistrar/LoginScreen.tscn"
+run/main_scene="res://Scenes/carga.tscn"
 
 [display]
 

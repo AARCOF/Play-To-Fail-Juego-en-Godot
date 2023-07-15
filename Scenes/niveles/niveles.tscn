@@ -1,0 +1,278 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Scenes/niveles/nivel2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/niveles/nivel1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://art/niveles/fondo(niveles).png" type="Texture" id=3]
+[ext_resource path="res://art/niveles/Polygon 1.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/niveles/nivel3.tscn" type="PackedScene" id=5]
+[ext_resource path="res://art/niveles/Polygon 2flecha.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/niveles/nivel4.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/niveles/nivel5.tscn" type="PackedScene" id=8]
+[ext_resource path="res://art/niveles/efecto(fondo).png" type="Texture" id=9]
+[ext_resource path="res://art/niveles/decorar1.png" type="Texture" id=10]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends CanvasLayer
+
+var scroll_container: ScrollContainer
+var hbox_container: HBoxContainer
+var current_index: int
+var tween: Tween
+onready var animationPlayer1: AnimationPlayer = $AnimationPlayer
+
+
+
+
+func _ready():
+	scroll_container = get_node(\"ScrollContainer\")
+	hbox_container = scroll_container.get_node(\"HBoxContainer\")
+	current_index = 0
+	animationPlayer1.play(\"fondo_movimiento\")
+	
+	# Crear el Tween y añadirlo al ScrollContainer
+	tween = Tween.new()
+	scroll_container.add_child(tween)
+
+	
+	
+func _on_siguiente_pressed():
+	current_index += 1
+
+	if current_index >= hbox_container.get_child_count():
+		current_index = 0
+
+	var target_texture_rect = hbox_container.get_child(current_index)
+	var target_position = target_texture_rect.rect_position.x
+
+	tween.stop_all()
+	tween.interpolate_property(scroll_container, \"scroll_horizontal\", scroll_container.scroll_horizontal, target_position, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+
+
+func _on_anterior_pressed():
+	
+	current_index -= 1
+
+	if current_index < 0:
+		current_index = hbox_container.get_child_count() - 1
+
+	var target_texture_rect = hbox_container.get_child(current_index)
+	var target_position = target_texture_rect.rect_position.x
+
+	tween.stop_all()
+	tween.interpolate_property(scroll_container, \"scroll_horizontal\", scroll_container.scroll_horizontal, target_position, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+"
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="Theme" id=3]
+ScrollContainer/styles/bg = SubResource( 9 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="Theme" id=2]
+Button/styles/normal = SubResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+draw_center = false
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+
+[sub_resource type="Theme" id=6]
+Button/styles/normal = SubResource( 5 )
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect3:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -161, -34 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect2:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 470, -814 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TextureRect4:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 656, -1018 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "fondo_movimiento"
+length = 12.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect3:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 5.1, 5.2, 9.2, 11.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -161, -34 ), Vector2( -1124, 868 ), Vector2( -1137, -1247 ), Vector2( 698, -1243 ), Vector2( 262, -567 ), Vector2( -47, -161 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect2:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5, 9.2, 9.4, 9.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 470, -814 ), Vector2( -485, 77 ), Vector2( -1129, 878 ), Vector2( -1167, -1313 ), Vector2( 761, -1258 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TextureRect4:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5, 9.2, 11.3, 11.7, 11.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1080, -1616 ), Vector2( 152, -709 ), Vector2( -509, 75 ), Vector2( -807, 507 ), Vector2( -1247, 551 ), Vector2( -1175, -1552 ) ]
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = SubResource( 4 )
+
+[node name="fondo" type="TextureRect" parent="."]
+margin_left = -5.0
+margin_top = -30.0
+margin_right = 623.0
+margin_bottom = 1044.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+margin_left = 656.0
+margin_top = -1018.0
+margin_right = 1778.11
+margin_bottom = 196.0
+texture = ExtResource( 9 )
+expand = true
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+margin_left = -161.0
+margin_top = -34.0
+margin_right = 961.0
+margin_bottom = 1180.02
+texture = ExtResource( 9 )
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 470.0
+margin_top = -814.0
+margin_right = 1592.0
+margin_bottom = 399.996
+texture = ExtResource( 9 )
+expand = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 4.0
+margin_top = 111.0
+margin_right = 608.0
+margin_bottom = 571.0
+rect_min_size = Vector2( 604, 0 )
+theme = SubResource( 3 )
+scroll_vertical_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+margin_right = 3436.0
+rect_min_size = Vector2( 3436, 0 )
+custom_constants/separation = 700
+
+[node name="nivel1" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="nivel2" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 700.0
+margin_top = 0.0
+margin_right = 700.0
+margin_bottom = 0.0
+
+[node name="nivel3" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 5 )]
+margin_left = 1400.0
+margin_top = 0.0
+margin_right = 1400.0
+margin_bottom = 0.0
+
+[node name="nivel4" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 7 )]
+margin_left = 2100.0
+margin_right = 2100.0
+margin_bottom = 0.0
+
+[node name="nivel5" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 8 )]
+margin_left = 2800.0
+margin_top = 0.0
+margin_right = 2800.0
+margin_bottom = 0.0
+
+[node name="siguiente" type="Button" parent="."]
+margin_left = 357.0
+margin_top = 662.0
+margin_right = 456.0
+margin_bottom = 817.0
+theme = SubResource( 2 )
+icon = ExtResource( 4 )
+icon_align = 1
+expand_icon = true
+
+[node name="anterior" type="Button" parent="."]
+margin_left = 178.0
+margin_top = 664.0
+margin_right = 258.0
+margin_bottom = 813.0
+theme = SubResource( 6 )
+icon = ExtResource( 6 )
+icon_align = 1
+expand_icon = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 7 )
+anims/fondo_movimiento = SubResource( 8 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -44.0
+margin_top = 525.0
+margin_right = 654.0
+margin_bottom = 607.0
+texture = ExtResource( 10 )
+expand = true
+
+[connection signal="pressed" from="siguiente" to="." method="_on_siguiente_pressed"]
+[connection signal="pressed" from="siguiente" to="siguiente" method="_on_siguiente_pressed"]
+[connection signal="pressed" from="anterior" to="." method="_on_anterior_pressed"]
