@@ -1,14 +1,60 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://art/niveles/fondo(nivel4).png" type="Texture" id=1]
-[ext_resource path="res://art/niveles/img_nivel4.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/niveles/play.tscn" type="PackedScene" id=3]
+[ext_resource path="res://art/niveles/play.png" type="Texture" id=1]
+[ext_resource path="res://art/niveles/animaciones/nivel4/juego4.png" type="Texture" id=2]
+[ext_resource path="res://art/niveles/animaciones/nivel4/juego1.png" type="Texture" id=3]
 [ext_resource path="res://art/niveles/caja(nivel4).png" type="Texture" id=4]
 [ext_resource path="res://art/niveles/letra(nivel4).png" type="Texture" id=5]
+[ext_resource path="res://art/niveles/animaciones/nivel4/juego0.png" type="Texture" id=6]
+[ext_resource path="res://art/niveles/nivel4(fondo1).png" type="Texture" id=7]
+[ext_resource path="res://art/niveles/animaciones/nivel4/juego2.png" type="Texture" id=8]
+[ext_resource path="res://art/niveles/animaciones/nivel4/juego3.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/niveles/nivel4.gd" type="Script" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+} ]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, 76 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "nivel4(efecto)"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 76 ), Vector2( -1, 39 ) ]
+}
 
 [node name="nivel4" type="TextureRect"]
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 10 )
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 anchor_top = 3.938
@@ -16,37 +62,19 @@ anchor_bottom = 3.938
 margin_left = -1.0
 margin_top = 48.48
 margin_right = 594.0
-margin_bottom = 446.48
+margin_bottom = 554.48
 texture = ExtResource( 4 )
 expand = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_top = 3.797
 anchor_bottom = 3.797
-margin_left = 60.0
-margin_top = 95.12
-margin_right = 534.0
-margin_bottom = 407.12
-texture = ExtResource( 1 )
+margin_left = 32.0
+margin_top = 82.12
+margin_right = 560.0
+margin_bottom = 528.12
+texture = ExtResource( 7 )
 expand = true
-
-[node name="TextureRect2" type="TextureRect" parent="TextureRect"]
-anchor_top = 6.489
-anchor_bottom = 6.489
-margin_left = 88.0
-margin_top = -1992.57
-margin_right = 365.0
-margin_bottom = -1722.57
-texture = ExtResource( 2 )
-expand = true
-
-[node name="TextureButton" parent="TextureRect" instance=ExtResource( 3 )]
-anchor_top = 6.48
-anchor_bottom = 6.48
-margin_left = 153.0
-margin_top = -1945.76
-margin_right = 193.0
-margin_bottom = -1905.76
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 anchor_top = 3.538
@@ -54,6 +82,35 @@ anchor_bottom = 3.538
 margin_left = 58.0
 margin_top = -29.52
 margin_right = 581.0
-margin_bottom = 152.48
+margin_bottom = 174.48
 texture = ExtResource( 5 )
 expand = true
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+margin_left = 2.0
+margin_top = 76.0
+margin_right = 593.0
+margin_bottom = 702.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="TextureRect4"]
+position = Vector2( 298.627, 233.065 )
+scale = Vector2( 0.674056, 0.740854 )
+frames = SubResource( 1 )
+frame = 2
+playing = true
+
+[node name="Button" type="Button" parent="."]
+margin_left = 210.0
+margin_top = 242.0
+margin_right = 380.0
+margin_bottom = 417.0
+icon = ExtResource( 1 )
+flat = true
+expand_icon = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../TextureRect4")
+anims/RESET = SubResource( 2 )
+anims/nivel4(efecto) = SubResource( 3 )
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

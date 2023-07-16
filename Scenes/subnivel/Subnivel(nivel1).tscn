@@ -1,0 +1,243 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://art/subniveles/botones/pngwing.com (4).png" type="Texture" id=1]
+[ext_resource path="res://art/subniveles/botones/pngegg (1).png" type="Texture" id=2]
+[ext_resource path="res://art/subniveles/botones/pngwing.com (5).png" type="Texture" id=3]
+[ext_resource path="res://art/subniveles/botones/pngwing.com (3).png" type="Texture" id=4]
+[ext_resource path="res://art/subniveles/fondos/subnivel1.png" type="Texture" id=5]
+[ext_resource path="res://art/subniveles/base.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/subnivel/Subnivel(nivel1).gd" type="Script" id=7]
+[ext_resource path="res://art/niveles/animaciones/nivel2/3.png" type="Texture" id=8]
+[ext_resource path="res://art/niveles/animaciones/nivel2/1.png" type="Texture" id=9]
+[ext_resource path="res://art/niveles/animaciones/nivel2/2.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/subnivel/btn_retroceder.tscn" type="PackedScene" id=11]
+
+[sub_resource type="Animation" id=1]
+resource_name = "subnivel 1"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect6/AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.1, 1.5, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 190, 94 ), Vector2( 184, 118 ), Vector2( 184, 95 ), Vector2( 182, 68 ), Vector2( 170, 47 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect6/AnimatedSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1.1, 1.5, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.464912, 0.510989 ), Vector2( 0.582456, 0.413004 ), Vector2( 0.417544, 0.499542 ), Vector2( 0.354386, 0.499542 ), Vector2( 0.48421, 0.499542 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+} ]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect6:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 98, 126 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "efecto(1)"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect6:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 117, 106 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "efecto(2)"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect6:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -49, 372 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "efecto(3)"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect6:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 132, 612 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "efecto(4)"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect6:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 60, 812 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -3.0
+margin_right = 610.0
+margin_bottom = 1033.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 376.0
+margin_top = 223.0
+margin_right = 510.0
+margin_bottom = 297.0
+rect_pivot_offset = Vector2( 102, 37 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+margin_left = 209.0
+margin_top = 469.0
+margin_right = 343.0
+margin_bottom = 543.0
+rect_pivot_offset = Vector2( 102, 37 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+margin_left = 328.0
+margin_top = 910.0
+margin_right = 462.0
+margin_bottom = 984.0
+rect_pivot_offset = Vector2( 102, 37 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+margin_left = 106.0
+margin_top = 700.0
+margin_right = 240.0
+margin_bottom = 774.0
+rect_pivot_offset = Vector2( 102, 37 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="Button" type="Button" parent="."]
+margin_left = 387.0
+margin_top = 144.0
+margin_right = 497.0
+margin_bottom = 250.0
+icon = ExtResource( 1 )
+flat = true
+expand_icon = true
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 235.0
+margin_top = 388.0
+margin_right = 327.0
+margin_bottom = 494.0
+icon = ExtResource( 2 )
+flat = true
+expand_icon = true
+
+[node name="Button3" type="Button" parent="."]
+margin_left = 126.0
+margin_top = 626.0
+margin_right = 241.0
+margin_bottom = 732.0
+icon = ExtResource( 3 )
+flat = true
+expand_icon = true
+
+[node name="Button4" type="Button" parent="."]
+margin_left = 343.0
+margin_top = 836.0
+margin_right = 465.0
+margin_bottom = 942.0
+icon = ExtResource( 4 )
+flat = true
+expand_icon = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/subnivel 1" = SubResource( 1 )
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+margin_left = 98.0
+margin_top = 126.0
+margin_right = 351.0
+margin_bottom = 319.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="TextureRect6"]
+position = Vector2( 187.638, 103.446 )
+scale = Vector2( 0.511177, 0.472422 )
+frames = SubResource( 2 )
+frame = 5
+playing = true
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/efecto(1) = SubResource( 4 )
+anims/efecto(2) = SubResource( 5 )
+anims/efecto(3) = SubResource( 6 )
+anims/efecto(4) = SubResource( 7 )
+
+[node name="TextureRect7" parent="." instance=ExtResource( 11 )]
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_Button4_pressed"]
