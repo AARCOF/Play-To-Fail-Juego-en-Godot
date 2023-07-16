@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://pet/Pet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://pet/PruebaPet.gd" type="Script" id=2]
+
+[node name="PruebaPet" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="START" type="Button" parent="."]
+margin_left = 220.0
+margin_top = 546.0
+margin_right = 370.0
+margin_bottom = 596.0
+text = "start"
+
+[node name="OPTION" type="Button" parent="."]
+margin_left = 401.0
+margin_top = 685.0
+margin_right = 545.0
+margin_bottom = 722.0
+text = "option"
+
+[node name="EXIT" type="Button" parent="."]
+margin_left = 409.0
+margin_top = 836.0
+margin_right = 538.0
+margin_bottom = 885.0
+text = "exit"
+
+[node name="Pet" parent="." instance=ExtResource( 1 )]
+position = Vector2( 275, 183 )
+
+[connection signal="pressed" from="START" to="." method="_on_START_pressed"]
+[connection signal="pressed" from="OPTION" to="." method="_on_OPTION_pressed"]
+[connection signal="pressed" from="EXIT" to="." method="_on_EXIT_pressed"]

@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://pet/moving.png" type="Texture" id=1]
+[ext_resource path="res://pet/happyPet.png" type="Texture" id=2]
+[ext_resource path="res://pet/sadPet.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Moving:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Happy:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sad:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "happy"
+length = 1.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Happy:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.65, 0.7, 0.75, 0.95, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "moving"
+length = 2.55
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Moving:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.45, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1, 0, 1, 2, 1, 0, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "sad"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sad:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[node name="AnimationPlayer" type="Node2D"]
+
+[node name="Moving" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 5
+
+[node name="Happy" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+hframes = 9
+
+[node name="Sad" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 3 )
+hframes = 5
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/happy = SubResource( 3 )
+anims/moving = SubResource( 2 )
+anims/sad = SubResource( 4 )
