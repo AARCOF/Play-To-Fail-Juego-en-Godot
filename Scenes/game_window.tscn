@@ -8,7 +8,6 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
-var message = $Dialog
 # Declare member variables here. Examples:
 # var a = 2
 # var b = \"text\"
@@ -45,6 +44,8 @@ margin_bottom = 398.0
 texture = ExtResource( 2 )
 
 [node name="bottom_UI" type="TextureRect" parent="."]
+
+[node name="bottom_UI" type="TextureRect" parent="."]
 margin_left = 30.0
 margin_top = 671.0
 margin_right = 581.0
@@ -52,5 +53,4 @@ margin_bottom = 1128.0
 texture = ExtResource( 3 )
 
 [node name="grid" type="Node2D" parent="."]
-
-[node name="Dialog" parent="." instance=ExtResource( 4 )]
+script = ExtResource( 4 )

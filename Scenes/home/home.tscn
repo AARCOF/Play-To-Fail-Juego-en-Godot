@@ -1,0 +1,277 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Font/fonts/cmu-typewriter/Typewriter/cmunit.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Font/fonts/linux-libertine/LinLibertine_5.3.0_2012_07_02/LinLibertineOTF_5.3.0_2012_07_02/LinLibertine_M.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/home.gd" type="Script" id=3]
+[ext_resource path="res://Font/fonts/cmu-typewriter/Typewriter/cmuntt.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://art/logos/icon_back.jpg" type="Texture" id=5]
+[ext_resource path="res://Font/fonts/linux-libertine/LinLibertine_5.3.0_2012_07_02/LinLibertineOTF_5.3.0_2012_07_02/LinLibertine_R.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://art/boton_rojo.png" type="Texture" id=7]
+[ext_resource path="res://art/boton.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/SettingsMenu.gd" type="Script" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 41
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_bottom = 1
+extra_spacing_char = 4
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 34
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_char = 1
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 37
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_char = 6
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 17
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 13
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 21
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_top = 1
+extra_spacing_bottom = 2
+extra_spacing_char = 1
+extra_spacing_space = 1
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 21
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_top = 1
+extra_spacing_bottom = 2
+extra_spacing_space = 1
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 21
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 6 )
+
+[node name="Home" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 5 )
+
+[node name="ContainerButtonsMenu" type="VBoxContainer" parent="NinePatchRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = -199.5
+margin_right = 236.0
+margin_bottom = 199.5
+custom_constants/separation = 10
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect/ContainerButtonsMenu"]
+margin_right = 472.0
+margin_bottom = 368.0
+
+[node name="Bttn_Play" type="Button" parent="NinePatchRect/ContainerButtonsMenu/GridContainer"]
+margin_right = 300.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 300, 120 )
+size_flags_horizontal = 2
+custom_colors/font_color_hover = Color( 0.501961, 1, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_constants/hseparation = 8
+custom_fonts/font = SubResource( 1 )
+text = "Jugar"
+icon = ExtResource( 8 )
+flat = true
+align = 2
+icon_align = 1
+expand_icon = true
+
+[node name="Bttn_Option" type="Button" parent="NinePatchRect/ContainerButtonsMenu/GridContainer"]
+margin_left = 86.0
+margin_top = 124.0
+margin_right = 386.0
+margin_bottom = 244.0
+rect_min_size = Vector2( 300, 120 )
+size_flags_horizontal = 4
+custom_colors/font_color_hover = Color( 0, 1, 0.192157, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Opciones"
+icon = ExtResource( 8 )
+flat = true
+align = 2
+icon_align = 1
+expand_icon = true
+
+[node name="Bttn_Exit" type="Button" parent="NinePatchRect/ContainerButtonsMenu/GridContainer"]
+margin_left = 232.0
+margin_top = 248.0
+margin_right = 472.0
+margin_bottom = 368.0
+rect_min_size = Vector2( 240, 120 )
+size_flags_horizontal = 8
+custom_colors/font_color_hover = Color( 0.101961, 1, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Salir"
+icon = ExtResource( 7 )
+flat = true
+align = 2
+icon_align = 1
+expand_icon = true
+
+[node name="ContainerInfoVer" type="VBoxContainer" parent="NinePatchRect"]
+anchor_left = 0.022
+anchor_top = 0.976
+anchor_right = 0.022
+anchor_bottom = 0.976
+margin_left = -0.200001
+margin_top = -11.4241
+margin_right = 212.8
+margin_bottom = 10.5759
+
+[node name="Label" type="Label" parent="NinePatchRect/ContainerInfoVer"]
+margin_right = 180.0
+margin_bottom = 22.0
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 5 )
+text = "Version: Beta 0.1.0 "
+
+[node name="ContainerInfo" type="VBoxContainer" parent="NinePatchRect"]
+anchor_left = 1.0
+anchor_top = 0.979
+anchor_right = 1.0
+anchor_bottom = 0.979
+margin_left = -221.0
+margin_top = -38.496
+margin_right = -8.0
+margin_bottom = 0.503967
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/ContainerInfo"]
+margin_right = 210.0
+margin_bottom = 39.0
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 6 )
+text = "Juego en desarrollo, 
+está es una version preliminar"
+
+[node name="SettingsMenu" type="Popup" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -269.0
+margin_top = -192.5
+margin_right = 269.0
+margin_bottom = 192.5
+script = ExtResource( 9 )
+
+[node name="BackgroundSettings" type="NinePatchRect" parent="SettingsMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+
+[node name="GridContainer" type="GridContainer" parent="SettingsMenu/BackgroundSettings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -238.5
+margin_top = -155.5
+margin_right = 238.5
+margin_bottom = 155.5
+columns = 2
+
+[node name="MasterVolume" type="Label" parent="SettingsMenu/BackgroundSettings/GridContainer"]
+margin_right = 237.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 7 )
+text = "Volumen General"
+
+[node name="SliderMasterVolu" type="HSlider" parent="SettingsMenu/BackgroundSettings/GridContainer"]
+margin_left = 241.0
+margin_right = 477.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+min_value = -50.0
+max_value = 0.0
+value = -15.0
+rounded = true
+
+[node name="MusicVolume" type="Label" parent="SettingsMenu/BackgroundSettings/GridContainer"]
+margin_top = 32.0
+margin_right = 237.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 8 )
+text = "Musica"
+
+[node name="SliderMusicVolu" type="HSlider" parent="SettingsMenu/BackgroundSettings/GridContainer"]
+margin_left = 241.0
+margin_top = 32.0
+margin_right = 477.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+min_value = -50.0
+max_value = 0.0
+value = -15.0
+rounded = true
+
+[node name="SFXVolume" type="Label" parent="SettingsMenu/BackgroundSettings/GridContainer"]
+margin_top = 64.0
+margin_right = 237.0
+margin_bottom = 89.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 9 )
+text = "Efectos"
+
+[node name="SliderSFXVolume" type="HSlider" parent="SettingsMenu/BackgroundSettings/GridContainer"]
+margin_left = 241.0
+margin_top = 64.0
+margin_right = 477.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+min_value = -50.0
+max_value = 0.0
+value = -15.0
+rounded = true
+
+[connection signal="pressed" from="NinePatchRect/ContainerButtonsMenu/GridContainer/Bttn_Play" to="." method="_on_Bttn_Play_pressed"]
+[connection signal="pressed" from="NinePatchRect/ContainerButtonsMenu/GridContainer/Bttn_Option" to="." method="_on_Bttn_Option_pressed"]
+[connection signal="pressed" from="NinePatchRect/ContainerButtonsMenu/GridContainer/Bttn_Exit" to="." method="_on_Bttn_Exit_pressed"]
+[connection signal="value_changed" from="SettingsMenu/BackgroundSettings/GridContainer/SliderMasterVolu" to="SettingsMenu" method="_on_SliderMasterVolu_value_changed"]
+[connection signal="value_changed" from="SettingsMenu/BackgroundSettings/GridContainer/SliderMusicVolu" to="SettingsMenu" method="_on_SliderMusicVolu_value_changed"]
+[connection signal="value_changed" from="SettingsMenu/BackgroundSettings/GridContainer/SliderSFXVolume" to="SettingsMenu" method="_on_SliderSFXVolume_value_changed"]
