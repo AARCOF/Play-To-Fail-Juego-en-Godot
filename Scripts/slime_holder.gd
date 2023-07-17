@@ -29,9 +29,10 @@ func _on_grid_make_slime(board_position):
 	slime_pieces[board_position.x][board_position.y] = current
 
 func _on_grid_damage_slime(board_position):
-	if slime_pieces[board_position.x][board_position.y] != null:
-		slime_pieces[board_position.x][board_position.y].take_damage(1)
-		if slime_pieces[board_position.x][board_position.y].health <= 0:
-			slime_pieces[board_position.x][board_position.y].queue_free()
-			slime_pieces[board_position.x][board_position.y] = null
-			emit_signal("remove_slime", board_position)
+	if slime_pieces.size() != 0:
+		if slime_pieces[board_position.x][board_position.y] != null:
+			slime_pieces[board_position.x][board_position.y].take_damage(1)
+			if slime_pieces[board_position.x][board_position.y].health <= 0:
+				slime_pieces[board_position.x][board_position.y].queue_free()
+				slime_pieces[board_position.x][board_position.y] = null
+				emit_signal("remove_slime", board_position)

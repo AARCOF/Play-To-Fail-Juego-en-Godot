@@ -36,9 +36,9 @@ var possible_pieces = [
 	preload("res://Scenes/piece_three.tscn"),
 	preload("res://Scenes/piece_four.tscn"),
 	preload("res://Scenes/piece_six.tscn"),
-	preload("res://Scenes/piece_eigth.tscn"),
-	preload("res://Scenes/piece_five.tscn"),
-	preload("res://Scenes/piece_seven.tscn")
+#	preload("res://Scenes/piece_eigth.tscn"),
+#	preload("res://Scenes/piece_five.tscn"),
+#	preload("res://Scenes/piece_seven.tscn")
 ]
 
 # Piezas en la escena
@@ -58,15 +58,23 @@ var first_touch = Vector2(0, 0)
 var final_touch = Vector2(0, 0)
 var controlling = false
 
+#Scoring Variables
+signal update_score
+export (int) var piece_value
+var streak = 1
+
+#Effects
+var particle_effect = preload("res://Scenes/ParticlesEffect.tscn")
+
 func _ready():
 	state = move
 	randomize()
 	all_pieces = make_2d_array()
 	spawn_pieces()
-	spawn_block()
-	spawn_locks()
-	spawn_concrete()
-	spawn_slime()
+#	spawn_block()
+#	spawn_locks()
+#	spawn_concrete()
+#	spawn_slime()
 
 func restricted_movement(place):
 	if is_in_array(empty_spaces, place):
@@ -338,11 +346,18 @@ func destroy_matched():
 					was_matched = true
 					all_pieces[i][j].queue_free()
 					all_pieces[i][j] = null
+					make_effect(particle_effect, i, j)
+					emit_signal("update_score", piece_value * streak)
 		
 	if was_matched:
 		get_parent().get_node("collapse_timer").start()
 	
 	current_matches.clear()
+
+func make_effect(effect, column, row):
+	var current = effect.instance()
+	current.position = grid_to_pixel(column, row)
+	add_child(current)
 
 func damage_array(array, column, row):
 	if column < width - 1:
@@ -382,6 +397,7 @@ func collapse_columns():
 	get_parent().get_node("refill_timer").start()
 
 func refill_colums():
+	streak += 1
 	for i in width:
 		for j in height:
 			if all_pieces[i][j] == null && !restricted_movement(Vector2(i, j)):
@@ -413,6 +429,7 @@ func after_refill():
 		generate_slime()
 		
 	state = move
+	streak = 1
 	move_checked = false
 	damaged_slime = false
 

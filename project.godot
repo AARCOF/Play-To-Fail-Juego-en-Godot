@@ -8,16 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Node",
-"class": "GuiTransition",
-"language": "GDScript",
-"path": "res://addons/simple-gui-transitions/transition.gd"
-} ]
-_global_script_class_icons={
-"GuiTransition": "res://addons/simple-gui-transitions/icon.png"
-}
-
 [application]
 
 config/name="JuegoMultiplos_beta"
@@ -26,7 +16,7 @@ run/main_scene="res://Scenes/game_window.tscn"
 [display]
 
 window/size/width=625
-window/size/height=995
+window/size/height=1025
 window/size/always_on_top=true
 window/size/test_width=625
 window/size/test_height=995

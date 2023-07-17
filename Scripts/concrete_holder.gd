@@ -29,9 +29,10 @@ func _on_grid_make_concrete(board_position):
 	concrete_pieces[board_position.x][board_position.y] = current
 
 func _on_grid_damage_concrete(board_position):
-	if concrete_pieces[board_position.x][board_position.y] != null:
-		concrete_pieces[board_position.x][board_position.y].take_damage(1)
-		if concrete_pieces[board_position.x][board_position.y].health <= 0:
-			concrete_pieces[board_position.x][board_position.y].queue_free()
-			concrete_pieces[board_position.x][board_position.y] = null
-			emit_signal("remove_concrete", board_position)
+	if concrete_pieces.size() != 0:
+		if concrete_pieces[board_position.x][board_position.y] != null:
+			concrete_pieces[board_position.x][board_position.y].take_damage(1)
+			if concrete_pieces[board_position.x][board_position.y].health <= 0:
+				concrete_pieces[board_position.x][board_position.y].queue_free()
+				concrete_pieces[board_position.x][board_position.y] = null
+				emit_signal("remove_concrete", board_position)

@@ -1,16 +1,16 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Piece.tscn" type="PackedScene" id=1]
-[ext_resource path="res://art/pieces/six.png" type="Texture" id=2]
-[ext_resource path="res://art/pieces/eigthteen.png" type="Texture" id=3]
-[ext_resource path="res://art/pieces/twenty_four.png" type="Texture" id=4]
-[ext_resource path="res://art/pieces/thirty.png" type="Texture" id=5]
+[ext_resource path="res://art/pieces/thirty.jpg" type="Texture" id=2]
+[ext_resource path="res://art/pieces/six2.jpg" type="Texture" id=3]
+[ext_resource path="res://art/pieces/eighteen.jpg" type="Texture" id=4]
+[ext_resource path="res://art/pieces/twentyfour.jpg" type="Texture" id=5]
 
 [node name="piece" instance=ExtResource( 1 )]
 color = "purple"
-row_texture = ExtResource( 5 )
-column_texture = ExtResource( 4 )
-adjacent_texture = ExtResource( 3 )
+row_texture = ExtResource( 2 )
+column_texture = ExtResource( 5 )
+adjacent_texture = ExtResource( 4 )
 
 [node name="Sprite" parent="." index="0"]
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
