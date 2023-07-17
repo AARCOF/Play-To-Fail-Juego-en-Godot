@@ -11,13 +11,17 @@ func _ready():
 	timer.connect("timeout", self, "_on_TIMER_timeout")
 	add_child(timer)
 
+	
 func _on_START_pressed():
 	pet.starPetHappy()
 	timer.start()
 
 func _on_OPTION_pressed():
 	pet.starPet()
-
+	
+	pruebaMessage ()
+	$DialogGame.visible = true
+	
 func _on_EXIT_pressed():
 	pet.starPetSad()
 	
@@ -64,3 +68,16 @@ func _on_TIMER_timeout():
 
 #func undo_action():
 #	pet.starPet()
+
+
+#$=================================================================
+onready var message = $DialogGame
+
+var vect = ["Measdandadkasdkjdsd",
+			"mensaje de d jdfajdfadjfa",
+			"runasd hasdahjdsfasfasasfdh"]
+			
+func pruebaMessage () :
+	#Para varios mensajes
+	message.arrayMessages(vect)
+	message.setMessage(vect[0])

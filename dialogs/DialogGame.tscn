@@ -87,10 +87,6 @@ margin_bottom = 154.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "HOLA ESTO ES U TI RUUR UROIIDFJFJ AJDFSKA ADJFAkdsjasdsfjfjasdkasdjafsj
-ASDFASHUJHJAS ASHDSJHF SHLASDJF AKLDHFA AHDJFA FGSDFGSDFGSDFGSDFGSDFGSDFGGFGGF"
-text = "HOLA ESTO ES U TI RUUR UROIIDFJFJ AJDFSKA ADJFAkdsjasdsfjfjasdkasdjafsj
-ASDFASHUJHJAS ASHDSJHF SHLASDJF AKLDHFA AHDJFA FGSDFGSDFGSDFGSDFGSDFGSDFGGFGGF"
 
 [node name="next" type="Button" parent="Control"]
 margin_left = 500.0
