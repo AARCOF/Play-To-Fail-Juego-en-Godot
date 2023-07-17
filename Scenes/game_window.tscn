@@ -37,12 +37,11 @@ x_start = 87
 y_start = 837
 offset = 64
 y_offset = 5
-empty_spaces = PoolVector2Array( 7, 0, 0, 9, 7, 9, 3, 4, 4, 4, 3, 5, 4, 5, 0, 0 )
-block_spaces = PoolVector2Array( 3, 0, 4, 0, 3, 9, 4, 9 )
-lock_spaces = PoolVector2Array( 3, 3, 4, 3, 3, 6, 4, 6 )
-concrete_spaces = PoolVector2Array( 1, 4, 2, 4, 5, 7, 6, 7 )
-slime_pieces = PoolVector2Array( 0, 6, 0, 5, 7, 6, 7, 5 )
 piece_value = 10
+current_counter_value = 2
+is_moves = true
+
+[node name="Timer" type="Timer" parent="grid"]
 
 [node name="block_holder" type="Node2D" parent="."]
 script = ExtResource( 5 )
@@ -75,7 +74,9 @@ one_shot = true
 [connection signal="make_concrete" from="grid" to="concrete_holder" method="_on_grid_make_concrete"]
 [connection signal="make_lock" from="grid" to="lock_holder" method="_on_grid_make_lock"]
 [connection signal="make_slime" from="grid" to="slime_holder" method="_on_grid_make_slime"]
+[connection signal="update_counter" from="grid" to="top_ui" method="_on_grid_update_counter"]
 [connection signal="update_score" from="grid" to="top_ui" method="_on_grid_update_score"]
+[connection signal="timeout" from="grid/Timer" to="grid" method="_on_Timer_timeout"]
 [connection signal="remove_block" from="block_holder" to="grid" method="_on_block_holder_remove_block"]
 [connection signal="remove_lock" from="lock_holder" to="grid" method="_on_lock_holder_remove_lock"]
 [connection signal="remove_concrete" from="concrete_holder" to="grid" method="_on_concrete_holder_remove_concrete"]

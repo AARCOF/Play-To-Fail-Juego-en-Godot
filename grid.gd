@@ -58,12 +58,17 @@ var first_touch = Vector2(0, 0)
 var final_touch = Vector2(0, 0)
 var controlling = false
 
-#Scoring Variables
+#Variables del puntaje
 signal update_score
 export (int) var piece_value
 var streak = 1
 
-#Effects
+#Variables para Contador
+signal update_counter
+export (int) var current_counter_value
+export (bool) var is_moves
+
+#Efectos
 var particle_effect = preload("res://Scenes/ParticlesEffect.tscn")
 
 func _ready():
@@ -75,6 +80,7 @@ func _ready():
 #	spawn_locks()
 #	spawn_concrete()
 #	spawn_slime()
+	emit_signal("update_counter", current_counter_value)
 
 func restricted_movement(place):
 	if is_in_array(empty_spaces, place):
@@ -433,6 +439,12 @@ func after_refill():
 	move_checked = false
 	damaged_slime = false
 
+	if is_moves:
+		current_counter_value -= 1
+		emit_signal("update_counter")
+		if current_counter_value == 0:
+			declare_game_over()
+
 func generate_slime():
 	if slime_pieces.size() > 0:
 		var slime_made = false
@@ -515,3 +527,14 @@ func _on_concrete_holder_remove_concrete(place):
 func _on_slime_holder_remove_slime(place):
 	damaged_slime = true
 	slime_pieces = remove_from_array(slime_pieces, place)
+
+func _on_Timer_timeout():
+	current_counter_value -= 1
+	emit_signal("update_counter")
+	if current_counter_value == 0:
+		declare_game_over()
+		$Timer.stop()
+
+func declare_game_over():
+	print("gameover")
+	state = wait
