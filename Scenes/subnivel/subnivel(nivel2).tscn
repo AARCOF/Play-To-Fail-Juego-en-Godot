@@ -20,7 +20,7 @@ length = 3.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextureRect6/AnimatedSprite:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -32,7 +32,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("TextureRect6/AnimatedSprite:scale")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
@@ -371,10 +371,10 @@ margin_right = 410.0
 margin_bottom = 290.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TextureRect6"]
-position = Vector2( 190, 94 )
-scale = Vector2( 0.464912, 0.510989 )
+position = Vector2( 190.151, 94.8498 )
+scale = Vector2( 0.466244, 0.50984 )
 frames = SubResource( 2 )
-frame = 2
+frame = 5
 playing = true
 
 [node name="Animacion" type="AnimationPlayer" parent="."]

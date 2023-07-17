@@ -102,7 +102,7 @@ margin_bottom = 308.0
 position = Vector2( 279, 508.958 )
 scale = Vector2( 0.852843, 0.876667 )
 frames = SubResource( 1 )
-frame = 5
+frame = 16
 playing = true
 
 [node name="Button" type="Button" parent="."]

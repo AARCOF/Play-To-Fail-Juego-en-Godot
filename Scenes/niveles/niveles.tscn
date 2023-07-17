@@ -318,5 +318,4 @@ texture = ExtResource( 10 )
 expand = true
 
 [connection signal="pressed" from="siguiente" to="." method="_on_siguiente_pressed"]
-[connection signal="pressed" from="siguiente" to="siguiente" method="_on_siguiente_pressed"]
 [connection signal="pressed" from="anterior" to="." method="_on_anterior_pressed"]

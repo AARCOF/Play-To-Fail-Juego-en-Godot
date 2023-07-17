@@ -1,8 +1,8 @@
 extends Control
 
 func _on_Bttn_Play_pressed():
-	get_tree().change_scene("res://Scenes/loginyregistrar/LoginScreen.tscn")
-
+	#get_tree().change_scene("res://Scenes/loginyregistrar/LoginScreen.tscn")
+	pass
 
 func _on_Bttn_Option_pressed():
 	$SettingsMenu.popup()

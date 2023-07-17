@@ -225,7 +225,7 @@ margin_bottom = 319.0
 position = Vector2( 187.638, 103.446 )
 scale = Vector2( 0.511177, 0.472422 )
 frames = SubResource( 2 )
-frame = 5
+frame = 6
 playing = true
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]

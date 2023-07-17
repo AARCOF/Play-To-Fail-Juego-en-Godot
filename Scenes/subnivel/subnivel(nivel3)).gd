@@ -7,7 +7,7 @@ onready var animationPlayer3: AnimationPlayer = $hoja
 
 
 func _ready():
-	animationPlayer1.play("sub")
+	animationPlayer1.play("subnivel 1")
 	animationPlayer3.play("caidahoja")
 
 func _on_bt1_pressed():

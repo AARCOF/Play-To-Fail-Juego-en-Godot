@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/overview.PNG-94c5ce52b5b4ea038f6c80eebd1b749f.stex"
+path="res://.import/icon.png-0ea3835ae8d216d89267da70eddf72ab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/overview.PNG"
-dest_files=[ "res://.import/overview.PNG-94c5ce52b5b4ea038f6c80eebd1b749f.stex" ]
+source_file="res://Font/icon.png"
+dest_files=[ "res://.import/icon.png-0ea3835ae8d216d89267da70eddf72ab.stex" ]
 
 [params]
 
