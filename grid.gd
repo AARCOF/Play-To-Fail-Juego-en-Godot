@@ -36,9 +36,9 @@ var possible_pieces = [
 	preload("res://Scenes/piece_three.tscn"),
 	preload("res://Scenes/piece_four.tscn"),
 	preload("res://Scenes/piece_six.tscn"),
-#	preload("res://Scenes/piece_eigth.tscn"),
-#	preload("res://Scenes/piece_five.tscn"),
-#	preload("res://Scenes/piece_seven.tscn")
+	preload("res://Scenes/piece_eigth.tscn"),
+	preload("res://Scenes/piece_five.tscn"),
+	preload("res://Scenes/piece_seven.tscn")
 ]
 
 # Piezas en la escena
@@ -63,10 +63,14 @@ signal update_score
 export (int) var piece_value
 var streak = 1
 
+# Variables para llegar a la meta
+signal check_goal
+
 #Variables para Contador
 signal update_counter
 export (int) var current_counter_value
 export (bool) var is_moves
+signal game_over
 
 #Efectos
 var particle_effect = preload("res://Scenes/ParticlesEffect.tscn")
@@ -76,10 +80,10 @@ func _ready():
 	randomize()
 	all_pieces = make_2d_array()
 	spawn_pieces()
-#	spawn_block()
-#	spawn_locks()
-#	spawn_concrete()
-#	spawn_slime()
+	spawn_block()
+	spawn_locks()
+	spawn_concrete()
+	spawn_slime()
 	emit_signal("update_counter", current_counter_value)
 
 func restricted_movement(place):
@@ -348,6 +352,7 @@ func destroy_matched():
 		for j in range(height):
 			if all_pieces[i][j] != null:
 				if all_pieces[i][j].matched:
+					emit_signal("check_goal", all_pieces[i][j].color)
 					destroy_obstacles(i, j)
 					was_matched = true
 					all_pieces[i][j].queue_free()
@@ -536,5 +541,8 @@ func _on_Timer_timeout():
 		$Timer.stop()
 
 func declare_game_over():
-	print("gameover")
+	emit_signal("game_over")
+	state = wait
+
+func _on_GoalHoder_game_won():
 	state = wait

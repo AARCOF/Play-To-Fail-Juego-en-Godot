@@ -1,5 +1,8 @@
 extends "res://Scripts/BaseMenuPanel.gd"
 
+func _ready():
+	pass # Replace with function body.
+
 func _on_restart_buttom_pressed():
 	get_tree().reload_current_scene()
 
