@@ -1,0 +1,134 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://art/niveles/img_nivel5.png" type="Texture" id=1]
+[ext_resource path="res://art/niveles/play.png" type="Texture" id=2]
+[ext_resource path="res://art/niveles/caja(nivel5).png" type="Texture" id=3]
+[ext_resource path="res://art/niveles/letra(nivel5).png" type="Texture" id=4]
+[ext_resource path="res://art/niveles/fondo_candado.png" type="Texture" id=5]
+[ext_resource path="res://art/niveles/candado.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/niveles/nivel5.gd" type="Script" id=7]
+[ext_resource path="res://art/niveles/candado(mensaje).png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect6:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 47, 438 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect6:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "candado"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect6:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 47, 438 ), Vector2( 47, 250 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect6:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.0745098 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.14902 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="nivel5" type="TextureRect"]
+margin_top = 53.0
+margin_right = 40.0
+margin_bottom = 93.0
+script = ExtResource( 7 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 2.0
+margin_top = 45.0
+margin_right = 597.0
+margin_bottom = 557.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 41.0
+margin_top = 95.0
+margin_right = 562.0
+margin_bottom = 527.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+margin_left = 175.0
+margin_top = 136.0
+margin_right = 426.0
+margin_bottom = 430.0
+texture = ExtResource( 6 )
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+margin_left = -3.0
+margin_top = 39.0
+margin_right = 602.0
+margin_bottom = 558.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+margin_left = 63.0
+margin_top = -43.0
+margin_right = 562.0
+margin_bottom = 140.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Button" type="Button" parent="."]
+margin_left = 209.0
+margin_top = 211.0
+margin_right = 384.0
+margin_bottom = 387.0
+icon = ExtResource( 2 )
+flat = true
+expand_icon = true
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 47.0
+margin_top = 438.0
+margin_right = 571.0
+margin_bottom = 533.001
+texture = ExtResource( 8 )
+expand = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/candado = SubResource( 2 )
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

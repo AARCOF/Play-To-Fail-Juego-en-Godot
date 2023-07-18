@@ -8,21 +8,68 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "DBConnection",
+"language": "GDScript",
+"path": "res://database/DBConnection.gd"
+}, {
+"base": "Node",
+"class": "GuiTransition",
+"language": "GDScript",
+"path": "res://addons/simple-gui-transitions/transition.gd"
+}, {
+"base": "Node",
+"class": "Qleves",
+"language": "GDScript",
+"path": "res://database/queryLeves.gd"
+}, {
+"base": "Node",
+"class": "Quser",
+"language": "GDScript",
+"path": "res://database/queryUsers.gd"
+}, {
+"base": "Reference",
+"class": "SQLiteWrapper",
+"language": "GDScript",
+"path": "res://addons/godot-sqlite/godot-sqlite-wrapper.gd"
+} ]
+_global_script_class_icons={
+"DBConnection": "",
+"GuiTransition": "res://addons/simple-gui-transitions/icon.png",
+"Qleves": "",
+"Quser": "",
+"SQLiteWrapper": ""
+}
+
 [application]
 
 config/name="JuegoMultiplos_beta"
-run/main_scene="res://Scenes/game_window.tscn"
+run/main_scene="res://Scenes/loginRegister/LoginScreen.tscn"
+
+[autoload]
+
+GlobalSettings="*res://Scripts/Global_settings.gd"
+Save="*res://Scripts/Save.gd"
+globalVar="*res://Scripts/globalVar.gd"
+DbConnection="*res://database/DBConnection.gd"
+QueryUsers="*res://database/queryUsers.gd"
+QueryLeves="*res://database/queryLeves.gd"
 
 [display]
 
-window/size/width=625
-window/size/height=1025
-window/size/always_on_top=true
-window/size/test_width=625
-window/size/test_height=995
-window/handheld/orientation="portrait"
+window/size/width=600
+window/size/height=1024
+window/size/test_width=600
+window/size/test_height=1024
+window/vsync/use_vsync=false
+window/handheld/orientation="sensor_landscape"
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/godot-sqlite/plugin.cfg" )
 
 [gui]
 
@@ -35,10 +82,6 @@ ui_touch={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
-
-[input_devices]
-
-pointing/emulate_touch_from_mouse=true
 
 [mono]
 
@@ -54,4 +97,3 @@ quality/driver/driver_name="GLES2"
 2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://default_env.tres"

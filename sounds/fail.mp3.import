@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/fail.mp3-1306f44ab23e8f1bd93955ba531dbd6c.mp3str"
+
+[deps]
+
+source_file="res://sounds/fail.mp3"
+dest_files=[ "res://.import/fail.mp3-1306f44ab23e8f1bd93955ba531dbd6c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

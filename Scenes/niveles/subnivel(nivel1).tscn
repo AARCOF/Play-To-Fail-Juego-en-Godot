@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://art/niveles/escenario(subnivel 1).jpg" type="Texture" id=1]
+[ext_resource path="res://Scenes/subnivel/boton1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://art/subniveles/ruta1.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/subnivel/boton2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/subnivel/boton3.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/subnivel/boton4.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Theme" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -692.0
+margin_right = 1531.0
+margin_bottom = 1032.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+modulate = Color( 1, 1, 1, 0.682353 )
+margin_left = 527.0
+margin_top = 51.0
+margin_right = 1451.0
+margin_bottom = 859.0
+theme = SubResource( 3 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="boton1" parent="TextureRect" instance=ExtResource( 2 )]
+margin_left = 1028.0
+margin_top = -2.0
+margin_right = 1155.0
+margin_bottom = 157.0
+
+[node name="boton2" parent="TextureRect" instance=ExtResource( 4 )]
+margin_left = 747.0
+margin_top = 258.0
+margin_right = 787.0
+margin_bottom = 298.0
+
+[node name="boton3" parent="TextureRect" instance=ExtResource( 5 )]
+margin_left = 1093.0
+margin_top = 457.0
+margin_right = 1133.0
+margin_bottom = 497.0
+
+[node name="boton4" parent="TextureRect" instance=ExtResource( 6 )]
+margin_left = 806.0
+margin_top = 657.0
+margin_right = 846.0
+margin_bottom = 697.0

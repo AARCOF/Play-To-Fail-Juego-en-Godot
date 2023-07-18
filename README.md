@@ -28,5 +28,5 @@ Las variables se declararán de la siguiente forma para ayudar a acelerar el pro
   * test: Añade tests o refactoriza uno existente.
   Si se modifico el estilo html o css de la carpeta Example.txt, entonces el commit deberá llamarse style_Example.
 # SCRIPT BASE DE DATOS
-  * Nombre de base de datos: BD_MULTIPLOS
-  * Imagen referencial de a base de datos: /Server/Diagrama_BD.png
+  * Nombre de base de datos: dbMultiple
+  * Imagen referencial de a base de datos: /database/Diagram.png

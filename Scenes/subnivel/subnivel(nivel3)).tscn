@@ -1,0 +1,429 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://art/subniveles/botones/pngegg (1).png" type="Texture" id=1]
+[ext_resource path="res://art/subniveles/botones/pngwing.com (5).png" type="Texture" id=2]
+[ext_resource path="res://art/subniveles/botones/pngwing.com (3).png" type="Texture" id=3]
+[ext_resource path="res://art/subniveles/base.png" type="Texture" id=4]
+[ext_resource path="res://art/subniveles/fondos/subnivel3.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/subnivel/subnivel(nivel3)).gd" type="Script" id=6]
+[ext_resource path="res://art/subniveles/botones/pngwing.com (4).png" type="Texture" id=7]
+[ext_resource path="res://art/niveles/animaciones/nivel3/alas 1.png" type="Texture" id=8]
+[ext_resource path="res://art/niveles/animaciones/nivel3/alas 2.5.png" type="Texture" id=9]
+[ext_resource path="res://art/niveles/animaciones/nivel3/alas 3.png" type="Texture" id=10]
+[ext_resource path="res://art/subniveles/fondos/efecto2.png" type="Texture" id=11]
+[ext_resource path="res://art/niveles/animaciones/nivel3/b.png" type="Texture" id=12]
+[ext_resource path="res://art/niveles/animaciones/nivel3/a.png" type="Texture" id=13]
+[ext_resource path="res://art/niveles/animaciones/nivel3/d.png" type="Texture" id=14]
+[ext_resource path="res://art/niveles/animaciones/nivel3/c.png" type="Texture" id=15]
+[ext_resource path="res://art/niveles/animaciones/nivel3/e.png" type="Texture" id=16]
+[ext_resource path="res://Scenes/subnivel/Retroceder.tscn" type="PackedScene" id=17]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 70, 168 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "nivel3(efecto1)"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 41, 97 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "nivel3(efecto2)"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 218, 209 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "nivel3(efecto3)"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 38, 365 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "nivel3(efecto4)"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 184, 582 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "subnivel 1"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect6/AnimatedSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.1, 1.5, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 190, 94 ), Vector2( 184, 118 ), Vector2( 184, 95 ), Vector2( 182, 68 ), Vector2( 170, 47 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect6/AnimatedSprite:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../TextureRect7:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 154, -101 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../TextureRect7:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 251, -171 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rect_rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../TextureRect7:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.67451 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.666667 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "caidahoja"
+length = 9.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../TextureRect7:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.1, 1.8, 2.3, 2.4, 3.4, 3.9, 4.9, 5.4, 6, 6.2, 6.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 154, -101 ), Vector2( 314, 49 ), Vector2( 408, 79 ), Vector2( 410, 108 ), Vector2( 259, 249 ), Vector2( 51, 267 ), Vector2( 20, 269 ), Vector2( 222, 421 ), Vector2( 467, 570 ), Vector2( 358, 688 ), Vector2( 254, 869 ), Vector2( 338, 1044 ), Vector2( 761, 1009 ), Vector2( 700, -199 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../TextureRect7:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.1, 1.8, 2.3, 2.4, 3.4, 3.9, 4.9, 5.4, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -26.8, -54.2, -71.4, -32.7, 15.7, 12.7727, -16.5, -70.2, -113.2, -135.5, -135.5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.8, 2.3, 2.4, 3.4, 3.9, 4.9, 5.4, 6, 6.2, 6.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 251, -171 ), Vector2( 285, -48 ), Vector2( 193, 27 ), Vector2( 126, 115 ), Vector2( 16, 149 ), Vector2( -8, 129 ), Vector2( 111, 273 ), Vector2( 301, 524 ), Vector2( 134, 750 ), Vector2( 86, 917 ), Vector2( 24, 1073 ), Vector2( -240, 1085 ), Vector2( -210, -169 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rect_rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.4, 2.5, 3, 3.5, 4, 4.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 7.6, 66.7, 109.7, 144.3, 170.06, 176.5, 128.1, 98.6, 7.3, 7.3 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../TextureRect7:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.5, 3.3, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.67451 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2.5, 3.3, 8.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.666667 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="subnivel3" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 601.0
+margin_bottom = 1033.0
+rect_pivot_offset = Vector2( 140, 25 )
+texture = ExtResource( 5 )
+expand = true
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+margin_left = 429.0
+margin_top = 758.0
+margin_right = 563.0
+margin_bottom = 832.0
+rect_pivot_offset = Vector2( 102, 37 )
+texture = ExtResource( 4 )
+expand = true
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+margin_left = 36.0
+margin_top = 544.0
+margin_right = 170.0
+margin_bottom = 618.0
+rect_pivot_offset = Vector2( 102, 37 )
+texture = ExtResource( 4 )
+expand = true
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+margin_left = 437.0
+margin_top = 416.0
+margin_right = 571.0
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 102, 37 )
+texture = ExtResource( 4 )
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 44.0
+margin_top = 272.0
+margin_right = 178.0
+margin_bottom = 346.0
+rect_pivot_offset = Vector2( 102, 37 )
+texture = ExtResource( 4 )
+expand = true
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+margin_left = 70.0
+margin_top = 168.0
+margin_right = 323.0
+margin_bottom = 361.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="TextureRect6"]
+position = Vector2( 178.888, 60.6042 )
+scale = Vector2( 0.5, 0.456273 )
+frames = SubResource( 6 )
+frame = 2
+playing = true
+
+[node name="bt1" type="Button" parent="."]
+margin_left = 59.0
+margin_top = 194.0
+margin_right = 169.0
+margin_bottom = 300.0
+icon = ExtResource( 7 )
+flat = true
+expand_icon = true
+
+[node name="bt2" type="Button" parent="."]
+margin_left = 457.0
+margin_top = 338.0
+margin_right = 549.0
+margin_bottom = 444.0
+icon = ExtResource( 1 )
+flat = true
+expand_icon = true
+
+[node name="bt3" type="Button" parent="."]
+modulate = Color( 1, 1, 0.027451, 1 )
+self_modulate = Color( 0.976471, 1, 0, 1 )
+margin_left = 58.0
+margin_top = 469.0
+margin_right = 173.0
+margin_bottom = 575.0
+icon = ExtResource( 2 )
+flat = true
+expand_icon = true
+
+[node name="bt4" type="Button" parent="."]
+margin_left = 435.0
+margin_top = 680.0
+margin_right = 557.0
+margin_bottom = 789.0
+icon = ExtResource( 3 )
+flat = true
+expand_icon = true
+
+[node name="Animacionboton" type="AnimationPlayer" parent="."]
+root_node = NodePath("../TextureRect6")
+anims/RESET = SubResource( 1 )
+anims/nivel3(efecto1) = SubResource( 2 )
+anims/nivel3(efecto2) = SubResource( 3 )
+anims/nivel3(efecto3) = SubResource( 4 )
+anims/nivel3(efecto4) = SubResource( 5 )
+
+[node name="Animacionprincipal" type="AnimationPlayer" parent="."]
+"anims/subnivel 1" = SubResource( 7 )
+
+[node name="TextureRect7" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.67451 )
+margin_left = 154.0
+margin_top = -101.0
+margin_right = 255.001
+margin_bottom = -10.9969
+rect_pivot_offset = Vector2( 60, 65 )
+texture = ExtResource( 11 )
+expand = true
+
+[node name="hoja" type="AnimationPlayer" parent="."]
+root_node = NodePath("../TextureRect8")
+anims/RESET = SubResource( 8 )
+anims/caidahoja = SubResource( 9 )
+
+[node name="TextureRect8" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.666667 )
+margin_left = 251.0
+margin_top = -171.0
+margin_right = 351.998
+margin_bottom = -80.9838
+rect_pivot_offset = Vector2( 61, 62 )
+texture = ExtResource( 11 )
+expand = true
+
+[node name="TextureRect9" parent="." instance=ExtResource( 17 )]
+
+[connection signal="pressed" from="bt1" to="." method="_on_bt1_pressed"]
+[connection signal="pressed" from="bt2" to="." method="_on_bt2_pressed"]
+[connection signal="pressed" from="bt3" to="." method="_on_bt3_pressed"]
+[connection signal="pressed" from="bt4" to="." method="_on_bt4_pressed"]

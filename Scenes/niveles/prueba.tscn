@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/niveles/nivel2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/niveles/nivel1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/niveles/nivel5.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/niveles/nivel4.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/niveles/nivel3.tscn" type="PackedScene" id=5]
+
+[node name="Control" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 5.0
+margin_top = 84.0
+margin_right = 3123.0
+margin_bottom = 559.0
+scroll_vertical_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+margin_right = 2400.0
+rect_min_size = Vector2( 1200, 0 )
+custom_constants/separation = 600
+
+[node name="nivel1" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="nivel2" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 600.0
+margin_top = 0.0
+margin_right = 600.0
+margin_bottom = 0.0
+
+[node name="nivel3" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 5 )]
+margin_left = 1200.0
+margin_top = 0.0
+margin_right = 1200.0
+margin_bottom = 0.0
+
+[node name="nivel4" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 1800.0
+margin_right = 1800.0
+margin_bottom = 0.0
+
+[node name="nivel5" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 2400.0
+margin_top = 0.0
+margin_right = 2400.0
+margin_bottom = 0.0
