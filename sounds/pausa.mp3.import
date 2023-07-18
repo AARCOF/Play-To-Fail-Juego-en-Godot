@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/pausa.mp3-b7429dfbbd2c62bf527d6dc51504fa77.mp3str"
+
+[deps]
+
+source_file="res://sounds/pausa.mp3"
+dest_files=[ "res://.import/pausa.mp3-b7429dfbbd2c62bf527d6dc51504fa77.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
