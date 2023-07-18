@@ -51,7 +51,7 @@ run/main_scene="res://Scenes/loginRegister/LoginScreen.tscn"
 
 GlobalSettings="*res://Scripts/Global_settings.gd"
 Save="*res://Scripts/Save.gd"
-globalVar="*res://globalVar.gd"
+globalVar="*res://Scripts/globalVar.gd"
 DbConnection="*res://database/DBConnection.gd"
 QueryUsers="*res://database/queryUsers.gd"
 QueryLeves="*res://database/queryLeves.gd"

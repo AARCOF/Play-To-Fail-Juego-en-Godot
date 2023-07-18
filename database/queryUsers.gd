@@ -22,6 +22,19 @@ func inventory(id: String) -> Dictionary :
 	var result = db.query_result[0]
 	return result
 
+# Retorna datos necesarios de la tabla "inventory" segun fk
+func inventoryAll(fk:String) -> Array:
+	var result = []
+	db.query( str("SELECT COUNT(*) AS amount FROM inventory WHERE idUser = '", fk , "'") )
+	var resultQ = db.query_result[0]
+	var size = resultQ['amount']
+	db.query( str("SELECT points, coin, idItems FROM inventory WHERE idUser = '" + fk + "'") )
+	
+	for i in range(size):
+		var data = db.query_result[i]
+		result.append(data)
+	return result
+
 
 # Guarda los datos en la tabla "user"
 func saveUser( firstname:String, surname:String, alias:String, password:String, idLevel:String) -> void:
@@ -36,17 +49,19 @@ func saveUser( firstname:String, surname:String, alias:String, password:String, 
 	}
 	db.insert_row('user', data)
 
+
 # Guarda los datos en la tabla "Inventory"
-func saveInventory( points:String, coin:String ,idItems:String, idUser:String) -> void:
+func saveInventory( points:int, coin:float ,idItems:String, idUser:String) -> void:
 	var data = {
 		"idInventory": idInventory(),
 		"dateObtained": dateTime(),
-		"points": int(points),
-		"coin": float(coin),
+		"points": points,
+		"coin": coin,
 		"idItems": idItems,
 		"idUser": idUser
 	}
 	db.insert_row('inventory', data)
+
 
 # Actualiza los datos en la tabla "user"
 func updateUser(id:String, firstname:String, surname:String, alias:String, password:String, idLevel:String)-> void:
@@ -62,6 +77,7 @@ func updateUser(id:String, firstname:String, surname:String, alias:String, passw
 	#Boolean success = update_rows( String table_name, String query_conditions, Dictionary updated_row_dictionary )
 	db.update_rows('user', condition, data)
 
+
 # Actualiza los datos en la tabla "Inventory"
 func updateInventory(id:String, points:String, coin:String ,idItems:String, idUser:String)-> void:
 	var data = {
@@ -73,6 +89,7 @@ func updateInventory(id:String, points:String, coin:String ,idItems:String, idUs
 	}
 	var condition = str("idInventory = '" , id , "'")
 	db.update_rows('inventory', condition, data)
+
 
 # Elimina un usuario con la ID
 func deleteUser( id:String )-> void:

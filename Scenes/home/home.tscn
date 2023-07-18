@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Font/fonts/cmu-typewriter/Typewriter/cmunit.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Font/fonts/linux-libertine/LinLibertine_5.3.0_2012_07_02/LinLibertineOTF_5.3.0_2012_07_02/LinLibertine_M.otf" type="DynamicFontData" id=2]
@@ -9,8 +9,10 @@
 [ext_resource path="res://art/boton_rojo.png" type="Texture" id=7]
 [ext_resource path="res://art/boton.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/SettingsMenu.gd" type="Script" id=9]
-[ext_resource path="res://sounds/fondo.mp3" type="AudioStream" id=10]
-[ext_resource path="res://sounds/KairukuKing.wav" type="AudioStream" id=11]
+[ext_resource path="res://Scenes/pet/Pet.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/dialogs/Confirmation.tscn" type="PackedScene" id=11]
+[ext_resource path="res://sounds/fondo.mp3" type="AudioStream" id=12]
+[ext_resource path="res://sounds/KairukuKing.wav" type="AudioStream" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 41
@@ -271,18 +273,21 @@ max_value = 0.0
 value = -15.0
 rounded = true
 
+[node name="Pet" parent="." instance=ExtResource( 10 )]
+position = Vector2( 151, 176 )
+
+[node name="Confirmation" parent="." instance=ExtResource( 11 )]
+visible = false
+
 [node name="AudioStreamMaster" type="AudioStreamPlayer" parent="."]
-autoplay = true
 
 [node name="AudioStreamMusic" type="AudioStreamPlayer" parent="AudioStreamMaster"]
-stream = ExtResource( 10 )
+stream = ExtResource( 12 )
 autoplay = true
-bus = "Music"
 
 [node name="AudioStreamSFX" type="AudioStreamPlayer" parent="AudioStreamMaster/AudioStreamMusic"]
-stream = ExtResource( 11 )
+stream = ExtResource( 13 )
 autoplay = true
-bus = "SFX"
 
 [connection signal="pressed" from="NinePatchRect/ContainerButtonsMenu/GridContainer/Bttn_Play" to="." method="_on_Bttn_Play_pressed"]
 [connection signal="pressed" from="NinePatchRect/ContainerButtonsMenu/GridContainer/Bttn_Option" to="." method="_on_Bttn_Option_pressed"]

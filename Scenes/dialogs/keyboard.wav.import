@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/keyboard.wav-5e655ab7df096b9d182ddacd531e3548.sample"
+path="res://.import/keyboard.wav-d0425aecf960998738f93b25e5a0ba3b.sample"
 
 [deps]
 
-source_file="res://dialogs/keyboard.wav"
-dest_files=[ "res://.import/keyboard.wav-5e655ab7df096b9d182ddacd531e3548.sample" ]
+source_file="res://Scenes/dialogs/keyboard.wav"
+dest_files=[ "res://.import/keyboard.wav-d0425aecf960998738f93b25e5a0ba3b.sample" ]
 
 [params]
 

@@ -10,7 +10,15 @@
 [ext_resource path="res://art/niveles/animaciones/nivel2/3.png" type="Texture" id=8]
 [ext_resource path="res://art/niveles/animaciones/nivel2/1.png" type="Texture" id=9]
 [ext_resource path="res://art/niveles/animaciones/nivel2/2.png" type="Texture" id=10]
-[ext_resource path="res://Scenes/subnivel/btn_retroceder.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/subnivel/Retroceder.tscn" type="PackedScene" id=11]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+} ]
 
 [sub_resource type="Animation" id=1]
 resource_name = "subnivel 1"
@@ -40,14 +48,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 0.464912, 0.510989 ), Vector2( 0.582456, 0.413004 ), Vector2( 0.417544, 0.499542 ), Vector2( 0.354386, 0.499542 ), Vector2( 0.48421, 0.499542 ) ]
 }
-
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "default",
-"speed": 7.0
-} ]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -176,6 +176,19 @@ rect_pivot_offset = Vector2( 102, 37 )
 texture = ExtResource( 6 )
 expand = true
 
+[node name="TextureRect6" type="TextureRect" parent="."]
+margin_left = 98.0
+margin_top = 126.0
+margin_right = 351.0
+margin_bottom = 319.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="TextureRect6"]
+position = Vector2( 190.432, 99.9653 )
+scale = Vector2( 0.480178, 0.498598 )
+frames = SubResource( 2 )
+frame = 6
+playing = true
+
 [node name="Button" type="Button" parent="."]
 margin_left = 387.0
 margin_top = 144.0
@@ -214,19 +227,6 @@ expand_icon = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/subnivel 1" = SubResource( 1 )
-
-[node name="TextureRect6" type="TextureRect" parent="."]
-margin_left = 98.0
-margin_top = 126.0
-margin_right = 351.0
-margin_bottom = 319.0
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="TextureRect6"]
-position = Vector2( 190.432, 99.9653 )
-scale = Vector2( 0.480178, 0.498598 )
-frames = SubResource( 2 )
-frame = 2
-playing = true
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )

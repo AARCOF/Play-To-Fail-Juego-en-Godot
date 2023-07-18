@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/image1.png-d3f3d6dd1ea2b918de3d378a676c6945.stex"
+path="res://.import/btn_aceptar.png-c839770ba35c1aba0ef00b51e670106b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dialogs/image1.png"
-dest_files=[ "res://.import/image1.png-d3f3d6dd1ea2b918de3d378a676c6945.stex" ]
+source_file="res://Scenes/dialogs/confirmation/btn_aceptar.png"
+dest_files=[ "res://.import/btn_aceptar.png-c839770ba35c1aba0ef00b51e670106b.stex" ]
 
 [params]
 

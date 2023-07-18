@@ -11,21 +11,21 @@ func starPet():
 	sprite.play("moving")
 
 func starPetHappy():
-	$AnimationPlayer/Moving.visible = false
 	$AnimationPlayer/Happy.visible = true
+	$AnimationPlayer/Moving.visible = false
 	$AnimationPlayer/Sad.visible = false
 	sprite.play("happy")
 	
 func starPetSad():
+	$AnimationPlayer/Sad.visible = true
 	$AnimationPlayer/Moving.visible = false
 	$AnimationPlayer/Happy.visible = false
-	$AnimationPlayer/Sad.visible = true
 	sprite.play("sad")
 
 
 func starPetHappyOne():
-	$AnimationPlayer/Moving.visible = false
 	$AnimationPlayer/Happy.visible = true
+	$AnimationPlayer/Moving.visible = false
 	$AnimationPlayer/Sad.visible = false
 	sprite.play("happy")
 	yield(get_tree().create_timer(1.4), "timeout")

@@ -3,7 +3,7 @@
 [ext_resource path="res://art/background.jpg" type="Texture" id=1]
 [ext_resource path="res://art/top_ui.png" type="Texture" id=2]
 [ext_resource path="res://art/bottom_ui.png" type="Texture" id=3]
-[ext_resource path="res://dialogs/DialogGame.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/dialogs/DialogGame.tscn" type="PackedScene" id=4]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -21,6 +21,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Button_pressed():
+	get_tree().change_scene(\"res://Scenes/home/home.tscn\") 
 "
 
 [node name="game_window" type="Node2D"]
@@ -54,3 +58,12 @@ texture = ExtResource( 3 )
 
 [node name="grid" type="Node2D" parent="."]
 script = ExtResource( 4 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 196.0
+margin_top = 877.0
+margin_right = 416.0
+margin_bottom = 970.0
+text = "regresar"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

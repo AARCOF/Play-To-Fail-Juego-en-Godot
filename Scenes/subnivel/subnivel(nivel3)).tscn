@@ -16,7 +16,7 @@
 [ext_resource path="res://art/niveles/animaciones/nivel3/d.png" type="Texture" id=14]
 [ext_resource path="res://art/niveles/animaciones/nivel3/c.png" type="Texture" id=15]
 [ext_resource path="res://art/niveles/animaciones/nivel3/e.png" type="Texture" id=16]
-[ext_resource path="res://Scenes/subnivel/btn_retroceder.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/subnivel/Retroceder.tscn" type="PackedScene" id=17]
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
@@ -344,7 +344,7 @@ margin_bottom = 361.0
 position = Vector2( 178.888, 60.6042 )
 scale = Vector2( 0.5, 0.456273 )
 frames = SubResource( 6 )
-frame = 7
+frame = 2
 playing = true
 
 [node name="bt1" type="Button" parent="."]

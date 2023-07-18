@@ -13,61 +13,7 @@
 [ext_resource path="res://art/niveles/efecto(fondo)/3.jpg" type="Texture" id=11]
 [ext_resource path="res://art/niveles/efecto(fondo)/8.jpg" type="Texture" id=12]
 [ext_resource path="res://art/niveles/efecto(fondo)/9.jpg" type="Texture" id=13]
-
-[sub_resource type="GDScript" id=4]
-script/source = "extends CanvasLayer
-
-var scroll_container: ScrollContainer
-var hbox_container: HBoxContainer
-var current_index: int
-var tween: Tween
-
-onready var animationPlayer1: AnimationPlayer = $ AnimationPlayer
-
-
-
-
-func _ready():
-	animationPlayer1.play(\"fondo_movimiento\")
-	scroll_container = get_node(\"ScrollContainer\")
-	hbox_container = scroll_container.get_node(\"HBoxContainer\")
-	current_index = 0
-	
-	
-	# Crear el Tween y añadirlo al ScrollContainer
-	tween = Tween.new()
-	scroll_container.add_child(tween)
-
-	
-	
-func _on_siguiente_pressed():
-	current_index += 1
-
-	if current_index >= hbox_container.get_child_count():
-		current_index = 0
-
-	var target_texture_rect = hbox_container.get_child(current_index)
-	var target_position = target_texture_rect.rect_position.x
-
-	tween.stop_all()
-	tween.interpolate_property(scroll_container, \"scroll_horizontal\", scroll_container.scroll_horizontal, target_position, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
-
-
-func _on_anterior_pressed():
-	
-	current_index -= 1
-
-	if current_index < 0:
-		current_index = hbox_container.get_child_count() - 1
-
-	var target_texture_rect = hbox_container.get_child(current_index)
-	var target_position = target_texture_rect.rect_position.x
-
-	tween.stop_all()
-	tween.interpolate_property(scroll_container, \"scroll_horizontal\", scroll_container.scroll_horizontal, target_position, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
-"
+[ext_resource path="res://Scenes/niveles/niveles.gd" type="Script" id=14]
 
 [sub_resource type="StyleBoxEmpty" id=9]
 
@@ -193,7 +139,7 @@ tracks/3/keys = {
 }
 
 [node name="CanvasLayer" type="CanvasLayer"]
-script = SubResource( 4 )
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_horizontal_guides_": [ -79.0 ]
 }

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/happyPet.png-4c90c766d0e729245d7dd8c80ace77a5.stex"
+path="res://.import/sadPet.png-e720bb3697cf61600c695eb28e666436.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pet/happyPet.png"
-dest_files=[ "res://.import/happyPet.png-4c90c766d0e729245d7dd8c80ace77a5.stex" ]
+source_file="res://Scenes/pet/sadPet.png"
+dest_files=[ "res://.import/sadPet.png-e720bb3697cf61600c695eb28e666436.stex" ]
 
 [params]
 

@@ -68,8 +68,11 @@ func _on_RegisterBttn_pressed():
 	
 func _on_LoginBttn_pressed():
 	logIn()
-
+	
+	
+# =====================
 # Validacion de nombres
+# =====================
 func validarNombreCompleto(nombreCompleto: String) -> bool:
 	# Expresión regular para validar el nombre completo
 	var patron = "^[A-Za-z]+(?:\\s+[A-Za-z]+)*\\s+[A-Za-z]+$"
@@ -92,7 +95,7 @@ func registerUser():
 	if ( name.empty() or alias.empty() or password.empty() ):
 		message.showDialog("Usted tiene que llenar todos los campos completos")#------------------------------
 		
-	elif ( (validarNombreCompleto(name) == true) and (alias != "")  and (password != "")):
+	elif ( (validarNombreCompleto(name) == true) and (alias != "")  and (password != "") and (password.length()>=4)):
 		var apart = name.split(" ", false, 2)
 		var firstname = apart[0]
 		var surname = name[0]
@@ -133,6 +136,8 @@ func registerUser():
 			message.showDialog('El usuario ya existe, digite otro Alias')#---------------------------
 	elif ( validarNombreCompleto(name) == false):
 		message.showDialog("Usted tiene que digitar su nombre y apellido completo")#------------------------------
+	elif ( (validarNombreCompleto(name) == true) and (password.length()<4)) :
+		message.showDialog("Las contraseñas tiene que ser mayor a 3 digitos")#------------------------------
 	else :
 		message.showDialog('Upps, Ocurrio algun error')#---------------------------
 
@@ -150,13 +155,15 @@ func logIn() :
 		quser.updateID(user)
 
 		if (quser.dencrytData(data, password) == true) :
-			#Cambio de escena
+
+			globalVar.ALIAS = user
+
 			get_tree().change_scene("res://Scenes/home/home.tscn")# INIT GAME
-			
 			message._on_Button_pressed()
 			
 		elif (password == "") :
 			message.showDialog("Digite una contraseña")#---------------------------
+			
 		else :
 			message.showDialog("La contraseña es incorrecta")#---------------------------
 

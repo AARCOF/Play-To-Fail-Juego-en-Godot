@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pet.png-3f1b9fa6f1a8c8c36c67552b5410b725.stex"
+path="res://.import/image1.png-7005515c786a99ddbd74aedac751203e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pet/pet.png"
-dest_files=[ "res://.import/pet.png-3f1b9fa6f1a8c8c36c67552b5410b725.stex" ]
+source_file="res://Scenes/dialogs/image1.png"
+dest_files=[ "res://.import/image1.png-7005515c786a99ddbd74aedac751203e.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

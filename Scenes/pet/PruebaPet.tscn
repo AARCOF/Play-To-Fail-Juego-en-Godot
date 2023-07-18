@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://pet/Pet.tscn" type="PackedScene" id=1]
-[ext_resource path="res://pet/PruebaPet.gd" type="Script" id=2]
-[ext_resource path="res://dialogs/DialogGame.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/pet/Pet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/pet/PruebaPet.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/dialogs/DialogGame.tscn" type="PackedScene" id=3]
 
 [node name="PruebaPet" type="Node2D"]
 script = ExtResource( 2 )

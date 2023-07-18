@@ -13,8 +13,36 @@
 [ext_resource path="res://art/subniveles/fondos/efecto3.png" type="Texture" id=11]
 [ext_resource path="res://art/subniveles/fondos/efecto4.png" type="Texture" id=12]
 [ext_resource path="res://art/subniveles/botones/pngwing.com (4).png" type="Texture" id=13]
-[ext_resource path="res://subnivel4.gd" type="Script" id=14]
-[ext_resource path="res://Scenes/subnivel/btn_retroceder.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/subnivel/Retroceder.tscn" type="PackedScene" id=15]
+
+[sub_resource type="GDScript" id=11]
+script/source = "extends Control
+
+onready var animationPlayer1: AnimationPlayer = $movimiento
+onready var animationPlayer2: AnimationPlayer = $posiciones
+onready var animationPlayer3: AnimationPlayer = $nube
+
+
+func _ready():
+	animationPlayer1.play(\"movimiento\")
+	animationPlayer3.play(\"nube\")
+
+
+func _on_Button_pressed():
+	animationPlayer2.play(\"efecto1(btn1)\")
+
+
+func _on_Button2_pressed():
+	animationPlayer2.play(\"efecto(btn2)\")
+
+
+func _on_Button3_pressed():
+	animationPlayer2.play(\"efecto(btn3)\")
+
+
+func _on_Button4_pressed():
+	animationPlayer2.play(\"efecto(btn4)\")
+"
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -171,7 +199,7 @@ tracks/0/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 129, 229 )
-script = ExtResource( 14 )
+script = SubResource( 11 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 594.0
@@ -228,7 +256,7 @@ margin_bottom = 240.0
 position = Vector2( 226, 53.5578 )
 scale = Vector2( 0.513338, 0.55965 )
 frames = SubResource( 3 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="TextureRect6" type="TextureRect" parent="."]

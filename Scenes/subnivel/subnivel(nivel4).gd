@@ -10,8 +10,6 @@ func _ready():
 	animationPlayer3.play("nube")
 
 
-
-
 func _on_Button_pressed():
 	animationPlayer2.play("efecto1(btn1)")
 

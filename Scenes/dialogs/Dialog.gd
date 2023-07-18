@@ -2,6 +2,7 @@ extends CanvasLayer
 
 var textSpeed = 0.01
 
+signal button_pressed
 
 func showDialog(TEXT: String) -> void:
 	show()
@@ -22,4 +23,6 @@ func showDialog(TEXT: String) -> void:
 
 
 func _on_Button_pressed():
+	#emit_signal("button_pressed")
 	hide()
+	

@@ -21,6 +21,7 @@ func _on_Button_pressed():
 	#yield(get_tree().create_timer(3.0), "timeout")
 	animationPlayer1.stop()
 	get_tree().change_scene("res://Scenes/game_window.tscn")
+	
 
 
 func _on_Button2_pressed():

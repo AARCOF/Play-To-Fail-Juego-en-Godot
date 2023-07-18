@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/iconFund.png-726a3fd54e3d86d322bdb87b5320a9bb.stex"
+path="res://.import/next.png-ded2546c12da9e8c144cf9149c87555d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dialogs/iconFund.png"
-dest_files=[ "res://.import/iconFund.png-726a3fd54e3d86d322bdb87b5320a9bb.stex" ]
+source_file="res://Scenes/dialogs/next.png"
+dest_files=[ "res://.import/next.png-ded2546c12da9e8c144cf9149c87555d.stex" ]
 
 [params]
 
