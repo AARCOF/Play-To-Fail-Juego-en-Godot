@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/simple-gui-transitions/materials/transform.tres" type="Material" id=1]
+[ext_resource path="res://ui utility/Spark.jpg" type="Texture" id=2]
+[ext_resource path="res://addons/simple-gui-transitions/example/theme.tres" type="Theme" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Button
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[node name="LoginScreen" type="Control"]
+material = ExtResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_left = 0.00292969
+anchor_right = 1.00293
+anchor_bottom = 0.993333
+texture = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -198.0
+margin_top = 73.0
+margin_right = 228.0
+margin_bottom = 332.0
+
+[node name="Titulo" type="Label" parent="NinePatchRect/VBoxContainer"]
+margin_right = 426.0
+margin_bottom = 47.0
+text = "Login Screen
+"
+align = 1
+
+[node name="NombreUsuario" type="Label" parent="NinePatchRect/VBoxContainer"]
+margin_top = 51.0
+margin_right = 426.0
+margin_bottom = 73.0
+text = "Nombre de Usuario"
+
+[node name="In_Usuario" type="LineEdit" parent="NinePatchRect/VBoxContainer"]
+margin_top = 77.0
+margin_right = 426.0
+margin_bottom = 109.0
+
+[node name="HSeparator" type="HSeparator" parent="NinePatchRect/VBoxContainer"]
+margin_top = 113.0
+margin_right = 426.0
+margin_bottom = 117.0
+
+[node name="Contraseña" type="Label" parent="NinePatchRect/VBoxContainer"]
+margin_top = 121.0
+margin_right = 426.0
+margin_bottom = 143.0
+text = "Contraseña"
+
+[node name="In_Contrasena" type="LineEdit" parent="NinePatchRect/VBoxContainer"]
+margin_top = 147.0
+margin_right = 426.0
+margin_bottom = 179.0
+max_length = 15
+secret = true
+
+[node name="HSeparator2" type="HSeparator" parent="NinePatchRect/VBoxContainer"]
+margin_top = 183.0
+margin_right = 426.0
+margin_bottom = 187.0
+
+[node name="LoginBttn" type="Button" parent="NinePatchRect/VBoxContainer"]
+margin_top = 191.0
+margin_right = 426.0
+margin_bottom = 225.0
+text = "Login"
+icon_align = 1
+script = SubResource( 1 )
+
+[node name="RegisterRedi" type="Button" parent="NinePatchRect/VBoxContainer"]
+margin_top = 229.0
+margin_right = 426.0
+margin_bottom = 263.0
+text = "Register"
