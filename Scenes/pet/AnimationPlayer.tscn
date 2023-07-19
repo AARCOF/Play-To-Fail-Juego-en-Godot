@@ -74,7 +74,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "moving"
-length = 2.55
+length = 0.85
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Moving:frame")
@@ -83,10 +83,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.45, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 1, 0, 1, 2, 1, 0, 3, 4 ]
+"values": [ 0, 1, 0 ]
 }
 
 [sub_resource type="Animation" id=4]

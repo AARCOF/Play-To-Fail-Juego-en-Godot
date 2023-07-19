@@ -7,8 +7,10 @@ onready var animationPlayer1: AnimationPlayer = $AnimationPlayer
 func _ready():
 	pass # Replace with function body.
 	animationPlayer1.play("nivel4(efecto)")
-	
+	$TextureRect4/AnimatedSprite.play()
 
 
 func _on_Button_pressed():
 	get_tree().change_scene("res://Scenes/subnivel/subnivel(nivel4).tscn")
+	$TextureRect4/AnimatedSprite.stop()
+	animationPlayer1.stop()

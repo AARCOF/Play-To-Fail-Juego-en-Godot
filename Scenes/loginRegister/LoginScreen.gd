@@ -2,10 +2,10 @@ extends Control
 
 var loginScreenContainer: Node
 var registerScreenContainer: Node
-onready var animationPlayer1: AnimationPlayer = $NinePatchRect/TextureRect/AnimationPlayer
-onready var animationPlayer2: AnimationPlayer = $NinePatchRect/TextureRect2/AnimationPlayer
+
+
 onready var animationPlayer3: AnimationPlayer = $NinePatchRect/TextureRect3/AnimationPlayer
-onready var animationPlayer4: AnimationPlayer = $NinePatchRect2/TextureRect5/TextureRect4/AnimationPlayer
+
 onready var animationPlayer5: AnimationPlayer = $NinePatchRect2/TextureRect5/AnimationPlayer
 onready var animationPlayer6: AnimationPlayer = $TextureRect/AnimationPlayer
 
@@ -17,10 +17,11 @@ var quser = null
 
 func _ready():
 	OpenConnectionDatabase() # se realiza la conexion a la base de datos
-	
-	animationPlayer1.play("circular")
-	animationPlayer2.play("niño")
+
+
 	animationPlayer3.play("niña")
+	animationPlayer5.stop()
+	animationPlayer6.stop()
 	
 	loginScreenContainer = $NinePatchRect/LoginContainer
 	registerScreenContainer = $NinePatchRect2/RegisterContainer
@@ -40,6 +41,8 @@ func _on_LoginRedi_pressed():
 	loginScreenContainer.visible = true
 	registerScreenContainer.visible = false
 	$TextureRect.visible=true
+	animationPlayer3.play("niña")
+	animationPlayer5.stop()
 	animationPlayer6.play("transicion_x")
 	message._on_Button_pressed()#----------------
 
@@ -49,7 +52,7 @@ func _on_RegisterRedi_pressed():
 	$NinePatchRect2.visible = true
 	loginScreenContainer.visible = false
 	registerScreenContainer.visible = true
-	animationPlayer4.play("brazo")
+	animationPlayer3.stop()
 	animationPlayer5.play("mover_arriba")
 	$TextureRect.visible=true
 	animationPlayer6.play("transicion_x")
@@ -106,11 +109,7 @@ func registerUser():
 		if apart.size() > 2:
 			surname = apart[1] + " " + apart[2]
 
-		print(firstname)#clear
-		print(surname)#clear
-		print(alias)#clear
-		print(password)#clear
-		
+
 		# ==================================== #
 		if ( quser.searchAlias(alias) == false ) :
 			
@@ -129,7 +128,6 @@ func registerUser():
 				$NinePatchRect2/RegisterContainer/In_Nombres.text = ""
 				$NinePatchRect2/RegisterContainer/In_Usuario.text = ""
 				$NinePatchRect2/RegisterContainer/In_Contrasena.text = ""
-				print(globalVar.idUSER)
 			else :
 				message.showDialog('El usuario no se guardó, ocurrió un error')#-------------------------
 		else :
@@ -157,9 +155,9 @@ func logIn() :
 		if (quser.dencrytData(data, password) == true) :
 
 			globalVar.ALIAS = user
+			getInformation() 
 
 			get_tree().change_scene("res://Scenes/home/home.tscn")# INIT GAME
-			message._on_Button_pressed()
 			
 		elif (password == "") :
 			message.showDialog("Digite una contraseña")#---------------------------
@@ -173,3 +171,24 @@ func logIn() :
 		message.showDialog("Usted no digitó ningun dato, llena todos los campos completos")#---------------------------
 	else : 
 		message.showDialog("El usuario no existe, registrese como un nuevo usuario")#---------------------------
+
+
+func getInformation() -> void :
+	quser = Quser.new() 
+	var fk = globalVar.idUSER
+	var result = quser.inventoryAll(fk)
+	
+	var totalPoints = 0
+	var totalCoins = 0
+	#var itemsList = []
+	
+	for i in range(result.size()):
+		totalPoints +=  result[i]['points']
+		totalCoins += result[i]['coin']
+		#itemsList += result[i]['idItems']
+		
+	globalVar.obtainedPoint = totalPoints
+	globalVar.obtainedCoin  = totalCoins
+	globalVar.points = totalPoints
+	globalVar.coins  = totalCoins
+

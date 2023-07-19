@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Font/fonts/cmu-typewriter/Typewriter/cmunit.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Font/fonts/linux-libertine/LinLibertine_5.3.0_2012_07_02/LinLibertineOTF_5.3.0_2012_07_02/LinLibertine_M.otf" type="DynamicFontData" id=2]
@@ -13,6 +13,9 @@
 [ext_resource path="res://Scenes/dialogs/Confirmation.tscn" type="PackedScene" id=11]
 [ext_resource path="res://sounds/fondo.mp3" type="AudioStream" id=12]
 [ext_resource path="res://sounds/KairukuKing.wav" type="AudioStream" id=13]
+[ext_resource path="res://Scenes/home/estrella_puntos.png" type="Texture" id=14]
+[ext_resource path="res://Scenes/home/estella_nombre.png" type="Texture" id=15]
+[ext_resource path="res://Scenes/home/fondo.jpg" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 41
@@ -77,6 +80,28 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 6 )
 
+[sub_resource type="DynamicFontData" id=10]
+font_path = "res://Font/fonts/kirifont/KiriFont.ttf"
+
+[sub_resource type="DynamicFont" id=11]
+size = 23
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_top = 6
+font_data = SubResource( 10 )
+
+[sub_resource type="DynamicFontData" id=12]
+font_path = "res://Font/fonts/source-code-pro/source-code-pro-2.010R-ro-1.030R-it/TTF/SourceCodePro-Black.ttf"
+
+[sub_resource type="DynamicFont" id=13]
+size = 23
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_top = -2
+font_data = SubResource( 12 )
+
 [node name="Home" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -87,7 +112,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource( 5 )
+texture = ExtResource( 16 )
 
 [node name="ContainerButtonsMenu" type="VBoxContainer" parent="NinePatchRect"]
 anchor_left = 0.5
@@ -95,9 +120,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -236.0
-margin_top = -199.5
+margin_top = -12.0
 margin_right = 236.0
-margin_bottom = 199.5
+margin_bottom = 387.0
 custom_constants/separation = 10
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect/ContainerButtonsMenu"]
@@ -273,9 +298,6 @@ max_value = 0.0
 value = -15.0
 rounded = true
 
-[node name="Pet" parent="." instance=ExtResource( 10 )]
-position = Vector2( 151, 176 )
-
 [node name="Confirmation" parent="." instance=ExtResource( 11 )]
 visible = false
 
@@ -288,6 +310,50 @@ autoplay = true
 [node name="AudioStreamSFX" type="AudioStreamPlayer" parent="AudioStreamMaster/AudioStreamMusic"]
 stream = ExtResource( 13 )
 autoplay = true
+
+[node name="Pet" parent="." instance=ExtResource( 10 )]
+position = Vector2( 106, 391 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="Alias" type="TextureRect" parent="."]
+margin_left = 7.0
+margin_top = -100.0
+margin_right = 407.0
+margin_bottom = 300.0
+texture = ExtResource( 15 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="name" type="RichTextLabel" parent="Alias"]
+margin_left = 116.0
+margin_top = 166.0
+margin_right = 381.0
+margin_bottom = 198.0
+custom_fonts/normal_font = SubResource( 11 )
+bbcode_enabled = true
+tab_size = 3
+
+[node name="Point" type="TextureRect" parent="."]
+margin_left = 33.0
+margin_top = 54.0
+margin_right = 283.0
+margin_bottom = 304.0
+texture = ExtResource( 14 )
+expand = true
+
+[node name="value" type="RichTextLabel" parent="Point"]
+margin_left = 71.0
+margin_top = 99.0
+margin_right = 142.0
+margin_bottom = 126.0
+rect_clip_content = false
+custom_fonts/normal_font = SubResource( 13 )
+bbcode_enabled = true
+meta_underlined = false
+tab_size = 0
+scroll_active = false
 
 [connection signal="pressed" from="NinePatchRect/ContainerButtonsMenu/GridContainer/Bttn_Play" to="." method="_on_Bttn_Play_pressed"]
 [connection signal="pressed" from="NinePatchRect/ContainerButtonsMenu/GridContainer/Bttn_Option" to="." method="_on_Bttn_Option_pressed"]

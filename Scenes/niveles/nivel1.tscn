@@ -2,8 +2,8 @@
 
 [ext_resource path="res://art/niveles/play.png" type="Texture" id=1]
 [ext_resource path="res://art/niveles/animaciones/nivel1/cerrado.png" type="Texture" id=2]
-[ext_resource path="res://art/niveles/nivel3(fondo).png" type="Texture" id=3]
-[ext_resource path="res://art/niveles/caja(nivel1).png" type="Texture" id=4]
+[ext_resource path="res://art/niveles/fondo/fondo(nivel1).png" type="Texture" id=3]
+[ext_resource path="res://art/niveles/cuadros/amarillo.png" type="Texture" id=4]
 [ext_resource path="res://art/niveles/letra(nivel1).png" type="Texture" id=5]
 [ext_resource path="res://art/niveles/animaciones/nivel1/medio cerrado.png" type="Texture" id=6]
 [ext_resource path="res://art/niveles/animaciones/nivel1/huevo.png" type="Texture" id=7]
@@ -62,7 +62,6 @@ margin_top = 47.0
 margin_right = 591.0
 margin_bottom = 559.0
 texture = ExtResource( 4 )
-expand = true
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 margin_left = 21.0
@@ -70,15 +69,13 @@ margin_top = 84.0
 margin_right = 564.0
 margin_bottom = 523.0
 texture = ExtResource( 3 )
-expand = true
 
 [node name="TextureRect3" type="TextureRect" parent="."]
-margin_left = 83.0
+margin_left = 65.0
 margin_top = -36.0
-margin_right = 1822.0
-margin_bottom = 152.0
+margin_right = 2042.0
+margin_bottom = 153.0
 texture = ExtResource( 5 )
-expand = true
 
 [node name="TextureRect4" type="TextureRect" parent="."]
 margin_left = 1.99998
@@ -92,8 +89,6 @@ position = Vector2( 790.933, 115.748 )
 scale = Vector2( 0.131335, 0.151339 )
 frames = SubResource( 1 )
 animation = "nivel1"
-frame = 2
-playing = true
 offset = Vector2( -3728.28, 1347.91 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect4/AnimatedSprite"]

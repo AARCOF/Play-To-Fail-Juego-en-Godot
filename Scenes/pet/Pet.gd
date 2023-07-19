@@ -3,7 +3,9 @@ extends KinematicBody2D
 onready var animationPlayer = $AnimationPlayer
 onready var sprite = $AnimationPlayer/Animation
 
-
+func _ready():
+	pass
+	
 func starPet():
 	$AnimationPlayer/Moving.visible = true
 	$AnimationPlayer/Happy.visible = false

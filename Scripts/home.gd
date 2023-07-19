@@ -5,14 +5,20 @@ onready var settings = get_node("SettingsMenu") #Conexion al SettingsMenu(PopMen
 
 onready var pet = $Pet
 onready var confirmation_layer_ref = $Confirmation
+onready var aliasShow = $Alias/name
+onready var pointShow = $Point/value
+
 
 var connection = null
 var quser = null
 
 func _ready():
-	settings.connect("volume_changed", self, "_on_volume_changed")
+	aliasShow.bbcode_text = "[color=#CACFD2]" + globalVar.ALIAS
+	pointShow.bbcode_text = "[color=#CACFD2]" + str(globalVar.points)
 	pet.starPet()
 	OpenConnectionDatabase()
+	settings.connect("volume_changed", self, "_on_volume_changed")
+	
 
 #Control de Audio por BUS	
 func _on_volume_changed(bus_idx, volume):
@@ -27,8 +33,7 @@ func _on_volume_changed(bus_idx, volume):
 
 func _on_Bttn_Play_pressed():
 	pet.starPetHappy()
-	getInformation()
-	yield(get_tree().create_timer(3.0), "timeout")
+	yield(get_tree().create_timer(1.4), "timeout")
 	
 	# START GAME LEVEL
 	get_tree().change_scene("res://Scenes/niveles/niveles.tscn") 
@@ -64,26 +69,6 @@ func OpenConnectionDatabase():
 	connection = DBConnection.new()
 	connection.openConnection()
 	
-
-func getInformation() -> void :
-	quser = Quser.new() 
-	var fk = globalVar.idUSER
-	var result = quser.inventoryAll(fk)
-	
-	var totalPoints = 0
-	var totalCoins = 0
-	#var itemsList = []
-	
-	for i in range(result.size()):
-		totalPoints +=  result[i]['points']
-		totalCoins += result[i]['coin']
-		#itemsList += result[i]['idItems']
-		
-	globalVar.obtainedPoint = totalPoints
-	globalVar.obtainedCoin  = totalCoins
-	globalVar.points = totalPoints
-	globalVar.coins  = totalCoins
-
 
 func ckeckData():
 	quser = Quser.new() 

@@ -15,11 +15,6 @@ _global_script_classes=[ {
 "path": "res://database/DBConnection.gd"
 }, {
 "base": "Node",
-"class": "GuiTransition",
-"language": "GDScript",
-"path": "res://addons/simple-gui-transitions/transition.gd"
-}, {
-"base": "Node",
 "class": "Qleves",
 "language": "GDScript",
 "path": "res://database/queryLeves.gd"
@@ -36,7 +31,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "DBConnection": "",
-"GuiTransition": "res://addons/simple-gui-transitions/icon.png",
 "Qleves": "",
 "Quser": "",
 "SQLiteWrapper": ""

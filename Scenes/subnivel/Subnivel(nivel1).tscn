@@ -186,8 +186,7 @@ margin_bottom = 319.0
 position = Vector2( 190.432, 99.9653 )
 scale = Vector2( 0.480178, 0.498598 )
 frames = SubResource( 2 )
-frame = 6
-playing = true
+frame = 3
 
 [node name="Button" type="Button" parent="."]
 margin_left = 387.0

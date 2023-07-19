@@ -31,7 +31,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0.3, 1.6, 2, 3.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 0, 0, 0, 0 ]
 }
 tracks/1/type = "value"
@@ -115,7 +115,7 @@ expand = true
 stretch_mode = 1
 
 [node name="Sprite" type="AnimatedSprite" parent="Control"]
-position = Vector2( 50, 45.2567 )
+position = Vector2( 50, 56.875 )
 scale = Vector2( 0.08, 0.08 )
 frames = SubResource( 7 )
 animation = "guiño"
@@ -145,7 +145,7 @@ anchor_bottom = 1.0
 margin_left = -44.0
 margin_top = -40.0
 margin_right = 1.0
-margin_bottom = -5.00031
+margin_bottom = -5.00032
 icon = ExtResource( 4 )
 flat = true
 expand_icon = true
