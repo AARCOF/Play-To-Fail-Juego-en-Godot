@@ -11,7 +11,7 @@ onready var animationPlayer1: AnimationPlayer = $TextureRect4/AnimatedSprite/Ani
 func _ready():
 	pass # Replace with function body.
 	animationPlayer1.play("a")
-	
+	$TextureRect4/AnimatedSprite.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -20,3 +20,6 @@ func _ready():
 
 func _on_Button_pressed():
 	get_tree().change_scene("res://Scenes/subnivel/Subnivel(nivel1).tscn")
+	$TextureRect4/AnimatedSprite.stop()
+	animationPlayer1.stop()
+	

@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://art/niveles/nivel2(fondo).png" type="Texture" id=1]
+[ext_resource path="res://art/niveles/fondo/fondo(nivel3).png" type="Texture" id=1]
 [ext_resource path="res://art/niveles/play.png" type="Texture" id=2]
 [ext_resource path="res://art/niveles/animaciones/nivel3/a.png" type="Texture" id=3]
 [ext_resource path="res://art/niveles/letra(nivel3).png" type="Texture" id=4]
-[ext_resource path="res://art/niveles/caja(nivel3).png" type="Texture" id=5]
+[ext_resource path="res://art/niveles/cuadros/verdoso.png" type="Texture" id=5]
 [ext_resource path="res://art/niveles/animaciones/nivel3/b.png" type="Texture" id=6]
 [ext_resource path="res://art/niveles/animaciones/nivel3/c.png" type="Texture" id=7]
 [ext_resource path="res://art/niveles/animaciones/nivel3/d.png" type="Texture" id=8]
@@ -68,7 +68,6 @@ margin_top = 44.28
 margin_right = 595.04
 margin_bottom = 554.28
 texture = ExtResource( 5 )
-expand = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_top = -0.634
@@ -78,17 +77,15 @@ margin_top = 70.972
 margin_right = 563.0
 margin_bottom = 516.972
 texture = ExtResource( 1 )
-expand = true
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 anchor_top = -0.699
 anchor_bottom = -0.699
-margin_left = 71.0
-margin_top = -32.758
-margin_right = 580.0
-margin_bottom = 166.242
+margin_left = 53.0
+margin_top = -25.758
+margin_right = 592.0
+margin_bottom = 173.242
 texture = ExtResource( 4 )
-expand = true
 
 [node name="TextureRect4" type="TextureRect" parent="."]
 anchor_top = -0.701
@@ -102,8 +99,7 @@ margin_bottom = 308.0
 position = Vector2( 279, 508.958 )
 scale = Vector2( 0.852843, 0.876667 )
 frames = SubResource( 1 )
-frame = 16
-playing = true
+frame = 4
 
 [node name="Button" type="Button" parent="."]
 anchor_top = -0.691

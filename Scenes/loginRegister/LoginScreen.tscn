@@ -1,18 +1,20 @@
-[gd_scene load_steps=36 format=2]
+
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scenes/dialogs/Dialog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/loginRegister/stilo.tres" type="Theme" id=2]
+[ext_resource path="res://art/inicio_sesion/fondo_inicio.png" type="Texture" id=3]
+
 [ext_resource path="res://Scenes/loginRegister/LoginScreen.gd" type="Script" id=4]
-[ext_resource path="res://art/registro/brazo_final.png" type="Texture" id=6]
-[ext_resource path="res://art/inicio_sesion/Imagen2.png" type="Texture" id=7]
+[ext_resource path="res://art/inicio_sesion/circulo3.png" type="Texture" id=5]
+[ext_resource path="res://art/registro/maestraa.png" type="Texture" id=6]
+[ext_resource path="res://art/inicio_sesion/niño_unico.png" type="Texture" id=7]
 [ext_resource path="res://art/registro/Imagen3.png" type="Texture" id=8]
-[ext_resource path="res://art/registro/chica_sin_fondo.png" type="Texture" id=9]
 [ext_resource path="res://art/inicio_sesion/pngwing.com (1).png" type="Texture" id=10]
-[ext_resource path="res://art/registro/Imagen10.png" type="Texture" id=11]
-[ext_resource path="res://art/inicio_sesion/imagen1.png" type="Texture" id=13]
-[ext_resource path="res://art/inicio_sesion/Imagen6.png" type="Texture" id=14]
+
+[ext_resource path="res://art/registro/pizarra.png" type="Texture" id=11]
+
 [ext_resource path="res://art/inicio_sesion/Imagen4.png" type="Texture" id=15]
-[ext_resource path="res://art/inicio_sesion/Imagen3.png" type="Texture" id=16]
 [ext_resource path="res://art/inicio_sesion/Imagen7.png" type="Texture" id=17]
 [ext_resource path="res://art/registro/Imagen8.jpg" type="Texture" id=18]
 
@@ -33,8 +35,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=12]
 resource_name = "niña"
-length = 6.0
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
@@ -42,74 +42,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 3, 4.4, 5.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 401, 512 ), Vector2( -45, -126 ), Vector2( -412, 477 ) ]
-}
-
-[sub_resource type="Animation" id=9]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -335, 494 ) ]
-}
-
-[sub_resource type="Animation" id=10]
-resource_name = "niño"
-length = 6.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1.4, 2.7 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -335, 494 ), Vector2( 64, -32 ), Vector2( 480, 581 ) ]
-}
-
-[sub_resource type="Animation" id=7]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -106, 486 ) ]
-}
-
-[sub_resource type="Animation" id=8]
-resource_name = "circular"
-length = 3.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5 ),
+"times": PoolRealArray( 0, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -95, 406 ), Vector2( -95, 435 ) ]
+"values": [ Vector2( 17, 389 ), Vector2( 17, -18 ) ]
 }
 
 [sub_resource type="StyleBoxFlat" id=5]
@@ -121,62 +57,6 @@ corner_radius_bottom_left = 20
 
 [sub_resource type="Theme" id=6]
 LineEdit/styles/normal = SubResource( 5 )
-
-[sub_resource type="Animation" id=19]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 0,
-"values": [  ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 0,
-"values": [  ]
-}
-
-[sub_resource type="Animation" id=20]
-resource_name = "brazo"
-length = 3.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.9, 1.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ -15.7, -25.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.9, 1.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 172, 718 ), Vector2( 163, 723 ) ]
-}
 
 [sub_resource type="Animation" id=21]
 length = 0.001
@@ -195,7 +75,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=22]
 resource_name = "mover_arriba"
-length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
@@ -203,10 +82,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 23, 508 ), Vector2( 26, -27 ) ]
+"values": [ Vector2( 148, 1100 ), Vector2( 148, 545 ) ]
 }
 
 [sub_resource type="StyleBoxFlat" id=13]
@@ -306,41 +185,37 @@ script = ExtResource( 4 )
 margin_right = 40.0
 margin_bottom = 40.0
 
+[node name="TextureRect5" type="TextureRect" parent="NinePatchRect"]
+margin_left = 4.0
+margin_top = -1.0
+margin_right = 623.0
+margin_bottom = 1059.0
+texture = ExtResource( 3 )
+
+[node name="TextureRect2" type="TextureRect" parent="NinePatchRect"]
+margin_left = 21.0
+margin_top = 31.0
+margin_right = 566.0
+margin_bottom = 571.0
+texture = ExtResource( 15 )
+
 [node name="TextureRect3" type="TextureRect" parent="NinePatchRect"]
 margin_left = 401.0
 margin_top = 512.0
 margin_right = 1048.0
 margin_bottom = 1135.0
 texture = ExtResource( 7 )
-expand = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NinePatchRect/TextureRect3"]
 anims/RESET = SubResource( 11 )
 "anims/niña" = SubResource( 12 )
 
-[node name="TextureRect2" type="TextureRect" parent="NinePatchRect"]
-margin_left = -335.0
-margin_top = 494.0
-margin_right = 123.0
-margin_bottom = 988.0
-texture = ExtResource( 13 )
-expand = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NinePatchRect/TextureRect2"]
-anims/RESET = SubResource( 9 )
-"anims/niño" = SubResource( 10 )
-
 [node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
-margin_left = -106.0
-margin_top = 486.0
-margin_right = 689.001
-margin_bottom = 1217.93
-texture = ExtResource( 14 )
-expand = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NinePatchRect/TextureRect"]
-anims/RESET = SubResource( 7 )
-anims/circular = SubResource( 8 )
+margin_left = -100.0
+margin_top = 175.0
+margin_right = 695.001
+margin_bottom = 1293.0
+texture = ExtResource( 5 )
 
 [node name="LoginContainer" type="VBoxContainer" parent="NinePatchRect"]
 anchor_left = 0.491
@@ -356,6 +231,7 @@ rect_pivot_offset = Vector2( 2, 2 )
 margin_right = 435.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 0, 30 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "  Nombre de Usuario"
 
 [node name="In_Usuario" type="LineEdit" parent="NinePatchRect/LoginContainer"]
@@ -376,6 +252,7 @@ margin_top = 86.0
 margin_right = 435.0
 margin_bottom = 116.0
 rect_min_size = Vector2( 0, 30 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "  Contraseña"
 
 [node name="In_Contrasena" type="LineEdit" parent="NinePatchRect/LoginContainer"]
@@ -412,30 +289,6 @@ margin_right = 525.0
 margin_bottom = 576.0
 texture = ExtResource( 17 )
 
-[node name="ParallaxBackground3" type="ParallaxBackground" parent="NinePatchRect"]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="NinePatchRect/ParallaxBackground3"]
-
-[node name="TextureRect5" type="TextureRect" parent="NinePatchRect/ParallaxBackground3/ParallaxLayer"]
-margin_left = -9.0
-margin_top = -17.0
-margin_right = 610.0
-margin_bottom = 1035.0
-texture = ExtResource( 16 )
-expand = true
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="NinePatchRect"]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="NinePatchRect/ParallaxBackground"]
-motion_mirroring = Vector2( 950, 0 )
-
-[node name="fondo_numeros" type="Sprite" parent="NinePatchRect/ParallaxBackground/ParallaxLayer"]
-position = Vector2( 419, 375 )
-scale = Vector2( 1.67364, 1.37083 )
-texture = ExtResource( 15 )
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="NinePatchRect"]
-
 [node name="NinePatchRect2" type="NinePatchRect" parent="."]
 visible = false
 margin_right = 617.0
@@ -443,39 +296,18 @@ margin_bottom = 1037.0
 texture = ExtResource( 18 )
 
 [node name="TextureRect" type="TextureRect" parent="NinePatchRect2"]
-margin_left = -168.0
-margin_top = 15.0
-margin_right = 843.0
-margin_bottom = 735.0
+margin_left = -175.0
+margin_top = 43.0
+margin_right = 836.0
+margin_bottom = 763.0
 texture = ExtResource( 11 )
-expand = true
 
 [node name="TextureRect5" type="TextureRect" parent="NinePatchRect2"]
 margin_left = 23.0
 margin_top = 508.0
-margin_right = 793.0
-margin_bottom = 2133.0
-
-[node name="TextureRect4" type="TextureRect" parent="NinePatchRect2/TextureRect5"]
-margin_left = 166.863
-margin_top = 720.854
-margin_right = 459.863
-margin_bottom = 967.854
-rect_rotation = -21.0081
+margin_right = 597.0
+margin_bottom = 1080.0
 texture = ExtResource( 6 )
-expand = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NinePatchRect2/TextureRect5/TextureRect4"]
-anims/RESET = SubResource( 19 )
-anims/brazo = SubResource( 20 )
-
-[node name="TextureRect2" type="TextureRect" parent="NinePatchRect2/TextureRect5"]
-margin_left = -54.0
-margin_top = 501.0
-margin_right = 356.0
-margin_bottom = 1571.0
-texture = ExtResource( 9 )
-expand = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NinePatchRect2/TextureRect5"]
 anims/RESET = SubResource( 21 )
@@ -486,10 +318,10 @@ anchor_left = 0.488
 anchor_top = 0.138
 anchor_right = 0.488
 anchor_bottom = 0.138
-margin_left = -188.096
-margin_top = 15.894
-margin_right = 197.904
-margin_bottom = 375.894
+margin_left = -173.096
+margin_top = 121.894
+margin_right = 212.904
+margin_bottom = 481.894
 
 [node name="NombreCompleto" type="Label" parent="NinePatchRect2/RegisterContainer"]
 margin_right = 386.0
@@ -547,22 +379,21 @@ secret = true
 [node name="RegisterBttn" type="Button" parent="NinePatchRect2/RegisterContainer"]
 margin_top = 250.0
 margin_right = 386.0
-margin_bottom = 284.0
+margin_bottom = 270.0
 text = "Register"
 
 [node name="LoginRedi" type="Button" parent="NinePatchRect2/RegisterContainer"]
-margin_top = 288.0
+margin_top = 274.0
 margin_right = 386.0
-margin_bottom = 322.0
+margin_bottom = 294.0
 text = "Login"
 
 [node name="TextureRect3" type="TextureRect" parent="NinePatchRect2"]
-margin_left = -67.0
-margin_top = -5.0
-margin_right = 804.0
-margin_bottom = 164.0
+margin_left = -109.0
+margin_top = 73.0
+margin_right = 851.0
+margin_bottom = 242.0
 texture = ExtResource( 8 )
-expand = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false

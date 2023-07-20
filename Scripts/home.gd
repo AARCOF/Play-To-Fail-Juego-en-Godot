@@ -1,34 +1,47 @@
 extends Control
 
-onready var audio_stream_player = $AudioStreamPlayer
+
 onready var settings = get_node("SettingsMenu") #Conexion al SettingsMenu(PopMenu)
+onready var audio_stream_player = $AudioStreamPlayer
 
 onready var pet = $Pet
 onready var confirmation_layer_ref = $Confirmation
+onready var aliasShow = $Alias/name
+onready var pointShow = $Point/value
+
 
 var connection = null
 var quser = null
 
 func _ready():
+
+	#connect("volume_changed", self, "_on_volume_changed")
+	aliasShow.bbcode_text = "[color=#CACFD2]" + str(globalVar.ALIAS) #Error de + a un no string
+	pointShow.bbcode_text = "[color=#CACFD2]" + str(globalVar.points)
+	pet.starPet()
+	OpenConnectionDatabase()
 	settings.connect("volume_changed", self, "_on_volume_changed")
-#	pet.starPet()
-#	OpenConnectionDatabase()
+	
+
 
 #Control de Audio por BUS	
 func _on_volume_changed(bus_idx, volume):
-	match bus_idx:
-		0:
-			audio_stream_player.set_bus_volume_db(0, volume)
-		1:
-			audio_stream_player.set_bus_volume_db(1, volume)
-		2:
-			audio_stream_player.set_bus_volume_db(2, volume)
-
+		match bus_idx:
+			0:
+				audio_stream_player.set_bus_volume_db(0, volume)
+			1:
+				audio_stream_player.set_bus_volume_db(1, volume)
+			2:
+				audio_stream_player.set_bus_volume_db(2, volume)
+			
+#func _on_volume_changed(value):
+#	audio_stream_player.volume_db = value
 
 func _on_Bttn_Play_pressed():
 	pet.starPetHappy()
-#	getInformation()
-	yield(get_tree().create_timer(3.0), "timeout")
+
+	yield(get_tree().create_timer(1.4), "timeout")
+
 	
 	# START GAME LEVEL
 	get_tree().change_scene("res://Scenes/niveles/niveles.tscn") 
@@ -65,6 +78,7 @@ func _on_Bttn_Exit_pressed():
 #	connection.openConnection()
 	
 
+
 #func getInformation() -> void :
 #	quser = Quser.new() 
 #	var fk = globalVar.idUSER
@@ -83,6 +97,7 @@ func _on_Bttn_Exit_pressed():
 	globalVar.obtainedCoin  = totalCoins
 	globalVar.points = totalPoints
 	globalVar.coins  = totalCoins
+
 
 
 func ckeckData():
