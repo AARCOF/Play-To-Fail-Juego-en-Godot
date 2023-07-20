@@ -20,17 +20,18 @@ func _on_Button_pressed():
 	#ADD ALGORITHM
 	#yield(get_tree().create_timer(3.0), "timeout")
 	animationPlayer1.stop()
-	get_tree().change_scene("res://Scenes/game_window.tscn")
+	get_tree().change_scene("res://Scenes/levels/Nivel 1/nivel1.tscn")
 	
 
 
 func _on_Button2_pressed():
 	animationPlayer1.play("efecto(2)")
-
+	get_tree().change_scene("res://Scenes/levels/Nivel 1/nivel2.tscn")
 
 func _on_Button3_pressed():
 	animationPlayer1.play("efecto(3)")
-
+	get_tree().change_scene("res://Scenes/levels/Nivel 1/nivel3.tscn")
 
 func _on_Button4_pressed():
 	animationPlayer1.play("efecto(4)")
+	get_tree().change_scene("res://Scenes/levels/Nivel 1/nivel4.tscn")

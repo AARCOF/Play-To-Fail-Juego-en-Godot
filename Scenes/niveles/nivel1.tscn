@@ -92,7 +92,6 @@ position = Vector2( 790.933, 115.748 )
 scale = Vector2( 0.131335, 0.151339 )
 frames = SubResource( 1 )
 animation = "nivel1"
-frame = 2
 playing = true
 offset = Vector2( -3728.28, 1347.91 )
 

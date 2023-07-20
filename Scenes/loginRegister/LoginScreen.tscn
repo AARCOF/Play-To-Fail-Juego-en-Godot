@@ -1,8 +1,7 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Scenes/dialogs/Dialog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/loginRegister/stilo.tres" type="Theme" id=2]
-[ext_resource path="res://addons/simple-gui-transitions/example/theme.tres" type="Theme" id=3]
 [ext_resource path="res://Scenes/loginRegister/LoginScreen.gd" type="Script" id=4]
 [ext_resource path="res://art/registro/brazo_final.png" type="Texture" id=6]
 [ext_resource path="res://art/inicio_sesion/Imagen2.png" type="Texture" id=7]
@@ -10,7 +9,6 @@
 [ext_resource path="res://art/registro/chica_sin_fondo.png" type="Texture" id=9]
 [ext_resource path="res://art/inicio_sesion/pngwing.com (1).png" type="Texture" id=10]
 [ext_resource path="res://art/registro/Imagen10.png" type="Texture" id=11]
-[ext_resource path="res://addons/simple-gui-transitions/materials/transform.tres" type="Material" id=12]
 [ext_resource path="res://art/inicio_sesion/imagen1.png" type="Texture" id=13]
 [ext_resource path="res://art/inicio_sesion/Imagen6.png" type="Texture" id=14]
 [ext_resource path="res://art/inicio_sesion/Imagen4.png" type="Texture" id=15]
@@ -297,13 +295,11 @@ tracks/1/keys = {
 }
 
 [node name="LoginScreen" type="Control"]
-material = ExtResource( 12 )
 anchor_right = 2.055
 anchor_bottom = 0.599
 margin_left = -6.0
 margin_right = -626.0
 margin_bottom = 419.624
-theme = ExtResource( 3 )
 script = ExtResource( 4 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
@@ -400,13 +396,13 @@ margin_bottom = 168.0
 [node name="LoginBttn" type="Button" parent="NinePatchRect/LoginContainer"]
 margin_top = 172.0
 margin_right = 435.0
-margin_bottom = 206.0
+margin_bottom = 192.0
 text = "Login"
 
 [node name="RegisterRedi" type="Button" parent="NinePatchRect/LoginContainer"]
-margin_top = 210.0
+margin_top = 196.0
 margin_right = 435.0
-margin_bottom = 244.0
+margin_bottom = 216.0
 text = "Register"
 
 [node name="TextureRect6" type="TextureRect" parent="NinePatchRect"]

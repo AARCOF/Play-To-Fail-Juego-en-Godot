@@ -30,18 +30,19 @@ func _ready():
 
 func _on_Button_pressed():
 	animationPlayer2.play(\"efecto1(btn1)\")
-
+	get_tree().change_scene(\"res://Scenes/levels/Nivel 4/nivel1.tscn\")
 
 func _on_Button2_pressed():
 	animationPlayer2.play(\"efecto(btn2)\")
-
+	get_tree().change_scene(\"res://Scenes/levels/Nivel 4/nivel2.tscn\")
 
 func _on_Button3_pressed():
 	animationPlayer2.play(\"efecto(btn3)\")
-
+	get_tree().change_scene(\"res://Scenes/levels/Nivel 4/nivel3.tscn\")
 
 func _on_Button4_pressed():
 	animationPlayer2.play(\"efecto(btn4)\")
+	get_tree().change_scene(\"res://Scenes/levels/Nivel 4/nivel4.tscn\")
 "
 
 [sub_resource type="SpriteFrames" id=3]
@@ -256,7 +257,7 @@ margin_bottom = 240.0
 position = Vector2( 226, 53.5578 )
 scale = Vector2( 0.513338, 0.55965 )
 frames = SubResource( 3 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="TextureRect6" type="TextureRect" parent="."]

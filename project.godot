@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="JuegoMultiplos_beta"
-run/main_scene="res://Scenes/loginRegister/LoginScreen.tscn"
+run/main_scene="res://Scenes/home/home.tscn"
 
 [autoload]
 
