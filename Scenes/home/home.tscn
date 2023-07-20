@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Font/fonts/cmu-typewriter/Typewriter/cmunit.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Font/fonts/linux-libertine/LinLibertine_5.3.0_2012_07_02/LinLibertineOTF_5.3.0_2012_07_02/LinLibertine_M.otf" type="DynamicFontData" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://Scripts/SettingsMenu.gd" type="Script" id=9]
 [ext_resource path="res://Scenes/pet/Pet.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/dialogs/Confirmation.tscn" type="PackedScene" id=11]
-[ext_resource path="res://sounds/fondo.mp3" type="AudioStream" id=12]
 [ext_resource path="res://sounds/KairukuKing.wav" type="AudioStream" id=13]
 [ext_resource path="res://Scenes/home/estrella_puntos.png" type="Texture" id=14]
 [ext_resource path="res://Scenes/home/estella_nombre.png" type="Texture" id=15]
@@ -301,15 +300,10 @@ rounded = true
 [node name="Confirmation" parent="." instance=ExtResource( 11 )]
 visible = false
 
-[node name="AudioStreamMaster" type="AudioStreamPlayer" parent="."]
-
-[node name="AudioStreamMusic" type="AudioStreamPlayer" parent="AudioStreamMaster"]
-stream = ExtResource( 12 )
-autoplay = true
-
-[node name="AudioStreamSFX" type="AudioStreamPlayer" parent="AudioStreamMaster/AudioStreamMusic"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 autoplay = true
+bus = ""
 
 [node name="Pet" parent="." instance=ExtResource( 10 )]
 position = Vector2( 106, 391 )

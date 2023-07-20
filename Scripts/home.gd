@@ -1,7 +1,8 @@
 extends Control
 
-onready var audio_stream_player = $AudioStreamPlayer
+
 onready var settings = get_node("SettingsMenu") #Conexion al SettingsMenu(PopMenu)
+onready var audio_stream_player = $AudioStreamPlayer
 
 onready var pet = $Pet
 onready var confirmation_layer_ref = $Confirmation
@@ -13,7 +14,8 @@ var connection = null
 var quser = null
 
 func _ready():
-	aliasShow.bbcode_text = "[color=#CACFD2]" + globalVar.ALIAS
+	#connect("volume_changed", self, "_on_volume_changed")
+	aliasShow.bbcode_text = "[color=#CACFD2]" + str(globalVar.ALIAS) #Error de + a un no string
 	pointShow.bbcode_text = "[color=#CACFD2]" + str(globalVar.points)
 	pet.starPet()
 	OpenConnectionDatabase()
@@ -22,14 +24,16 @@ func _ready():
 
 #Control de Audio por BUS	
 func _on_volume_changed(bus_idx, volume):
-	match bus_idx:
-		0:
-			audio_stream_player.set_bus_volume_db(0, volume)
-		1:
-			audio_stream_player.set_bus_volume_db(1, volume)
-		2:
-			audio_stream_player.set_bus_volume_db(2, volume)
-
+		match bus_idx:
+			0:
+				audio_stream_player.set_bus_volume_db(0, volume)
+			1:
+				audio_stream_player.set_bus_volume_db(1, volume)
+			2:
+				audio_stream_player.set_bus_volume_db(2, volume)
+			
+#func _on_volume_changed(value):
+#	audio_stream_player.volume_db = value
 
 func _on_Bttn_Play_pressed():
 	pet.starPetHappy()
