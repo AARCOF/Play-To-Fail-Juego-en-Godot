@@ -10,7 +10,7 @@
 [ext_resource path="res://Scenes/top_ui.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scripts/slime_holder.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/lock_holder.gd" type="Script" id=10]
-[ext_resource path="res://art/bottom_ui.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/bottom_UI.tscn" type="PackedScene" id=11]
 [ext_resource path="res://art/background.jpg" type="Texture" id=12]
 [ext_resource path="res://Scripts/GoalHoder.gd" type="Script" id=13]
 [ext_resource path="res://art/pieces/seven.jpg" type="Texture" id=14]
@@ -27,14 +27,6 @@ texture = ExtResource( 12 )
 
 [node name="top_ui" parent="." instance=ExtResource( 8 )]
 goal_prefab = ExtResource( 5 )
-
-[node name="bottom_UI" type="TextureRect" parent="."]
-margin_left = 8.0
-margin_top = 888.0
-margin_right = 611.0
-margin_bottom = 1011.0
-texture = ExtResource( 11 )
-expand = true
 
 [node name="grid" type="Node2D" parent="."]
 script = ExtResource( 2 )
@@ -86,6 +78,8 @@ max_needed = 8
 goal_string = "sky"
 
 [node name="Game Win Screen" parent="GoalHoder/Goal" instance=ExtResource( 6 )]
+
+[node name="bottom_UI" parent="." instance=ExtResource( 11 )]
 
 [connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
 [connection signal="check_goal" from="grid" to="GoalHoder" method="_on_grid_check_goal"]

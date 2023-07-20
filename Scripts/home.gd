@@ -14,6 +14,7 @@ var connection = null
 var quser = null
 
 func _ready():
+
 	#connect("volume_changed", self, "_on_volume_changed")
 	aliasShow.bbcode_text = "[color=#CACFD2]" + str(globalVar.ALIAS) #Error de + a un no string
 	pointShow.bbcode_text = "[color=#CACFD2]" + str(globalVar.points)
@@ -21,6 +22,7 @@ func _ready():
 	OpenConnectionDatabase()
 	settings.connect("volume_changed", self, "_on_volume_changed")
 	
+
 
 #Control de Audio por BUS	
 func _on_volume_changed(bus_idx, volume):
@@ -37,7 +39,9 @@ func _on_volume_changed(bus_idx, volume):
 
 func _on_Bttn_Play_pressed():
 	pet.starPetHappy()
+
 	yield(get_tree().create_timer(1.4), "timeout")
+
 	
 	# START GAME LEVEL
 	get_tree().change_scene("res://Scenes/niveles/niveles.tscn") 
@@ -52,27 +56,49 @@ func _on_Bttn_Exit_pressed():
 	pet.visible = false
 	$Confirmation.visible = true
 
-func _on_confirmation_choice(choice):
-	if choice == "confirm":
-		ckeckData()
-		yield(get_tree().create_timer(1.5), "timeout")
+#func _on_confirmation_choice(choice):
+#	if choice == "confirm":
+#		ckeckData()
+#		yield(get_tree().create_timer(1.5), "timeout")
 		
 		#Agregar confirmacion de guardado 
 		
-		get_tree().quit()
+#		get_tree().quit()
 		
-	elif choice == "cancel":
-		pet.visible = true
-		pet.starPet()
+#	elif choice == "cancel":
+#		pet.visible = true
+#		pet.starPet()
 		
 
 
 # ACTUALIZA DATOS DEL USUARIO INGRESADO
 #======================================
-func OpenConnectionDatabase():
-	connection = DBConnection.new()
-	connection.openConnection()
+#func OpenConnectionDatabase():
+#	connection = DBConnection.new()
+#	connection.openConnection()
 	
+
+
+#func getInformation() -> void :
+#	quser = Quser.new() 
+#	var fk = globalVar.idUSER
+#	var result = quser.inventoryAll(fk)
+	
+	var totalPoints = 0
+	var totalCoins = 0
+	#var itemsList = []
+	
+#	for i in range(result.size()):
+#		totalPoints +=  result[i]['points']
+#		totalCoins += result[i]['coin']
+		#itemsList += result[i]['idItems']
+		
+	globalVar.obtainedPoint = totalPoints
+	globalVar.obtainedCoin  = totalCoins
+	globalVar.points = totalPoints
+	globalVar.coins  = totalCoins
+
+
 
 func ckeckData():
 	quser = Quser.new() 
