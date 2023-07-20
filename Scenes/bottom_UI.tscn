@@ -3,7 +3,7 @@
 [ext_resource path="res://art/bottom_ui.png" type="Texture" id=1]
 [ext_resource path="res://art/restart.jpg" type="Texture" id=2]
 [ext_resource path="res://art/quit.jpg" type="Texture" id=3]
-[ext_resource path="res://Scripts/bottom_UI.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/bottom_UI.gd" type="Script" id=4]
 
 [node name="bottom_UI" type="TextureRect"]
 margin_left = 8.0

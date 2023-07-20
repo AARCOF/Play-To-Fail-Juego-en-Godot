@@ -1,26 +1,26 @@
 [gd_scene load_steps=27 format=2]
 
-[ext_resource path="res://art/subniveles/botones/pngegg (1).png" type="Texture" id=1]
-[ext_resource path="res://art/subniveles/botones/pngwing.com (5).png" type="Texture" id=2]
+[ext_resource path="res://Scenes/subnivel/Retroceder.tscn" type="PackedScene" id=1]
+[ext_resource path="res://art/subniveles/botones/pngegg (1).png" type="Texture" id=2]
 [ext_resource path="res://art/subniveles/botones/pngwing.com (3).png" type="Texture" id=3]
 [ext_resource path="res://art/subniveles/base.png" type="Texture" id=4]
 [ext_resource path="res://art/subniveles/fondos/subnivel3.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/subnivel/subnivel(nivel3)).gd" type="Script" id=6]
+[ext_resource path="res://art/subniveles/botones/pngwing.com (5).png" type="Texture" id=6]
 [ext_resource path="res://art/subniveles/botones/pngwing.com (4).png" type="Texture" id=7]
-[ext_resource path="res://art/niveles/animaciones/nivel3/alas 1.png" type="Texture" id=8]
+[ext_resource path="res://art/subniveles/fondos/efecto2.png" type="Texture" id=8]
 [ext_resource path="res://art/niveles/animaciones/nivel3/alas 2.5.png" type="Texture" id=9]
-[ext_resource path="res://art/niveles/animaciones/nivel3/alas 3.png" type="Texture" id=10]
-[ext_resource path="res://art/subniveles/fondos/efecto2.png" type="Texture" id=11]
-[ext_resource path="res://art/niveles/animaciones/nivel3/b.png" type="Texture" id=12]
-[ext_resource path="res://art/niveles/animaciones/nivel3/a.png" type="Texture" id=13]
-[ext_resource path="res://art/niveles/animaciones/nivel3/d.png" type="Texture" id=14]
-[ext_resource path="res://art/niveles/animaciones/nivel3/c.png" type="Texture" id=15]
-[ext_resource path="res://art/niveles/animaciones/nivel3/e.png" type="Texture" id=16]
-[ext_resource path="res://Scenes/subnivel/Retroceder.tscn" type="PackedScene" id=17]
+[ext_resource path="res://art/niveles/animaciones/nivel3/b.png" type="Texture" id=10]
+[ext_resource path="res://art/niveles/animaciones/nivel3/c.png" type="Texture" id=11]
+[ext_resource path="res://art/niveles/animaciones/nivel3/alas 1.png" type="Texture" id=12]
+[ext_resource path="res://art/niveles/animaciones/nivel3/alas 3.png" type="Texture" id=13]
+[ext_resource path="res://art/niveles/animaciones/nivel3/a.png" type="Texture" id=14]
+[ext_resource path="res://art/niveles/animaciones/nivel3/e.png" type="Texture" id=15]
+[ext_resource path="res://art/niveles/animaciones/nivel3/d.png" type="Texture" id=16]
+[ext_resource path="res://Scenes/subnivel/subnivel(nivel3).gd" type="Script" id=17]
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 14 ), ExtResource( 12 ), ExtResource( 9 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 16 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "default",
 "speed": 10.0
@@ -289,7 +289,7 @@ tracks/5/keys = {
 [node name="subnivel3" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 6 )
+script = ExtResource( 17 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 601.0
@@ -360,7 +360,7 @@ margin_left = 457.0
 margin_top = 338.0
 margin_right = 549.0
 margin_bottom = 444.0
-icon = ExtResource( 1 )
+icon = ExtResource( 2 )
 flat = true
 expand_icon = true
 
@@ -371,7 +371,7 @@ margin_left = 58.0
 margin_top = 469.0
 margin_right = 173.0
 margin_bottom = 575.0
-icon = ExtResource( 2 )
+icon = ExtResource( 6 )
 flat = true
 expand_icon = true
 
@@ -402,7 +402,7 @@ margin_top = -101.0
 margin_right = 255.001
 margin_bottom = -10.9969
 rect_pivot_offset = Vector2( 60, 65 )
-texture = ExtResource( 11 )
+texture = ExtResource( 8 )
 expand = true
 
 [node name="hoja" type="AnimationPlayer" parent="."]
@@ -417,10 +417,10 @@ margin_top = -171.0
 margin_right = 351.998
 margin_bottom = -80.9838
 rect_pivot_offset = Vector2( 61, 62 )
-texture = ExtResource( 11 )
+texture = ExtResource( 8 )
 expand = true
 
-[node name="TextureRect9" parent="." instance=ExtResource( 17 )]
+[node name="TextureRect9" parent="." instance=ExtResource( 1 )]
 
 [connection signal="pressed" from="bt1" to="." method="_on_bt1_pressed"]
 [connection signal="pressed" from="bt2" to="." method="_on_bt2_pressed"]

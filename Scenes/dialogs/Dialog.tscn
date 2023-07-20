@@ -15,7 +15,7 @@ animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 6 ) ],
 "loop": false,
 "name": "guiño",
-"speed": 15.0
+"speed": 10.0
 } ]
 
 [sub_resource type="Animation" id=8]
@@ -31,7 +31,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0.3, 1.6, 2, 3.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ 0, 0, 0, 0 ]
 }
 tracks/1/type = "value"

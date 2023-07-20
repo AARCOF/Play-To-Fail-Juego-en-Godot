@@ -1,15 +1,14 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Font/fonts/cmu-typewriter/Typewriter/cmunit.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Font/fonts/linux-libertine/LinLibertine_5.3.0_2012_07_02/LinLibertineOTF_5.3.0_2012_07_02/LinLibertine_M.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scripts/home.gd" type="Script" id=3]
-[ext_resource path="res://Font/fonts/cmu-typewriter/Typewriter/cmuntt.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scenes/pet/PetMoving.tscn" type="PackedScene" id=4]
 [ext_resource path="res://art/logos/icon_back.jpg" type="Texture" id=5]
 [ext_resource path="res://Font/fonts/linux-libertine/LinLibertine_5.3.0_2012_07_02/LinLibertineOTF_5.3.0_2012_07_02/LinLibertine_R.otf" type="DynamicFontData" id=6]
 [ext_resource path="res://art/boton_rojo.png" type="Texture" id=7]
 [ext_resource path="res://art/boton.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/SettingsMenu.gd" type="Script" id=9]
-[ext_resource path="res://Scenes/pet/Pet.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/dialogs/Confirmation.tscn" type="PackedScene" id=11]
 [ext_resource path="res://sounds/KairukuKing.wav" type="AudioStream" id=13]
 [ext_resource path="res://Scenes/home/estrella_puntos.png" type="Texture" id=14]
@@ -45,11 +44,6 @@ font_data = ExtResource( 2 )
 size = 17
 use_filter = true
 font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 13
-use_filter = true
-font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 21
@@ -119,9 +113,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -236.0
-margin_top = -12.0
+margin_top = -212.0
 margin_right = 236.0
-margin_bottom = 387.0
+margin_bottom = 187.0
 custom_constants/separation = 10
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect/ContainerButtonsMenu"]
@@ -193,27 +187,7 @@ margin_right = 180.0
 margin_bottom = 22.0
 size_flags_horizontal = 0
 custom_fonts/font = SubResource( 5 )
-text = "Version: Beta 0.1.0 "
-
-[node name="ContainerInfo" type="VBoxContainer" parent="NinePatchRect"]
-anchor_left = 1.0
-anchor_top = 0.979
-anchor_right = 1.0
-anchor_bottom = 0.979
-margin_left = -221.0
-margin_top = -38.496
-margin_right = -8.0
-margin_bottom = 0.503967
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="NinePatchRect/ContainerInfo"]
-margin_right = 210.0
-margin_bottom = 39.0
-size_flags_horizontal = 0
-custom_fonts/font = SubResource( 6 )
-text = "Juego en desarrollo, 
-está es una version preliminar"
+text = "Version: Beta 0.3.0 "
 
 [node name="SettingsMenu" type="Popup" parent="."]
 anchor_left = 0.5
@@ -303,11 +277,6 @@ visible = false
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 autoplay = true
-bus = ""
-
-[node name="Pet" parent="." instance=ExtResource( 10 )]
-position = Vector2( 106, 391 )
-scale = Vector2( 0.7, 0.7 )
 
 [node name="Alias" type="TextureRect" parent="."]
 margin_left = 7.0
@@ -348,6 +317,10 @@ bbcode_enabled = true
 meta_underlined = false
 tab_size = 0
 scroll_active = false
+
+[node name="Pet" parent="." instance=ExtResource( 4 )]
+position = Vector2( 129, 881 )
+scale = Vector2( 0.3, 0.3 )
 
 [connection signal="pressed" from="NinePatchRect/ContainerButtonsMenu/GridContainer/Bttn_Play" to="." method="_on_Bttn_Play_pressed"]
 [connection signal="pressed" from="NinePatchRect/ContainerButtonsMenu/GridContainer/Bttn_Option" to="." method="_on_Bttn_Option_pressed"]

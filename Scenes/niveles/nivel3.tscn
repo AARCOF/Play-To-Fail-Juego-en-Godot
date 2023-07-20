@@ -91,9 +91,9 @@ texture = ExtResource( 4 )
 anchor_top = -0.701
 anchor_bottom = -0.701
 margin_left = 21.0
-margin_top = -211.0
+margin_top = 39.958
 margin_right = 552.0
-margin_bottom = 308.0
+margin_bottom = 558.958
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TextureRect4"]
 position = Vector2( 279, 508.958 )

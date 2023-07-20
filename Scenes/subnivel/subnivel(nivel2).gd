@@ -19,17 +19,17 @@ func _on_btn1_pressed():
 func _on_btn2_pressed():
 	animationPlayer2.play("efecto(2.2)")
 	$TextureRect6/AnimatedSprite.stop()
-  get_tree().change_scene("res://Scenes/levels/Nivel 2/nivel2.tscn")
+	get_tree().change_scene("res://Scenes/levels/Nivel 2/nivel2.tscn")
 
 
 func _on_btn3_pressed():
 	animationPlayer2.play("efecto(2.3)")
 	$TextureRect6/AnimatedSprite.stop()
-  get_tree().change_scene("res://Scenes/levels/Nivel 2/nivel3.tscn")
+	get_tree().change_scene("res://Scenes/levels/Nivel 2/nivel3.tscn")
 
 
 func _on_btn4_pressed():
 	animationPlayer2.play("efecto(2.4)")
 	$TextureRect6/AnimatedSprite.stop()
-  get_tree().change_scene("res://Scenes/levels/Nivel 2/nivel4.tscn")
+	get_tree().change_scene("res://Scenes/levels/Nivel 2/nivel4.tscn")
 

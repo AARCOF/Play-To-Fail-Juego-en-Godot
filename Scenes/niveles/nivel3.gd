@@ -12,6 +12,6 @@ func _ready():
 
 
 func _on_Button_pressed():
-	get_tree().change_scene("res://Scenes/subnivel/subnivel(nivel3)).tscn")
+	get_tree().change_scene("res://Scenes/subnivel/subnivel(nivel3).tscn")
 	$TextureRect4/AnimatedSprite.stop()
 	animationPlayer1.stop()

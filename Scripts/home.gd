@@ -16,10 +16,10 @@ var quser = null
 func _ready():
 
 	#connect("volume_changed", self, "_on_volume_changed")
-	aliasShow.bbcode_text = "[color=#CACFD2]" + str(globalVar.ALIAS) #Error de + a un no string
+	aliasShow.bbcode_text = "Multiplos" #[color=#CACFD2]" + str(globalVar.ALIAS)
 	pointShow.bbcode_text = "[color=#CACFD2]" + str(globalVar.points)
 	pet.starPet()
-	OpenConnectionDatabase()
+	#OpenConnectionDatabase()
 	settings.connect("volume_changed", self, "_on_volume_changed")
 	
 
@@ -38,9 +38,9 @@ func _on_volume_changed(bus_idx, volume):
 #	audio_stream_player.volume_db = value
 
 func _on_Bttn_Play_pressed():
-	pet.starPetHappy()
+	#pet.starPetHappy()
 
-	yield(get_tree().create_timer(1.4), "timeout")
+	#yield(get_tree().create_timer(1.4), "timeout")
 
 	
 	# START GAME LEVEL
@@ -56,18 +56,19 @@ func _on_Bttn_Exit_pressed():
 	pet.visible = false
 	$Confirmation.visible = true
 
-#func _on_confirmation_choice(choice):
-#	if choice == "confirm":
+func _on_confirmation_choice(choice):
+	if choice == "confirm":
+		pet.stopPet()
 #		ckeckData()
-#		yield(get_tree().create_timer(1.5), "timeout")
+		yield(get_tree().create_timer(0.3), "timeout")
 		
 		#Agregar confirmacion de guardado 
 		
-#		get_tree().quit()
+		get_tree().quit()
 		
-#	elif choice == "cancel":
-#		pet.visible = true
-#		pet.starPet()
+	elif choice == "cancel":
+		pet.visible = true
+		pet.starPet()
 		
 
 
