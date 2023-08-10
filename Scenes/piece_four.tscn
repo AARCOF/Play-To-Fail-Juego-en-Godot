@@ -7,7 +7,7 @@
 [ext_resource path="res://art/pieces/twenty.jpg" type="Texture" id=5]
 
 [node name="piece" instance=ExtResource( 1 )]
-color = "red"
+color = "yellow"
 row_texture = ExtResource( 5 )
 column_texture = ExtResource( 3 )
 adjacent_texture = ExtResource( 2 )

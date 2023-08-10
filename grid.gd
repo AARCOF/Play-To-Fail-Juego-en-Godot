@@ -35,8 +35,8 @@ var possible_pieces = [
 	preload("res://Scenes/piece_two.tscn"),
 	preload("res://Scenes/piece_three.tscn"),
 	preload("res://Scenes/piece_four.tscn"),
-	preload("res://Scenes/piece_six.tscn"),
-	preload("res://Scenes/piece_eigth.tscn"),
+#	preload("res://Scenes/piece_six.tscn"),
+#	preload("res://Scenes/piece_eigth.tscn"),
 	preload("res://Scenes/piece_five.tscn"),
 	preload("res://Scenes/piece_seven.tscn")
 ]
@@ -44,6 +44,7 @@ var possible_pieces = [
 # Piezas en la escena
 var all_pieces = []
 var current_matches = []
+var matriz_original = all_pieces.duplicate()
 
 # Variables para el Swap Back
 var piece_one = null
@@ -546,3 +547,9 @@ func declare_game_over():
 
 func _on_GoalHoder_game_won():
 	state = wait
+
+func _on_TextureButton_pressed():
+	for i in range(width):
+		for j in range(height):
+			all_pieces[i][j] = null
+			spawn_pieces()

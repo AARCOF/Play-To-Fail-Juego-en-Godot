@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/block_holder.gd" type="Script" id=1]
 [ext_resource path="res://grid.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Scenes/bottom_UI.tscn" type="PackedScene" id=12]
 [ext_resource path="res://art/background.jpg" type="Texture" id=13]
 [ext_resource path="res://Scripts/GoalHoder.gd" type="Script" id=14]
+[ext_resource path="res://art/restoreMat.png" type="Texture" id=15]
 
 [node name="game_window" type="Node2D"]
 
@@ -81,6 +82,14 @@ goal_string = "yellow"
 
 [node name="bottom_UI" parent="." instance=ExtResource( 12 )]
 
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 519.0
+margin_top = 867.0
+margin_right = 591.0
+margin_bottom = 943.0
+texture_normal = ExtResource( 15 )
+expand = true
+
 [connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
 [connection signal="check_goal" from="grid" to="GoalHoder" method="_on_grid_check_goal"]
 [connection signal="damage_block" from="grid" to="block_holder" method="_on_grid_damage_block"]
@@ -105,3 +114,4 @@ goal_string = "yellow"
 [connection signal="create_goal" from="GoalHoder" to="top_ui" method="_on_GoalHoder_create_goal"]
 [connection signal="game_won" from="GoalHoder" to="grid" method="_on_GoalHoder_game_won"]
 [connection signal="game_won" from="GoalHoder" to="GoalHoder/Goal/Game Win Screen" method="_on_GoalHoder_game_won"]
+[connection signal="pressed" from="TextureButton" to="grid" method="_on_TextureButton_pressed"]

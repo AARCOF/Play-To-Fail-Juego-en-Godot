@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://art/background.jpg" type="Texture" id=1]
 [ext_resource path="res://Scenes/top_ui.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Scenes/GoalPreFab.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/Game Win Screen.tscn" type="PackedScene" id=13]
 [ext_resource path="res://art/pieces/three.jpg" type="Texture" id=14]
+[ext_resource path="res://art/restoreMat.png" type="Texture" id=15]
 
 [node name="game_window" type="Node2D"]
 
@@ -29,6 +30,10 @@ texture = ExtResource( 1 )
 goal_prefab = ExtResource( 12 )
 
 [node name="bottom_UI" parent="." instance=ExtResource( 3 )]
+margin_left = -1.0
+margin_top = 895.0
+margin_right = 584.0
+margin_bottom = 1018.0
 
 [node name="grid" type="Node2D" parent="."]
 script = ExtResource( 4 )
@@ -79,6 +84,14 @@ goal_string = "orange"
 
 [node name="Game Win Screen" parent="GoalHoder/Goal" instance=ExtResource( 13 )]
 
+[node name="restoreButton" type="TextureButton" parent="."]
+margin_left = 503.0
+margin_top = 923.0
+margin_right = 576.0
+margin_bottom = 997.0
+texture_normal = ExtResource( 15 )
+expand = true
+
 [connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
 [connection signal="check_goal" from="grid" to="GoalHoder" method="_on_grid_check_goal"]
 [connection signal="damage_block" from="grid" to="block_holder" method="_on_grid_damage_block"]
@@ -103,3 +116,4 @@ goal_string = "orange"
 [connection signal="create_goal" from="GoalHoder" to="top_ui" method="_on_GoalHoder_create_goal"]
 [connection signal="game_won" from="GoalHoder" to="grid" method="_on_GoalHoder_game_won"]
 [connection signal="game_won" from="GoalHoder" to="GoalHoder/Goal/Game Win Screen" method="_on_GoalHoder_game_won"]
+[connection signal="pressed" from="restoreButton" to="grid" method="_on_restoreButton_pressed"]
