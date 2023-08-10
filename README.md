@@ -1,32 +1,15 @@
 # Jugando-con-Numeros-ingsoft1
 
-//INICIO DE SESION Y REGISTRO//
+El siguiente juego está desarrollado para el curso de Ingeniería Informática I.
+Pensado principalmente para estudiantes, el juego se basa en juntar números múltiplos entre sí.
 
-Versión beta del proyecto.
-Registro e inicio de Usuario; sin interfaz.
+# Documentación
+https://docs.google.com/document/d/1doSqkgT_fuinrmi0Y-i7vmSZcq0UZAd02rZE72L7lLA/edit
 
-El archivo bd_juego.sql es el que se debe subir al servidor de pruebas.
+# Acerca de Nosotros
+Somos un grupo de estudiantes de informática que desarrolló un juego de prueba para el curso ya mencionado en la introducción.
+Como estudiante y Master del trabajo (a quien le pertenece este repositorio), puedo decir por todo el equipo que tuvimos muchos sentimientos encontrados con este proycto, sin embargo, disfrutando el resultado porque aprendimos mucho con esta experiencia.
+Nos conocimos mejor entre nosotros y desarrollamos mejor en el ámbito profesional.
 
-
-
-Los Scripts deberán ir declarados y ejecutados en un archivo a parte.
-Las variables se declararán de la siguiente forma para ayudar a acelerar el proceso del diseño, en vez de la palabra example deberá ir el lugar en donde se encuentra el div (head, body, footer):
-  En caso de los div que funcionen como título o subtítulos --> name="TittleExample" / name="tittleExample"
-  Snake Case sólo se usará para las funciones; ejemplo --> function_example();
-  La declaración de variables tiene que ser en inglés, no se modificará el nombre de ninguna variable según ya se haya creado. 
-  Las ramas deberán tener nombres específicos de lo que se está trabajando y se creará una nueva rama según haya variaciones, por ejemplo si la rama Bienvenida necesita trabajar la interfaz y animacion con css, se       crearán dos ramas con los nombres de BienvenidaInterfaz y BienvenidaAnimaCSS.
-# CUANDO SE HAGA UN COMMIT
-  Cada commit deberá ser nombrado según la acción que se está haciendo, se deja una lista para que se identifique en posteriores modificaciones.
-  * feat: Una nueva característica para el usuario.
-  * fix: Arregla un bug que afecta al usuario.
-  * perf: Cambios que mejoran el rendimiento del sitio.
-  * build: Cambios en el sistema de build, tareas de despliegue o instalación.
-  * ci: Cambios en la integración continua.
-  * docs: Cambios en la documentación.
-  * refactor: Refactorización del código como cambios de nombre de variables o funciones.
-  * style: Cambios de formato, tabulaciones, espacios o puntos y coma, etc; no afectan al usuario.
-  * test: Añade tests o refactoriza uno existente.
-  Si se modifico el estilo html o css de la carpeta Example.txt, entonces el commit deberá llamarse style_Example.
-# SCRIPT BASE DE DATOS
-  * Nombre de base de datos: dbMultiple
-  * Imagen referencial de a base de datos: /database/Diagram.png
+# Agradecimientos
+Especiales agradecimientos a los participantes de nuestro grupo por su esfuerzo y paciencia a la hora del desarrollo de este proyecto, al igual a los docentes encargados de supervisarnos en cada paso que dimos.
